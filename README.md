@@ -14,10 +14,12 @@ bin/datatype data/bco/datatype.json
 
 You should see this output if the file validates correctly (it should):
 
+```bash
 Validation errors: 
 {
   "errors": []
 }
+```
 
 ### Validate a BCO file:
 
@@ -27,11 +29,12 @@ bin/bco data/bco/bco-1.json
 
 You should see this output:
 
+```bash
 Validation errors: 
 {
   "errors": []
 }
-
+```
 
 ### Overview
 
