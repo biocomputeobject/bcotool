@@ -1,0 +1,371 @@
+id,name,title,is_virtual_fg,description,parents,includes,path
+3103096,ant1,anton test,0,5343434,,,/3103096
+type.13,base,Base type for all types,1,,,,/type.13
+type.67,base_user_type,Base type for all user types,1,Type from which all visible user types are inherited,type.13,,/type.13/type.67
+type.16,process,Process details,1,,type.67,,/type.13/type.67/type.16
+3114126,test-svc-archiver,File processing service,0,,type.16,,/type.13/type.67/type.16/3114126
+type.331,svc-computations-base,computations,1,Base type for all computations,type.16,,/type.13/type.67/type.16/type.331
+3147025,svc-dna-demo-gazan,HIVE Environment Test,0,Performs basic qc on a sequence file,type.331,,/type.13/type.67/type.16/type.331/3147025
+3151320,svc-codon-usage,Codon Usage,0,Codon Usage,type.331,,/type.13/type.67/type.16/type.331/3151320
+3151532,svc-gut-feeling,Gut Feeling,0,,type.331,,/type.13/type.67/type.16/type.331/3151532
+type.1,type,object type,0,Object type,,,/type.1
+type.19,u-file,User File,0,,"type.67,type.230",,/type.13/type.67/type.19
+type.22,viodb,Generic VioDB,0,,type.19,,/type.13/type.67/type.19/type.22
+type.3,u-hiveseq,HIVESeq,1,,type.22,,/type.13/type.67/type.19/type.22/type.3
+type.84,base_system_type,Base type for all system objects,1,Type from which all system level types are inherited,type.13,,/type.13/type.84
+type.7,view,Object type view,0,,type.84,,/type.13/type.84/type.7
+type.8,action,Object type action,0,,type.84,,/type.13/type.84/type.8
+type.9,menuitem,web page menu item,0,,type.84,,/type.13/type.84/type.9
+type.10,webpage,Web Page,0,Web application entries,type.84,,/type.13/type.84/type.10
+type.11,user,user account,0,,type.84,,/type.13/type.84/type.11
+type.12,group,user group details,0,,type.84,,/type.13/type.84/type.12
+type.13,base,Base type for all types,1,,,,/type.13
+type.14,email,Email Message,0,,type.67,,/type.13/type.67/type.14
+type.15,notification,message,0,,type.67,,/type.13/type.67/type.15
+type.16,process,Process details,1,,type.67,,/type.13/type.67/type.16
+type.29,svc-dna,DNA Services,0,Services Associates with Sequences and Alignments,type.331,,/type.13/type.67/type.16/type.331/type.29
+type.25,svc-align,Sequence Alignment Engines,0,Sequence Alignment Engines General Service,type.29,,/type.13/type.67/type.16/type.331/type.29/type.25
+type.347,svc-align-pairwise,Pairwise Alignment Engines,0,Pairwise Alignment Engines General Service,"type.350,type.25",,/type.13/type.67/type.16/type.331/type.29/type.25/type.347
+type.90,svc-align-dnaseq,DNA-seq Alignments,0,DNA-seq alignmnent,type.347,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90
+type.17,svc-align-hexagon,HIVE-Hexagon,0,HIVE hexagon alignment engine optimized for HIVE cloud performance on Next Generation data,"type.90,type.349",,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.17
+type.330,svc-data-loading-base,data loading,1,Base type for data loading backends,type.16,,/type.13/type.67/type.16/type.330
+type.18,svc-download,Download service,0,,type.330,,/type.13/type.67/type.16/type.330/type.18
+type.19,u-file,User File,0,,"type.67,type.230",,/type.13/type.67/type.19
+type.22,viodb,Generic VioDB,0,,type.19,,/type.13/type.67/type.19/type.22
+type.23,cder-virology-review-project,Virology Review Project,0,CDER Virology Review Project,type.67,,/type.13/type.67/type.23
+type.24,svc-dmSnvDis,nsSNVs Distribution Analysis,0,"SNVDis returns the distribution of nsSNVs across the human proteome or in a set of human proteins uploaded by the user. Follow-up analysis can be performed to ascertain how these nsSNVs are distributed in the functional sites of proteins (active site, binding site, N-linked glycosylation site, etc.), domains and pathways",type.331,,/type.13/type.67/type.16/type.331/type.24
+type.25,svc-align,Sequence Alignment Engines,0,Sequence Alignment Engines General Service,type.29,,/type.13/type.67/type.16/type.331/type.29/type.25
+type.26,svc-align-blast,Blast Alignment,0,Blast alignment engine optimized for HIVE performance,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.26
+type.27,svc-profiler,Sequence Profiling Engine,0,"Engine to perform coverage analysis ,base-calling, SNP calling ",type.29,,/type.13/type.67/type.16/type.331/type.29/type.27
+type.28,svc-align-bowtie,BowTie Alignment,0,BowTie alignment engine optimized for HIVE ,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.28
+type.29,svc-dna,DNA Services,0,Services Associates with Sequences and Alignments,type.331,,/type.13/type.67/type.16/type.331/type.29
+type.30,jing-test,Jing Test,0,Record editing test type,type.13,type.119,/type.13/type.30
+type.31,svc-popul,Clone discovery analysis,0,Clone discovery tool,type.331,,/type.13/type.67/type.16/type.331/type.31
+type.32,svc-dmStrDistri,UniProt position to PDB structure Mapper,0,Determines the secondary structure of the site of interest by mapping the position in UniProtKB to corresponding PDB structure,type.331,,/type.13/type.67/type.16/type.331/type.32
+type.33,svc-dmUniPDBMap,UniProtKB to PDB Feature Mapper,0,UniProtKB to PDB Feature Mapper,type.331,,/type.13/type.67/type.16/type.331/type.33
+type.34,svc-dmNgsPred,N-Glycosylation Prediction,0,N-Glycosylation Prediction,type.331,,/type.13/type.67/type.16/type.331/type.34
+type.35,svc-recomb,Recombination Polyplot Computation Engine,0,Recombination Polyplot Computation Engine,type.331,,/type.13/type.67/type.16/type.331/type.35
+type.111,base_descriptive_type,HIVE Database Information,0,Reoccuring database fields,type.67,,/type.13/type.67/type.111
+type.36,HIVE_Run,HIVE Run,0,HIVE Run data model,type.111,,/type.13/type.67/type.111/type.36
+type.37,HIVE_Project_2,HIVE Project,0,HIVE Project data model,type.111,,/type.13/type.67/type.111/type.37
+type.38,HIVE_Sample,HIVE Sample,0,HIVE Sample data model,type.111,,/type.13/type.67/type.111/type.38
+type.39,HIVE_Protocol_2,HIVE Experiment 2,0,HIVE Experiment data model,type.111,type.140,/type.13/type.67/type.111/type.39
+type.91,svc-align-rnaseq,RNA-seq Alignments,0,RNA-seq Alignments,type.347,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.91
+type.40,svc-align-tophat,TopHat aligment,0,TopHat based workflow,type.91,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.91/type.40
+type.41,svc-sb-SingleCellPCR,Single Cell PCR engine,0,Some nice description will eventuall come here,type.331,,/type.13/type.67/type.16/type.331/type.41
+type.42,svc-clust,Hierarchical clustering engine,0,Hierarchical clustering tool for alignment profiling results,type.331,,/type.13/type.67/type.16/type.331/type.42
+type.44,svc-align-magic,Magic alignment,0,,type.91,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.91/type.44
+type.45,u-annot,Annotation File,0,Sequence Annotation Object,type.22,,/type.13/type.67/type.19/type.22/type.45
+type.46,svc-sb-Treatment,Treatment Object,0,Treatment Object definition,type.67,,/type.13/type.67/type.46
+type.47,svc-sb-Donor,Donor Object,0,Donor Object,type.67,,/type.13/type.67/type.47
+type.48,svc-sb-Experiment,Experiment Object,0,Experiment Object,type.67,,/type.13/type.67/type.48
+type.49,svc-sb-Gene,Gene Object,0,Gene Object,type.67,,/type.13/type.67/type.49
+type.50,svc-sb-Sample,Sample Object,0,Sample Object,type.67,,/type.13/type.67/type.50
+type.51,svc-hiveseq,Hiveseq Service,0,Service to manipulate sequences files,type.331,,/type.13/type.67/type.16/type.331/type.51
+type.52,svc-example,Example Service,0,Example service for teaching,type.331,,/type.13/type.67/type.16/type.331/type.52
+type.54,svc-archiver,File processing service,0,,type.330,,/type.13/type.67/type.16/type.330/type.54
+type.55,svc-align-bwa,BWA Service,0,Burrows Wheeler Aligner,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.55
+type.56,svc-denovo-velvet,Velvet de novo service,0,Velvet de novo assembler,type.25,,/type.13/type.67/type.16/type.331/type.29/type.25/type.56
+type.57,svc-spectraPeakDetection,Mass Spectroscopy Peak Detection,0,Mass Spectroscopy Peak Detection,type.331,,/type.13/type.67/type.16/type.331/type.57
+type.58,svc-align-hexagon-batch,HIVE-Hexagon Batch,0,HIVE-hexagon batch submitter,type.17,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.17/type.58
+type.59,svc-denovo-oases,Oases denovo service,0,Oases de novo assembler,type.25,,/type.13/type.67/type.16/type.331/type.29/type.25/type.59
+type.60,webform-Setting,Set web page or part of page,0,Set web form,type.84,,/type.13/type.84/type.60
+type.62,directory,Directory Object,1,Directory Object for hierarchial organization of objects,,,/type.62
+type.63,folder,Folder,0,Folders to organize objects hierarchically,"type.67,type.62",,/type.13/type.67/type.63
+type.64,u-usage,User Usage ,0,Collect User information ,type.84,,/type.13/type.84/type.64
+type.65,image,Image Object ,0,Show different kinds of image,type.19,,/type.13/type.67/type.19/type.65
+type.66,special,Special Object,0,Manage internal object,type.84,,/type.13/type.84/type.66
+type.67,base_user_type,Base type for all user types,1,Type from which all visible user types are inherited,type.13,,/type.13/type.67
+type.68,svc-generic-launcher,Launcher Service,0,Service to launch an external application,type.331,,/type.13/type.67/type.16/type.331/type.68
+type.94,svc-align-multiple,Multiple Alignments,0,Multiple Alignments,type.25,,/type.13/type.67/type.16/type.331/type.29/type.25/type.94
+type.69,svc-align-clustal,Clustal multiple alignment,0,,type.94,,/type.13/type.67/type.16/type.331/type.29/type.25/type.94/type.69
+type.70,svc-align-mafft,Mafft multiple alignment,0,,type.94,,/type.13/type.67/type.16/type.331/type.29/type.25/type.94/type.70
+type.71,svc-denovo-abyss,Abyss de novo service,0,Abyss de novo assembler,type.25,,/type.13/type.67/type.16/type.331/type.29/type.25/type.71
+type.72,genome,Genomic sequence,0,Sequence which represents genome of an organism,type.3,,/type.13/type.67/type.19/type.22/type.3/type.72
+type.73,nuc-read,Nucleotide read,0,Nucleotide read,type.3,,/type.13/type.67/type.19/type.22/type.3/type.73
+type.74,svc-genemark,Genmark Annotation utility,0,Genmark annotation engine,type.331,,/type.13/type.67/type.16/type.331/type.74
+type.75,svc-censuScope,CensuScope: Metagenome Analyzer,0,Rapid Metagenome Profiler,type.331,,/type.13/type.67/type.16/type.331/type.75
+type.76,svc-profx,External Sequence Profiling Engine,0,General external profiler engine,type.29,,/type.13/type.67/type.16/type.331/type.29/type.76
+type.77,svc-profx-samtools,Samtools based SNP caller,0,Samtools based SNP caller,type.76,,/type.13/type.67/type.16/type.331/type.29/type.76/type.77
+type.78,spectra,Spectra,0,,type.19,,/type.13/type.67/type.19/type.78
+type.79,spectra-lib,Spectra Library,0,,type.19,,/type.13/type.67/type.19/type.79
+type.80,spectra-MS,MS Spectra,0,,type.19,,/type.13/type.67/type.19/type.80
+type.81,svc-algorlda,Regularized Linear Discrimininant Analysis,0,Clusterization and classification RLDA utility,type.331,,/type.13/type.67/type.16/type.331/type.81
+type.82,svc-dna-screening,Screen Short Read Against Genome,0,Random pick sequences to run alignment with specific genome,type.29,,/type.13/type.67/type.16/type.331/type.29/type.82
+type.83,svc-dna-recomer,Recombinant K-mer,0,K-mer based recombinant analysis tool,type.29,,/type.13/type.67/type.16/type.331/type.29/type.83
+type.84,base_system_type,Base type for all system objects,1,Type from which all system level types are inherited,type.13,,/type.13/type.84
+type.126,sysfile,System File,0,,"type.84,type.230",,/type.13/type.84/type.126
+type.85,algorithm,Algorithm objects,1,All executable algorithms base object,type.126,,/type.13/type.84/type.126/type.85
+type.86,algorithm-alignment,Alignment algorihtms,1,Alignment algorihtms,type.85,,/type.13/type.84/type.126/type.85/type.86
+type.87,qpsvc,Service,0,Service,type.84,,/type.13/type.84/type.87
+type.88,qphost,Host,0,Host,type.84,,/type.13/type.84/type.88
+type.89,algorithm-alignment-rnaseq,RNA-seq Alignment algorihtms,0,RNA-seq Alignment algorihtms,type.86,,/type.13/type.84/type.126/type.85/type.86/type.89
+type.90,svc-align-dnaseq,DNA-seq Alignments,0,DNA-seq alignmnent,type.347,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90
+type.91,svc-align-rnaseq,RNA-seq Alignments,0,RNA-seq Alignments,type.347,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.91
+type.92,algorithm-alignment-dnaseq,DNA-seq Alignment Algorithms,0,DNA-seq Alignment Algorithms,type.86,,/type.13/type.84/type.126/type.85/type.86/type.92
+type.93,algorithm-alignment-multiple,Multiple Alignment Algorithms,0,Multiple Alignment Algorithms,type.86,,/type.13/type.84/type.126/type.85/type.86/type.93
+type.94,svc-align-multiple,Multiple Alignments,0,Multiple Alignments,type.25,,/type.13/type.67/type.16/type.331/type.29/type.25/type.94
+type.95,svc-test-konstantin,Konstantins Test Algorithm,0,Konstantins Test Algorithm Description,type.331,,/type.13/type.67/type.16/type.331/type.95
+type.96,svc-dna-hexagon-batch,Dna Hexagon Batch,0,Launches Dna Hexagon in Batch Mode,type.68,,/type.13/type.67/type.16/type.331/type.68/type.96
+type.97,svc-dna-demo,HIVE Environment Demo,0,Performs basic qc on a sequence file,type.331,,/type.13/type.67/type.16/type.331/type.97
+type.98,user-settings,User Settings,0,Collection of User Setting Parameters,type.84,,/type.13/type.84/type.98
+type.99,sysfolder,System Folder,0,Folder managed by the system (Inbox etc),"type.84,type.62",,/type.13/type.84/type.99
+type.100,svc-dmTableToViodbParser,Table to Viodb ,0,Table to Viodb - Annotation,"type.331,type.356",,/type.13/type.67/type.16/type.331/type.100
+type.101,svc-profx-cuffdiff,Cuffdiff diferential RNA-Seq,0,Cuffdiff diferential RNA-Seq analysis tool,type.76,,/type.13/type.67/type.16/type.331/type.29/type.76/type.101
+type.102,user-info,User Profile Details,0,Webform to gather HIVE user biographical and profile information,type.10,,/type.13/type.84/type.10/type.102
+type.103,cdrh-patient,CDRH Patient,0,HIVE type to describe CDRH patient,type.67,,/type.13/type.67/type.103
+type.104,cdrh-device,CDRH Device,0,HIVE type to describe CDRH device,type.67,,/type.13/type.67/type.104
+type.105,cdrh-advEvent,CDRH Adverse Event,0,HIVE type to describe CDRH adverse event,type.67,,/type.13/type.67/type.105
+type.106,cdrh-analysis,CDRH Analysis,0,HIVE type to describe CDRH analysis,type.67,,/type.13/type.67/type.106
+type.107,cdrh-testing,CDRH Testing Procedures,0,HIVE type to describe CDRH analysis,type.67,,/type.13/type.67/type.107
+type.108,svc-wideeye,Image Processing,0,EMR Data,type.331,,/type.13/type.67/type.16/type.331/type.108
+type.132,HIVE_Sample_Eukaryotic,Eukaryotic Biological Sample,0,Sample collected from eukaryotic biological specimen,type.38,,/type.13/type.67/type.111/type.38/type.132
+type.110,HIVE_Sample_Animal,HIVE Sample - Animal,0,Sample originated from animal tissue,type.132,,/type.13/type.67/type.111/type.38/type.132/type.110
+type.111,base_descriptive_type,HIVE Database Information,0,Reoccuring database fields,type.67,,/type.13/type.67/type.111
+type.112,HIVE_Adverse_Event,HIVE Adverse Event,0,Event Input,type.111,,/type.13/type.67/type.111/type.112
+type.113,svc-align-bowtie2,BowTie2 Alignment,0,BowTie version 2 engine optimized for HIVE,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.113
+type.114,HIVE_Adverse_Event_Cancer,HIVE Adverse Event - Cancer,0,Cancer event fields,type.112,,/type.13/type.67/type.111/type.112/type.114
+type.115,svc-algo-annotMapper,Annotation Mapper,0,Maps 2 or more annotations to each other,type.331,,/type.13/type.67/type.16/type.331/type.115
+type.116,svc-profiler-refcmp,Sequence Profile Match to References,0,Compares alignment profiling result to arbitrary reference sequences,type.331,,/type.13/type.67/type.16/type.331/type.116
+type.117,type-test,test the type,0,testType,type.67,,/type.13/type.67/type.117
+type.119,jing-test-subtype,Sub type for testing 'type use',0,,,type.120,/type.119
+type.120,jing-test-subtype2,2nd level sub type for testing 'type use',0,,type.13,type.19,/type.13/type.120
+type.121,svc-annovar,Annovar Service,0,This is a front end service for Annovar,type.331,,/type.13/type.67/type.16/type.331/type.121
+type.122,omics,Set of Omics measurements,0,"Pre-processed microarray, proteomic, or ChIP-chip measurements",type.67,,/type.13/type.67/type.122
+type.123,svc-textClustering,Text Clustering,0,Text Based Clustering Algorithm,type.331,,/type.13/type.67/type.16/type.331/type.123
+type.124,svc-align-blat,Blat Alignment,0,Blat alignment engine parallellized by HIVE,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.124
+type.125,svc-mothur,mothur-Metagenome Analyser,0,Mothur -metagenome analyser,type.331,,/type.13/type.67/type.16/type.331/type.125
+type.126,sysfile,System File,0,,"type.84,type.230",,/type.13/type.84/type.126
+type.127,system-image,System Image,0,,type.126,,/type.13/type.84/type.126/type.127
+type.128,dev-project,Developer Project,0,Prioritized Developments,type.84,,/type.13/type.84/type.128
+type.129,HIVE_Patient,HIVE Patient Data Model,0,Database entery object for information regarding patient,type.111,,/type.13/type.67/type.111/type.129
+type.130,HIVE_Treatment,HIVE Treatment,0,Database entery object for information regarding treatment,type.111,,/type.13/type.67/type.111/type.130
+type.131,Vahan-Test,Vahan Test,0,Test for Vahan,type.131,,/type.131
+type.132,HIVE_Sample_Eukaryotic,Eukaryotic Biological Sample,0,Sample collected from eukaryotic biological specimen,type.38,,/type.13/type.67/type.111/type.38/type.132
+type.133,HIVE_Sample_Prokaryotic,Prokaryotic Biological Sample,0,Sample collected from prokaryotic biological specimen,type.38,,/type.13/type.67/type.111/type.38/type.133
+type.134,HIVE_Sample_Metagenomic,Metagenomic Biological Sample,0,Metagenomic sample ,type.38,,/type.13/type.67/type.111/type.38/type.134
+type.135,HIVE_Sample_Microbiome,Microbiome Biological Sample,0,Microbiome sample collectyed from eukaryotic organisms,type.134,,/type.13/type.67/type.111/type.38/type.134/type.135
+type.136,HIVE_Sample_Viral,Viral Biological Sample,0,Sample collected from viral specimen,type.38,,/type.13/type.67/type.111/type.38/type.136
+type.137,HIVE_Sample_Environmental,Environmental Sample,0,Metagenomic sample accumulated from environmental speciment,type.134,,/type.13/type.67/type.111/type.38/type.134/type.137
+type.138,HIVE_Sample_Human,Human biological sample,0,Sample collected from human tissue,type.110,,/type.13/type.67/type.111/type.38/type.132/type.110/type.138
+type.139,HIVE_Sample_Vaccine,Vaccine Sample,0,Vaccine sample collected from attentuated virus,type.136,,/type.13/type.67/type.111/type.38/type.136/type.139
+type.140,xref,External Reference,0,Reference to records from external sources,,,/type.140
+type.141,iref,Internal Reference,0,Reference to internal records,,,/type.141
+type.142,HIVE_NGS_Protocol,NGS sequencing experiment,0,Next Generation Sequencing Experiment object,type.39,,/type.13/type.67/type.111/type.39/type.142
+type.143,HIVE_MS_Protocol,Mass Spectroscopic experiment,0,Mass-Spec spectroscopic Experiment object,type.39,,/type.13/type.67/type.111/type.39/type.143
+type.144,HIVE_Adverse_Reaction,HIVE Adverse Reaction,0,Information about an adverse reaction,type.112,,/type.13/type.67/type.111/type.112/type.144
+type.252,core_descriptive_type,HIVE Database Information,0,Reoccuring database fields,type.67,"type.140,type.210,type.211",/type.13/type.67/type.252
+type.246,HIVE_Project,HIVE Project,0,HIVE Project data model,type.252,,/type.13/type.67/type.252/type.246
+type.145,HIVE_Project_Clinical,Clinical Project,0,Information about a clinical study,"type.246,type.160",,/type.13/type.67/type.252/type.246/type.145
+type.150,HIVE_Findings,Findings of Study,0,Information about the findings,type.67,,/type.13/type.67/type.150
+type.151,svc-HoneyBee,HoneyComb Mapper Service,0,,type.331,,/type.13/type.67/type.16/type.331/type.151
+type.152,svc-cvm-1,CVM Bacterial Analysis,0,CVM Bacterial Analysis for antibiotic resistant genes.,type.17,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.17/type.152
+type.153,tblqryx4,Table Query X4,1,,type.67,,/type.13/type.67/type.153
+type.154,excel-file,Microsoft Excel file,0,,"type.19,type.298",,/type.13/type.67/type.19/type.154
+type.155,sample_project_name,Sample Project,0,Contains Sample Project name field,,,/type.155
+type.156,HIVE_Adverse_Event_Recall,HIVE Adverse Event - Recall,0,Information regarding a recall event,type.112,,/type.13/type.67/type.111/type.112/type.156
+type.209,base_metadata_type,HIVE Base Metadata,0,About: Basic metadata fields (for now used with biosample primarily),type.67,"type.160,type.200,type.211,type.212,type.213",/type.13/type.67/type.209
+type.157,HIVE_BioSample,HIVE BioSample,0,About: Biosample base (what where when who why links),"type.209,type.201",type.184,/type.13/type.67/type.209/type.157
+type.158,Product_Recall,Recall Product,0,Information regarding a recall project,type.111,,/type.13/type.67/type.111/type.158
+type.162,HIVE_BioSample_Metagenomic,HIVE BioSample - Metagenomic,0,About: Metagenomic biosample contains Environmental and Microbiome packages,type.157,type.200,/type.13/type.67/type.209/type.157/type.162
+type.169,HIVE_BioSample_Microbiome,HIVE BioSample - Metagenomic Microbiome,0,About: Microbiome biosamples are metagenomic vary according to the host organism and the specific tissue,type.162,,/type.13/type.67/type.209/type.157/type.162/type.169
+type.159,host_base_block,Host General,0,"About: Information about the host organism under Microbiome Base, Metagenomic",type.169,"type.183,type.184,type.206",/type.13/type.67/type.209/type.157/type.162/type.169/type.159
+type.160,submission_type,Submission,0,"About: Submission time, validity and submitter",type.67,type.210,/type.13/type.67/type.160
+type.161,HIVE_BioSample_Genomic,HIVE BioSample - Genomic,0,"About: Genomic biosamples include Viral, Prokaryotic, Eukaryotic and Synthetic categories",type.157,type.213,/type.13/type.67/type.209/type.157/type.161
+type.162,HIVE_BioSample_Metagenomic,HIVE BioSample - Metagenomic,0,About: Metagenomic biosample contains Environmental and Microbiome packages,type.157,type.200,/type.13/type.67/type.209/type.157/type.162
+type.163,HIVE_BioSample_Synthetic,HIVE BioSample - Synthetic,0,About: Synthetic biosample ,type.157,,/type.13/type.67/type.209/type.157/type.163
+type.191,HIVE_BioSample_Host_Animal,HIVE BioSample - Metagenomic Microbiome - Animal Host,0,About: Animal host includes host-base-block and specific descriptors to animals,type.159,type.185,/type.13/type.67/type.209/type.157/type.162/type.169/type.159/type.191
+type.164,HIVE_BioSample_Host_Human,HIVE BioSample - Metagenomic Microbiome - Human Host,0,About: Human specific fields include host base and host animal,type.191,,/type.13/type.67/type.209/type.157/type.162/type.169/type.159/type.191/type.164
+type.165,HIVE_BioSample_Viral,HIVE BioSample - Viral,0,About: Viral biosamples include Virus and Vaccine packages,type.161,,/type.13/type.67/type.209/type.157/type.161/type.165
+type.166,HIVE_BioSample_Prokaryotic,HIVE BioSample - Prokaryotic,0,About: Prokaryotic biosamples include Bacteria and Archaea packages ,type.161,,/type.13/type.67/type.209/type.157/type.161/type.166
+type.167,HIVE_BioSample_Eukaryotic,HIVE BioSample - Eukaryotic,0,"About: Eukaryotic biosamples include Animal (model organism and human), Plant, Fungi and Protista packages",type.161,,/type.13/type.67/type.209/type.157/type.161/type.167
+type.168,HIVE_BioSample_Environmental,HIVE BioSample - Metagenomic Environmental,0,"About: Environmental biosamples vary by the environmental medium, e.g. air, water etc.",type.162,type.213,/type.13/type.67/type.209/type.157/type.162/type.168
+type.169,HIVE_BioSample_Microbiome,HIVE BioSample - Metagenomic Microbiome,0,About: Microbiome biosamples are metagenomic vary according to the host organism and the specific tissue,type.162,,/type.13/type.67/type.209/type.157/type.162/type.169
+type.171,microbiome_descriptors,Microbiome Description,0,About: Consists of NCBI fields used to describe the microbiome properties,type.169,type.183,/type.13/type.67/type.209/type.157/type.162/type.169/type.171
+type.173,HIVE_BioSample_Virus,HIVE BioSample - Virus,0,About: Virus biosample,type.165,,/type.13/type.67/type.209/type.157/type.161/type.165/type.173
+type.174,HIVE_BioSample_Vaccine,HIVE BioSample - Vaccine,0,About: Attenuated vaccine biosample,type.165,,/type.13/type.67/type.209/type.157/type.161/type.165/type.174
+type.175,HIVE_BioSample_Bacteria,HIVE BioSample - Bacteria,0,About: Prokaryotic bacteria biosample (prokaryotic microbe),type.166,,/type.13/type.67/type.209/type.157/type.161/type.166/type.175
+type.176,HIVE_BioSample_Archaea,HIVE BioSample - Archaea,0,About: Prokaryotic archea biosample,type.166,,/type.13/type.67/type.209/type.157/type.161/type.166/type.176
+type.177,HIVE_BioSample_Animal,HIVE BioSample - Animal,0,About: Animal biosample contains animal (model organism) and human packages,type.167,"type.183,type.185",/type.13/type.67/type.209/type.157/type.161/type.167/type.177
+type.178,HIVE_BioSample_Plant,HIVE BioSample - Plant,0,About: Plant biosample,type.167,type.200,/type.13/type.67/type.209/type.157/type.161/type.167/type.178
+type.179,HIVE_BioSample_Fungus,HIVE BioSample - Fungus,0,About: Fungus biosample,type.167,,/type.13/type.67/type.209/type.157/type.161/type.167/type.179
+type.180,HIVE_BioSample_Protista,HIVE BioSample - Protista,0,About: Protista biosample (eukaryotic microbe),type.167,,/type.13/type.67/type.209/type.157/type.161/type.167/type.180
+type.181,HIVE_BioSample_Host_Plant,HIVE BioSample - Metagenomic Microbiome - Plant Host,0,About: Specific plant host descriptors include base host block,type.159,,/type.13/type.67/type.209/type.157/type.162/type.169/type.159/type.181
+type.182,HIVE_BioSample_Human,HIVE BioSample - Human,0,About: Human biosample,type.177,,/type.13/type.67/type.209/type.157/type.161/type.167/type.177/type.182
+type.183,geo_location,Geographical Location,0,About: geolocation block,type.67,,/type.13/type.67/type.183
+type.184,genotype_phenotype,Genotype and Phenotype Map,0,About: observed genotype and/or phenotype of interest ,type.67,,/type.13/type.67/type.184
+type.185,breed_info,Breed,0,About: Breed information is chiefly used in animals and plants,type.67,,/type.13/type.67/type.185
+type.186,HIVE_BioSample_Environmental_Air,HIVE BioSample - Metagenomic Environmental - Source: Air,0,About: Environment air,type.168,type.200,/type.13/type.67/type.209/type.157/type.162/type.168/type.186
+type.187,HIVE_BioSample_Environmental_Built,HIVE BioSample - Metagenomic Environmental - Source: Built,0,About: Environment built,type.168,type.200,/type.13/type.67/type.209/type.157/type.162/type.168/type.187
+type.188,HIVE_BioSample_Environmental_Soil,HIVE BioSample - Metagenomic Environmental - Source: Soil,0,About: Environment soil,type.168,"type.200,type.213",/type.13/type.67/type.209/type.157/type.162/type.168/type.188
+type.189,HIVE_BioSample_Environmental_Water,HIVE BioSample - Metagenomic Environmental - Source: Water,0,About: Environment water,type.168,type.200,/type.13/type.67/type.209/type.157/type.162/type.168/type.189
+type.191,HIVE_BioSample_Host_Animal,HIVE BioSample - Metagenomic Microbiome - Animal Host,0,About: Animal host includes host-base-block and specific descriptors to animals,type.159,type.185,/type.13/type.67/type.209/type.157/type.162/type.169/type.159/type.191
+type.192,HIVE_BioSample_Environmental_Sediment,HIVE BioSample - Metagenomic Environmental - Source: Sediment,0,About: Environment sediment,type.168,type.200,/type.13/type.67/type.209/type.157/type.162/type.168/type.192
+type.199,references_block,External and Internal References,0,About: iref and xref references combined as blocks,type.67,"type.211,type.213",/type.13/type.67/type.199
+type.200,base_attribute,Attributes,0,"About: attribute block includes key, units, value. ",type.67,,/type.13/type.67/type.200
+type.201,biomaterial_condition,"Biomaterial general collection, processing and storage",0,"About: block about biosample collection, processing and storage details",type.67,"type.183,type.210",/type.13/type.67/type.201
+type.202,svc-base-shell-script,Shell Script,0,Generic script to be executed by generic software adapter,type.68,,/type.13/type.67/type.16/type.331/type.68/type.202
+type.203,svc-dna-mothur,Mothur Base Service ,0,Mothur Base Service,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.203
+type.204,algorithm-script,Algorithmic Script,0,Adopted Script Driving an Algorithm,type.85,,/type.13/type.84/type.126/type.85/type.204
+type.205,svc-profiler-heptagon,Sequence Profiling Engine,0,"Engine to perform coverage analysis ,base-calling, SNP calling ",type.27,,/type.13/type.67/type.16/type.331/type.29/type.27/type.205
+type.206,sex_block,Sex,0,About: refers to the biological and physiological characteristics of an organism,type.67,,/type.13/type.67/type.206
+type.207,plugin_tblqry,Table Query Plugin,0,DEfinition of Pluging input parameters and dynamic load lib,type.84,,/type.13/type.84/type.207
+type.208,subject-event,Subject Event,0,Event associated to a subject under observation,type.67,,/type.13/type.67/type.208
+type.209,base_metadata_type,HIVE Base Metadata,0,About: Basic metadata fields (for now used with biosample primarily),type.67,"type.160,type.200,type.211,type.212,type.213",/type.13/type.67/type.209
+type.210,base_contact_type,Name and Contact Information,0,"About: Name, address, phone, fax, email and affiliation for any individual",type.67,,/type.13/type.67/type.210
+type.211,Ireference,Internal References List,0,About: Internal references arranged as array BROKEN(cannot modify 141),,,/type.211
+type.212,base_description_block,Descriptive Information,0,"About: Descriptive block contains names, title and description text",type.67,,/type.13/type.67/type.212
+type.213,Xreference,External Reference List,0,About: external references,type.67,,/type.13/type.67/type.213
+type.214,basic-event,Basic Event,0,,type.67,,/type.13/type.67/type.214
+type.215,ionDB,Generic ionDB,0,Generic ionDB type,type.67,,/type.13/type.67/type.215
+type.216,u-ionAnnot,ionAnnot type,0,Annotation file in ionDB format,type.215,,/type.13/type.67/type.215/type.216
+type.217,subject-baseline-example,Subject Baseline Example,0,Simple examples for testing survival analysis,type.67,,/type.13/type.67/type.217
+type.218,svc-dna-velvet,Velvet de Novo,0,Svc to launch velvet de novo via generic launcher,type.68,,/type.13/type.67/type.16/type.331/type.68/type.218
+type.219,svc-dna-pipeline,Dna-Pipeline,0,Svc to lauch dna-pipeline to string together other services using each one's output as the input for the next.,type.331,,/type.13/type.67/type.16/type.331/type.219
+type.220,svc-alin-hiv-pipeline,Alin's HIV Pipeline,0,Pipeline for Alin,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.220
+type.221,svc-velvet-pipeline,Velvet Pipeline,0,Pipeline for Velvet,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.221
+type.222,svc-dmTableToIondb,table to ionDB,0,table to ionDB format - Annotation,type.100,,/type.13/type.67/type.16/type.331/type.100/type.222
+type.223,u-ionExpress,Gene Express in ion,0,Gene Express in ionDB format,type.216,,/type.13/type.67/type.215/type.216/type.223
+type.224,svc-single_velvet-pipeline,Velvet Small Genome Pipeline,0,Velvet de Novo (Viral/Small Genome),type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.224
+type.225,u-ionQL,ion QL Script,0,ion QL Script files to store query procedure,type.215,,/type.13/type.67/type.215/type.225
+type.226,u-idList,id list,0,"list of ids (genes, proteins...)",type.19,,/type.13/type.67/type.19/type.226
+type.227,svc-geneExpress-launcher,Gene Expression Treatment Launcher,0,Gene Expression Process Launcher- Gene Expression Omnibus,type.331,,/type.13/type.67/type.16/type.331/type.227
+type.228,HIVE_Adverse_Event_Recall_test,HIVE Adverse Event - Recall test,0,Information regarding a recall event - test,type.156,,/type.13/type.67/type.111/type.112/type.156/type.228
+type.229,Product_Recall_test,Product Event test,0,Information regarding a product recall - test,type.158,,/type.13/type.67/type.111/type.158/type.229
+type.230,file,File,1,,,,/type.230
+type.231,svc-r-script,R-services,0,R based services,type.68,,/type.13/type.67/type.16/type.331/type.68/type.231
+type.232,algorithm-r-script,Algorithmic-R-script,0,R-scripted adapted to HIVE,type.204,,/type.13/type.84/type.126/type.85/type.204/type.232
+type.233,algorithm-r-expression-analysis,R- expression Analysis,0,Tools for expression analysis implemented as R scripts,type.232,,/type.13/type.84/type.126/type.85/type.204/type.232/type.233
+type.234,svc-align-tblastx,TBlastX Alignment,0,TBlastX alignment engine optimized for HIVE performance,type.26,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.26/type.234
+type.235,svc-pathoscope,Pathoscope Pipeline,0,The pipeline for running pathoscope,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.235
+type.236,u-tqs,TQS File Type,0,TQS File Type,type.19,,/type.13/type.67/type.19/type.236
+type.237,svc-macs2-callpeaks,MACS2 CallPeaks Command,0,MACS2 CallPeaks Pipeline,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.237
+type.238,svc-viral-mutation-comp,Viral Mutation Comparator,0,Regulatory Viral Mutation Comparator,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.238
+type.239,svc-genome-comparator,Genome Comparator,0,Algorithm to compare genome similarities,type.331,,/type.13/type.67/type.16/type.331/type.239
+type.240,svc-protein-rosetta_scripts,Rosetta Scripts,0,The Rosetta software suite includes algorithms for computational modeling and analysis of protein structures,type.331,,/type.13/type.67/type.16/type.331/type.240
+type.241,svc-align-blastx,BlastX Alignment,0,BlastX alignment engine optimized for HIVE performance,type.26,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.26/type.241
+type.242,svc-idba-ud,IDBA-ud,0,"IDBA is the basic iterative de Bruijn graph assembler for second-generation sequencing reads. IDBA-UD, an extension of IDBA, is designed to utilize paired-end reads to assemble low-depth regions and use progressive depth on contigs to reduce errors in high-depth regions.",type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.242
+type.243,svc-dna-insilico,Insilico Genome Randomizer,0,Generate Artificial reads from a Genome,type.331,,/type.13/type.67/type.16/type.331/type.243
+type.244,core_metadata_type,Core metadata type,0,All metadata objects must inherit from this,type.67,,/type.13/type.67/type.244
+type.245,svc-tnseq,TNSeq Analyzer,0,Algorithm to detect transposon insertion positions,type.331,,/type.13/type.67/type.16/type.331/type.245
+type.246,HIVE_Project,HIVE Project,0,HIVE Project data model,type.252,,/type.13/type.67/type.252/type.246
+type.247,HIVE_Experiment,HIVE Experiment,0,HIVE Experiment data model,type.252,,/type.13/type.67/type.252/type.247
+type.248,HIVE_Protocol,HIVE Protocol,0,HIVE Protocol data model,type.252,,/type.13/type.67/type.252/type.248
+type.250,svc-alignment-comparator,Alignment Comparator,0,Alignment Comparator utility,type.331,,/type.13/type.67/type.16/type.331/type.250
+type.251,prot-seq,Protein,0,Protein sequences,type.19,,/type.13/type.67/type.19/type.251
+type.252,core_descriptive_type,HIVE Database Information,0,Reoccuring database fields,type.67,"type.140,type.210,type.211",/type.13/type.67/type.252
+type.253,target_library,Target/Filter Library,0,Target.Filter libraries for Pathoscope integration.,type.19,,/type.13/type.67/type.19/type.253
+type.254,svc-computation-test,Computation Test,0,Computation Test Page,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.254
+type.255,svc-CDRH-script-launcher,Script launcher for CDRH,0,Script launcher for CDRH to run R script,type.231,,/type.13/type.67/type.16/type.331/type.68/type.231/type.255
+type.256,algorithm-r-cdrh-analysis,R script for CDRH,0,R script to run for CDRH,type.232,,/type.13/type.84/type.126/type.85/type.204/type.232/type.256
+type.257,dropbox,Data Dropbox,0,Custom method for uploading data files,type.84,,/type.13/type.84/type.257
+type.258,svc-glymps,GLYMPS,0,Mass Spectroscopy Tools for /CBER/OVRR/DBPAP/LBP,type.331,,/type.13/type.67/type.16/type.331/type.258
+type.259,svc-simECG,ECG Simulation,0,ECG Simulation Analysis,type.331,,/type.13/type.67/type.16/type.331/type.259
+type.260,svc-pipeline-soap,SOAP Pipeline,0,Pipeline for SOAP,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.260
+type.261,svc-pyhive-demo,PyHIVE demo service,0,,type.331,,/type.13/type.67/type.16/type.331/type.261
+type.262,CDISC-patient,C-DISC Patient,0,HIVE type describing C-DISC patient,type.67,,/type.13/type.67/type.262
+type.263,CDISC-drug,C-DISC Drug,0,HIVE type describing C-DISC drug,type.67,,/type.13/type.67/type.263
+type.264,CDISC-adverseEvent,C-DISC Adverse Event,0,HIVE type describing C-DISC adverse event,type.67,,/type.13/type.67/type.264
+type.265,CDISC-treatment,C-DISC Treatment,0,HIVE type describing C-DISC treatment,type.67,,/type.13/type.67/type.265
+type.266,svc-dna-refClust,Dna Reference Cluster,0,Dna Reference Cluster,type.331,,/type.13/type.67/type.16/type.331/type.266
+type.267,HIVE_Development_Project_List,HIVE User Project Summaries,0,HIVE User Project Summaries,type.111,,/type.13/type.67/type.111/type.267
+type.268,Example_Patient,Example_Patient,0,Object for Honeycomb mapper tutorial,type.19,,/type.13/type.67/type.19/type.268
+type.269,Example_Device,Example_Device,0,Object for Honeycomb mapper tutorial,type.19,,/type.13/type.67/type.19/type.269
+type.270,HIVE_BioSample_Patient,HIVE BioSample - Patient,0,About: Patient BioSample,type.182,,/type.13/type.67/type.209/type.157/type.161/type.167/type.177/type.182/type.270
+type.271,HIVE_BioSample_Patient_Cancer,HIVE BioSample - Patient - Cancer,0,About: Cancer Patient BioSample,type.270,,/type.13/type.67/type.209/type.157/type.161/type.167/type.177/type.182/type.270/type.271
+type.272,svc-pipeline-sam-to-csv,SAM to CSV,0,Convert SAM files to CSV files with some formatting,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.272
+type.273,svc-refseq-processor,RefSeq processor,0,RefSeq processor run parameters,type.331,,/type.13/type.67/type.16/type.331/type.273
+type.274,svc-pipeline-HIV-resistance,HIV resistances,0,Analyzes the nucleotide sequence and determines if there is a resistance to HIV drugs,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.274
+type.275,SDTM_DM,DEMOGRAPHICS,0,Database object containing patient demographic data,type.67,,/type.13/type.67/type.275
+type.276,CART_DM,CART Patient DEMOGRAPHICS,0,Database object containing CART patient demographics,"type.275,type.67",,/type.13/type.67/type.275/type.276
+type.277,STUDY,Study Metadata,0,Database object containing study metadata,type.67,,/type.13/type.67/type.277
+type.278,IND,Investigational New Drug,0,Database object containing IND metadata,type.67,,/type.13/type.67/type.278
+type.279,svc-andrew-hiv-pipeline,Andrew's HIV Pipeline,0,Pipeline,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.279
+type.280,SDTM_AE,ADVERSE_EVENT,1,Database object containing Adverse Events,type.67,,/type.13/type.67/type.280
+type.281,PAT_ADVERSE_EVENT,List of Patient AEs,0,Database object containing a list of Adverse Events associated with a patient,type.67,type.280,/type.13/type.67/type.281
+type.282,TREATMENT,TREATMENT,0,Database object containing Treatment details,type.67,,/type.13/type.67/type.282
+type.283,INDICATION,INDICATION,0,Database object containing disease identification details,type.67,,/type.13/type.67/type.283
+type.284,SDTM_CM,CONCOMITANT_MEDICATION,1,Database object containing information about Treatment administrations ,type.67,,/type.13/type.67/type.284
+type.285,PATIENT_CMS,List of Patient CMs,0,Database object containing a list of CONCOMITANT MEDICATIONs associated with a patient,type.67,type.284,/type.13/type.67/type.285
+type.286,CART_TRT,CART_TREATMENT,1,Database object containing information about CART treatment administrations ,type.67,,/type.13/type.67/type.286
+type.287,PATIENT_CART_TRTS,PATIENT_CART_TREATMENT,0,Database object containing information about CART TREATMENTS ADMINISTERED TO PATIENT ,type.67,type.286,/type.13/type.67/type.287
+type.288,DISEASE_ID,DISEASE_ID,0,Database object containing disease identification data,type.67,,/type.13/type.67/type.288
+type.289,SDTM_RS,SDTM_DISEASE_RESPONSE,0,Database object containing disease response data,type.67,,/type.13/type.67/type.289
+type.290,PAT_DISEASES,PATIENT_DISEASES,0,Database object containing diseases associated to a patient,type.67,"type.288,type.289",/type.13/type.67/type.290
+type.291,SDTM_DD,DEATH_DETAILS,0,Database object containing details about patient death,type.67,,/type.13/type.67/type.291
+type.292,SDTM_MH,MEDICAL_HISTORY,1,Database object containing patient medical history,type.67,,/type.13/type.67/type.292
+type.293,PATIENT_MH,PATIENT_MEDICAL_HISTORY,0,Database object containing patient medical history,type.67,type.292,/type.13/type.67/type.293
+type.294,CART_PRODUCT,CART_PRODUCT,0,Database object containing CART product information,type.67,,/type.13/type.67/type.294
+type.295,SDTM_LB,LAB_RESULT,1,Database object containing laboratory results,type.67,,/type.13/type.67/type.295
+type.296,PAT_LBS,PATIENT_LAB_RESULTS,0,Database object containing laboratory results,type.67,type.295,/type.13/type.67/type.296
+type.297,svc-pipeline-falcon,FALCON Pipeline,0,Pipeline for FALCON,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.297
+type.298,table,Abstract table type,1,"Any comma, tab separated something reconized by Table Query",,,/type.298
+type.299,csv-table,Comma separated table file,0,,"type.19,type.298",,/type.13/type.67/type.19/type.299
+type.300,tsv-table,Tab separated table file,0,,"type.19,type.298",,/type.13/type.67/type.19/type.300
+type.301,multimedia,Multimedia Object,0,"A type defining any multimedia object (poster, publication, video, etc)",type.126,,/type.13/type.84/type.126/type.301
+type.302,sysconfig,System configuration,0,Type describing the singleton system configuration object,type.84,,/type.13/type.84/type.302
+type.303,domain-id-descr,HIVE domain ID specification,0,Object describing a HIVE domain ID recognized on this HIVE installation,type.84,,/type.13/type.84/type.303
+type.304,svc-dna-compress,HIVE Environment Demo,0,Performs sequence file compression on a sequence file,type.331,,/type.13/type.67/type.16/type.331/type.304
+type.305,svc-pipeline-nameconcat,Demo GL Pipeline,0,Demo GL Pipeline,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.305
+type.306,svc-algo-ionAnnotMapper,Ion Annotation Mapper,0,Annotation Mapper between annotation in iondb and/or profilers,type.115,,/type.13/type.67/type.16/type.331/type.115/type.306
+type.307,svc-velvet-pipeline-paired,Velvet Pipeline (Paired End Reads),0,Pipeline for Velvet using paired end reads,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.307
+type.308,svc-glympsinteractive,Glymps Interactive,0,Service For Glymps,type.331,,/type.13/type.67/type.16/type.331/type.308
+type.309,svc-affinity-viz-peak-detect,Promiscuity Peak Detection,0,Promiscuity Peak Detection for the Affinity Visualization project,type.331,,/type.13/type.67/type.16/type.331/type.309
+type.310,svc-algo-diffSat,Differential Saturation,0,Differential Saturation,type.331,,/type.13/type.67/type.16/type.331/type.310
+type.311,svc-multi-download,Multiple Results Download,0,Download results from multiple different processes,type.331,,/type.13/type.67/type.16/type.331/type.311
+type.312,svc-ecg,ECG ,0,ecg project,type.331,,/type.13/type.67/type.16/type.331/type.312
+type.313,svc-ionseq,ionseq,0,ionseq project,type.331,,/type.13/type.67/type.16/type.331/type.313
+type.314,svc-dna-codonQC,Dna Codon QC,0,Dna Codon QC,type.29,,/type.13/type.67/type.16/type.331/type.29/type.314
+type.315,svc-dna-multi-qc,Dna Multi QC,0,Dna multi file QC,type.29,,/type.13/type.67/type.16/type.331/type.29/type.315
+type.316,svc-renamer,Renamer,0,Renaming interface,type.331,,/type.13/type.67/type.16/type.331/type.316
+type.317,svc-affinity-viz-simulated-annealing,Simulated Annealing,0,Simulated Annealing for the Affinity Visualization project,type.331,,/type.13/type.67/type.16/type.331/type.317
+type.318,svc-dna-alignQC,Dna Alignment QC,0,Dna Alignment QC,type.29,,/type.13/type.67/type.16/type.331/type.29/type.318
+type.319,svc-dna-mothur-16s,Mothur - 16s Pipeline,0,Pipeline for using Mothur for 16s Analysis,type.203,,/type.13/type.67/type.16/type.331/type.68/type.202/type.203/type.319
+type.320,svc-agn-classifier,Agnostic Classifier,0,Agnostic Classifier,type.331,,/type.13/type.67/type.16/type.331/type.320
+type.321,svc-msgfplus,MS-GF+,0,Universal Database Search Tool for Mass Spectrometry,type.331,,/type.13/type.67/type.16/type.331/type.321
+type.322,svc-msgfplusinteractive,MS-GF+ Interactive,0,Service For MS-GF+,type.331,,/type.13/type.67/type.16/type.331/type.322
+type.323,svc-diprofiler,DI Profiler,0,Defective Interfering particles Profiling Engine,type.331,,/type.13/type.67/type.16/type.331/type.323
+type.324,svc-macs2-bdgcmp,MACS2 bdgcmp Command,0,MACS2 bdgcmp Pipeline,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.324
+type.325,svc-dna-differential-profiler,Differential Profiler,0,Find differences among different Profiling outputs,type.331,,/type.13/type.67/type.16/type.331/type.325
+type.326,svc-dna-kmerQC,Dna Kmer QC,0,Dna Kmer QC,type.29,,/type.13/type.67/type.16/type.331/type.29/type.326
+type.327,test-encoding,Field Encoding & Encryption Demo,0,Demo for field value encoded and encrypted storage,type.13,,/type.13/type.327
+type.328,svc-pipeline-guinier-analysis,Matlab Based Guinier Analysis,0,Matlab Based Guinier Analysis,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.328
+type.329,svc-compressor,Data Compression Engine,0,,type.330,,/type.13/type.67/type.16/type.330/type.329
+type.330,svc-data-loading-base,data loading,1,Base type for data loading backends,type.16,,/type.13/type.67/type.16/type.330
+type.331,svc-computations-base,computations,1,Base type for all computations,type.16,,/type.13/type.67/type.16/type.331
+type.332,svc-price,Price,0,"PRICE (Paired-Read Iterative Contig Extension) was designed to address the challenge of assembling viral genomes that comprise a small minority of the reads within ultra-deep, short-read, shotgun metagenomic datasets",type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.332
+type.333,hive-hmi-base-contract,HIVE HMI base contract,0,,,,/type.333
+type.338,svc-R-launcher,R launcher,0,R launcher ,type.68,,/type.13/type.67/type.16/type.331/type.68/type.338
+type.334,svc-deseq,DESeq,0,DESeq,type.338,,/type.13/type.67/type.16/type.331/type.68/type.338/type.334
+type.335,bio-project-request,Bioinformatics Project Request,0,Request for a new Bioinformatics Project,type.67,,/type.13/type.67/type.335
+type.336,svc-hmi-uploader,HMI uploader,0,,type.330,,/type.13/type.67/type.16/type.330/type.336
+type.337,svc-genome-accumulator,Genome Accumulator,0,Algorithm to compare the coverage at annotation level across alignments,type.331,,/type.13/type.67/type.16/type.331/type.337
+type.338,svc-R-launcher,R launcher,0,R launcher ,type.68,,/type.13/type.67/type.16/type.331/type.68/type.338
+type.339,svc-adverse-event-dedup,Adverse Event Deduplication,0,Adverse Event Deduplication,type.331,,/type.13/type.67/type.16/type.331/type.339
+type.340,svc-dna-mothur-16s-post,Mothur - 16s Pipeline - Post Analysis,0,Pipeline for using Mothur for 16s Analysis - Post Analysis,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.340
+type.341,svc-alignment-remapper,Alignment Remapper,0,Remap alignemts based on the multiple alignment of the subjects,type.331,,/type.13/type.67/type.16/type.331/type.341
+type.342,svc-dna-umitool,UMI Filter,0,Molecular Barcoding Filtering Tool for Pair End Files,type.29,,/type.13/type.67/type.16/type.331/type.29/type.342
+type.343,hmi-block-file,HMI block file,0,,type.67,,/type.13/type.67/type.343
+type.344,OND_meeting_minute,Meeting Minute,0,Meeting minute,type.19,,/type.13/type.67/type.19/type.344
+type.345,svc-dna-mothur-16s-post-phylogeny,Mothur - 16s Pipeline - Post Analysis - Phylogeny based Analysis,0,Pipeline for using Mothur for 16s Analysis - Post Analysis - Phylogeny based Analysis,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.345
+type.346,svc-dna-mothur-16s-post-phylotype,Mothur - 16sPipeline - Post Analysis - Phylotype,0,Pipeline for using Mothur for 16s Analysis - Post Analysis - Phylotype based-analysis,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.346
+type.347,svc-align-pairwise,Pairwise Alignment Engines,0,Pairwise Alignment Engines General Service,"type.350,type.25",,/type.13/type.67/type.16/type.331/type.29/type.25/type.347
+type.348,svc-align-hisat2,HISAT2 aligment,0,HISAT2 based workflow,"type.91,type.349",,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.91/type.348
+type.349,svc-align-paired-end,paired end enabled alignments abstract type,1,Abstract type for paired end enabled alignments,,,/type.349
+type.350,svc-align-single-end,single end only aligners abstract type,1,Abstract type for single end only aligners,,,/type.350
+type.351,svc-i2e-index,I2E indexing step,0,Indexing PDFs using I2E - linguamatics - program,type.331,,/type.13/type.67/type.16/type.331/type.351
+type.352,svc-i2e-query-submission,I2E Query Submission step,0,Submit query to i2e server,type.331,,/type.13/type.67/type.16/type.331/type.352
+type.353,HIVE_Development_Timelog,HIVE Development Timelog,0,A record of a week's work by a HIVE developer.,type.13,,/type.13/type.353
+type.354,svc-panel,Panel analysis,0,Base type for all panel computations,type.331,,/type.13/type.67/type.16/type.331/type.354
+type.355,new-svc-align-blast,Blast Alignment,0,Blast alignment engine optimized for HIVE performance,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.355
+type.356,svc-annotation-parser-parameters,Abstract annotation file parsing parameters,1,Abstract type with parameters for annotation parsers,,,/type.356
+type.357,new-svc-align-blastx,Blast Alignment,0,Blast alignment engine optimized for HIVE performance,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.357
+type.358,new-svc-align-tblastx,Blast Alignment,0,Blast alignment engine optimized for HIVE performance,type.90,,/type.13/type.67/type.16/type.331/type.29/type.25/type.347/type.90/type.358
+type.359,svc-panel-hiv,HIV drug resistance,0,HIV drug resistance panel service,type.354,,/type.13/type.67/type.16/type.331/type.354/type.359
+type.360,BioCompute_base_type,Base type for all BioCompute Objects,0,all BioComputes must inherit from this type in order to be compliant with BioCompute framework,,,/type.360
+type.361,svc-idba-hybrid,IDBA-hybrid,0,"IDBA-Hybrid is an iterative De Bruijn Graph De Novo Assembler for hybrid sequencing. It is an extension of IDBA-UD algorithm. It aims at using a closed related reference genome to help de novo assembly, especially when sequencing depth is low. IDBA-Hybrid does alignment between reads and reference first to extract similar regions in the reference genome, and then it correct the similar regions based on the alignment results and apply local assembly technique to resolve potential structure virations. Finally, it groups all the reads and the contigs got from those similar regions to do de novo assembly.",type.242,,/type.13/type.67/type.16/type.331/type.68/type.202/type.242/type.361
+type.362,svc-canu,Canu,0,Canu is an assembler that works well for PacBio reads.,type.202,,/type.13/type.67/type.16/type.331/type.68/type.202/type.362
+type.363,svc-orfFinder,ORF Finder,0,NCBI Tool to Identify ORFs,type.331,,/type.13/type.67/type.16/type.331/type.363
+type.364,svc-glycopeptidesearchinteractive,GlycoPeptideSearch Interactive,0,fixme,type.331,,/type.13/type.67/type.16/type.331/type.364
+type.365,svc-glycopeptidesearch,Glycopeptide Search,0,Glycopeptide Search,type.331,,/type.13/type.67/type.16/type.331/type.365
+type.366,svc-upload,File upload,0,,type.330,,/type.13/type.67/type.16/type.330/type.366

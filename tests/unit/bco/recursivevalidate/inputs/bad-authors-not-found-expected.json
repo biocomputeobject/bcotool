@@ -1,0 +1,8 @@
+{
+  "errors": [
+    { 
+      "depth": "authors:0",
+      "error": "Definition not found for field: authors" 
+    }
+  ]
+}

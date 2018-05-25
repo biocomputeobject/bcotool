@@ -1,0 +1,7 @@
+{
+  "DATE": {
+    "desc": "International standard date notation - 'YYYY-MM-DD'",
+    "datatype": 123,
+    "value": 1
+  }
+}

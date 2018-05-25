@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+'use strict';
+
+var logger    = require('tracer').colorConsole({level:'log'});
+var program   = require('../lib/utils/commander');
+var fs        = require("fs");
+var util      = require("../lib/utils/util");
+
+program
+  .usage("<data_file> <propspec_file> [--output]")
+  .option('-o, --output [value]', 'Location of output file (optional)')
+  .parse(process.argv);
+
+// GET REQUIRED ARGUMENTS 
+var data_file = process.argv.slice(2,3)[0];
+if ( ! data_file ) {
+  console.log("Missing required argument: data_file");
+  console.log(program.helpInformation());
+  process.exit(0);
+}
+// console.log("data_file", data_file);
+
+var propspec_file = process.argv.slice(3,4)[0];
+if ( ! propspec_file ) {
+  console.log("Missing required argument: propspec_file");
+  console.log(program.helpInformation());
+  process.exit(0);
+}
+// console.log("propspec_file", propspec_file);
+
+var output_file = program.output;
+// console.log("output_file", output_file);
+
+var inputs = {
+  data_file         : data_file,
+  propspec_file     : propspec_file,
+  output_file       : output_file
+};
+
+var validator = require("../lib/commands/hive");
+var promise = validator.validate(inputs);
+// logger.log("promise", promise);
+promise.then( function ( results ) {
+  // logger.log("results", results);
+
+  results.file = data_file;
+  var output = JSON.stringify(results, null, 2); 
+  console.log( output );
+  console.log( );
+
+  if ( output_file ) {
+    fs.writeFileSync(output_file, output);   
+  }
+
+  process.exit(0);
+})
+.catch ( function ( error ) {
+  logger.log("error", error);
+})

@@ -1,0 +1,60 @@
+{
+  "_id": "type.205",
+  "name": "svc-profiler-heptagon",
+  "title": "Sequence Profiling Engine",
+  "description": "Engine to perform coverage analysis ,base-calling, SNP calling ",
+  "is_prefetch": true,
+  "is_user": true,
+  "_parents": [ "svc-profiler" ],
+  "_attributes": {
+    "batch": {
+      "type": "list",
+      "title": "Batch Description",
+      "order": 0,
+      "is_readonly": false,
+      "is_optional": true,
+      "is_multi": true,
+      "is_flattened_multi": true,
+      "_definer_type": "process",
+      "_children": {
+        "batch_list": {
+          "type": "array",
+          "title": "Parameter list",
+          "order": 1,
+          "is_readonly": false,
+          "is_optional": true,
+          "_definer_type": "process",
+          "_children": {
+            "batch_param": {
+              "type": "string",
+              "title": "Parameter",
+              "order": 0,
+              "is_readonly": false,
+              "is_optional": true,
+              "is_multi": true,
+              "constraint": "choice",
+              "_definer_type": "process"
+            },
+            "batch_value": {
+              "type": "integer",
+              "title": "Value",
+              "order": 0,
+              "is_readonly": false,
+              "is_optional": true,
+              "_definer_type": "process"
+            }
+          }
+        },
+        "batch_saturated": {
+          "type": "bool",
+          "title": "Saturated",
+          "description": "Whether to force every batch for this list to contain at least one value from every parameter.",
+          "order": 2,
+          "is_readonly": false,
+          "is_optional": true,
+          "_definer_type": "process"
+        }
+      }
+    }
+  }
+}

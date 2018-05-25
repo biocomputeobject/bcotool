@@ -1,0 +1,14 @@
+{
+  "io_domain": {
+    "input_uri_list": [
+      "http:\/\/xyz",
+      "http:\/\/abc"
+    ],
+    "output_uri_list": [
+      "https:\/\/www.ncbi.nlm.nih.gov\/nuccore\/NM_0002111.8"
+    ],
+    "reference_uri_list": [
+      "https:\/\/hive.biochemistry.gwu.edu\/dna.cgi?obj"
+    ]
+  }
+}

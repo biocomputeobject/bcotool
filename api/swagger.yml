@@ -1,0 +1,138 @@
+info:
+  title: Docker Repository
+  version: 1.0.0
+  description: A sample API
+host: 'localhost:4000'
+basePath: /
+swagger: '2.0'
+paths:
+  /:
+    get:
+      description: Returns the homepage
+      responses:
+        '200':
+          description: hello world
+  /image/add:
+    post:
+      description: Add image to repository
+      tags:
+        - Add
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/imageid'
+        - $ref: '#/parameters/name'
+        - $ref: '#/parameters/username'
+        - $ref: '#/parameters/application'
+        - $ref: '#/parameters/version'
+        - $ref: '#/parameters/desc'
+      responses:
+        '200':
+          description: Add image response
+          schema:
+            type: object
+            $ref: '#/definitions/Add'
+  /login:
+    post:
+      description: Login to the application
+      tags:
+        - Users
+        - Login
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/imageid'
+        - name: password
+          description: User's password.
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: login
+          schema:
+            type: object
+            $ref: '#/definitions/Login'
+definitions:
+  Add:
+    required:
+      - imageid
+      - name
+      - username
+    properties:
+      imageid:
+        type: string
+      name:
+        type: string
+      username:
+        type: string
+      application:
+        type: string
+      version:
+        type: string
+      desc:
+        type: string
+  Login:
+    required:
+      - imageid
+      - name
+    properties:
+      imageid:
+        type: string
+      name:
+        type: string
+responses: {}
+parameters:
+  imageid:
+    name: imageid
+    description: Docker ID of container image
+    in: formData
+    required: true
+    type: string
+    default: user
+  name:
+    name: name
+    description: Name of container image
+    in: formData
+    required: true
+    type: string
+    default: myImage
+  username:
+    name: username
+    description: Name of user adding image
+    in: formData
+    required: true
+    type: string
+    default: myImage
+  application:
+    name: application
+    description: Name of application
+    in: formData
+    required: true
+    type: string
+    default: myApp
+  version:
+    name: version
+    description: Version of application (SemVer preferred)
+    in: formData
+    required: true
+    type: string
+    default: 0.0.1
+  desc:
+    name: desc
+    description: Description of container image
+    in: formData
+    required: false
+    type: string
+    default: ""
+
+securityDefinitions: {}
+tags:
+  - name: Add
+    description: Add image to Docker registry
+  - name: Users
+    description: User management and login
+  - name: Login
+    description: Login
+  - name: Accounts
+    description: Accounts

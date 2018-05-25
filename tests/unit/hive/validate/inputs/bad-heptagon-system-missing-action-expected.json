@@ -1,0 +1,12 @@
+{
+  "errors": [
+    {
+      "depth": "system",
+      "error": "Required field not found: action"
+    },
+    {
+      "depth": "system",
+      "error": "Required field not found: systemVersion"
+    }
+  ]
+}

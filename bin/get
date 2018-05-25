@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+'use strict';
+
+var logger    = require('tracer').colorConsole({level:'log'});
+var program   = require('../lib/utils/commander');
+var fs        = require("fs");
+var util      = require("../lib/utils/util");
+
+program
+  .usage("<error_output> [--output]")
+  .option('-o, --output [value]', 'Location of output file (optional)')
+  .parse(process.argv);
+
+if (process.stdin.isTTY) {
+  // NOT PIPED - GET REQUIRED ARGUMENTS 
+  var error_output = process.argv.slice(2,3)[0];
+  if ( ! error_output ) {
+    console.log("Missing required argument: error_output");
+    console.log(program.helpInformation());
+  }
+
+  var output_file = program.output;
+  var getter = require("../lib/commands/get");
+  var promise = getter.get(error_output);
+  promise.then( function ( results ) {
+    var output = JSON.stringify(results, null, 2); 
+    console.log( output );
+    console.log( );
+
+    if ( output_file ) {
+      fs.writeFileSync(output_file, output);   
+    }
+
+    process.exit(0);
+  })
+  .catch ( function ( error ) {
+    logger.log("error", error);
+  })
+
+  // handle shell arguments
+} 
+else {
+  // HANDLE PIPED CONTENT
+  var getter = require("../lib/commands/get");
+  var error_output = "";
+  var self = process.stdin;
+  self.on('readable', function() {
+    var chunk = this.read();
+     if ( chunk != null 
+      && chunk != undefined ) {
+        error_output += chunk;
+    }
+  });
+
+  self.on('end', function() {
+
+    // logger.log("error_output", error_output);
+
+    var promise = getter.get( error_output );
+    promise.then( function ( results ) {
+      var output = JSON.stringify(results, null, 2); 
+      console.log( output );
+      console.log( );
+
+      process.exit(0);
+    })
+    .catch ( function ( error ) {
+      logger.log("error", error);
+    })
+
+  });
+
+
+
+}
+

@@ -1,0 +1,83 @@
+{
+    "_id": "type.205",
+    "name": "svc-profiler-heptagon",
+    "title": "Sequence Profiling Engine",
+    "descr": "Engine to perform coverage analysis ,base-calling, SNP calling ",
+    "__is_prefetch": true,
+    "__is_user": true,
+    "__parents": [ "svc-profiler" ],
+    "_field": {
+        "noise": {
+            "_layout": "struct",
+            "title": "Noise",
+            "descr": "Parameters defining the behavor of the algorithm during noise treatments",
+            "_write": true,
+            "_vital": true,
+            "__flattened_decor": true,
+            "__definer_type": "svc-profiler",
+            "_field": {
+                "noiseFilterBase": {
+                    "_type": "hiveid",
+                    "title": "Noise Profiling Process ID",
+                    "descr": "Process ID of the previous profiling computation",
+                    "_write": true,
+                    "_vital": false,
+                    "_limit": {
+                        "type": "svc-profiler+"
+                    },
+                    "__definer_type": "svc-profiler"
+                },
+                "noiseFilterParams": {
+                    "_type": "string",
+                    "_default": "none",
+                    "title": "Noise Filtering Parameters",
+                    "descr": "Determine the way the sequencing noise is treated for following variations: A-C, A-G, A-T, C-A, C-G, C-T, G-A, G-C, G-T, T-A, T-C, T-G",
+                    "_write": true,
+                    "_vital": true,
+                    "_limit": {
+                        "choice": [
+                            {
+                                "title": "Do not filter noise",
+                                "value": "none"
+                            },
+                            {
+                                "title": "Automatically filter 95 % noise",
+                                "value": "auto"
+                            },
+                            {
+                                "title": "Use the noise level of plasmid profiling experiment",
+                                "value": "borrow"
+                            }
+                        ]
+                    },
+                    "__definer_type": "svc-profiler"
+                },
+                "noiseProfileMax": {
+                    "_type": "real",
+                    "_default": 0.01,
+                    "title": "Noise Profile Maximum Cutoff",
+                    "_write": true,
+                    "_vital": true,
+                    "_limit": {
+                        "eval": "0.001<=$val && $val<1"
+                        
+                    },
+                    "__definer_type": "svc-profiler"
+                },
+                "noiseProfileResolution": {
+                    "_type": "real",
+                    "_default": 0.0001,
+                    "title": "Noise Profile Resolution",
+                    "descr": "Reslution to output the noise profile",
+                    "_write": true,
+                    "_vital": true,
+                    "_limit": {
+                        "eval": "0.0001<=$val && $val<0.1"
+                        
+                    },
+                    "__definer_type": "svc-profiler"
+                }
+            }
+        }
+    }
+}

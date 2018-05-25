@@ -1,0 +1,39 @@
+{
+  "external_references": [
+    {
+      "id": "obj.1250",
+      "name": "HIVE",
+      "pub_med": "PMID:26989153",
+      "title": "High-performance integrated virtual environment",
+      "url": "https:\/\/hive.biochemistry.gwu.edu\/"
+    },
+    {
+      "id": "obj.1253",
+      "name": "DO",
+      "pub_med": "PMID:25348409",
+      "title": "Disease-Ontology",
+      "url": "http:\/\/disease-ontology.org\/"
+    },
+    {
+      "id": "obj.1259",
+      "name": "SO",
+      "pub_med": "PMID:15892872",
+      "title": "Sequence Ontology",
+      "url": "http:\/\/www.sequenceontology.org\/"
+    },
+    {
+      "id": "obj.1260",
+      "name": "taxID",
+      "pub_med": "PMID:26590407",
+      "title": "Taxonomy",
+      "url": "http:\/\/www.ncbi.nlm.nih.gov\/taxonomy"
+    },
+    {
+      "id": "obj.1261",
+      "name": "PubChem",
+      "pub_med": "PMID:26400175",
+      "title": "PubChem Compound",
+      "url": "https:\/\/www.ncbi.nlm.nih.gov\/pccompound"
+    }
+  ]
+}

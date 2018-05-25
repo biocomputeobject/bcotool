@@ -1,0 +1,41 @@
+{
+  "_id": 3112768,
+  "_field": {
+    
+    "name": {
+      "_type": "list",
+      "_plural": true,
+      "_field": {
+        "attribute1": {
+          "_type": "string"
+        },
+        "attribute2": {
+          "_type": "list"
+        },
+        "attribute3": {
+          "_type": "list",
+          "_plural": true
+        },
+        "attribute4": {
+          "_type": "list",
+          "_plural": true,
+          "_field": {
+            "key4": {
+              "_type": "list"
+            }
+          }
+        }
+      }
+    },
+
+    "_type": {
+      "_type": "string",
+      "title": "Type name",
+      "_write": "once",
+      "_vital": false,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    }
+  }
+}

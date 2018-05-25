@@ -1,0 +1,112 @@
+{
+    "objs": [
+        {
+            "_id": 3153468,
+            "_type": "svc-align-hexagon",
+            "system": {
+                "action": 2,
+                "completed": "2017-11-09T12:33:26-05:00",
+                "progress": 0,
+                "reqID": 59742612,
+                "started": "2017-11-09T12:33:25-05:00",
+                "status": 5,
+                "svc": "dna-hexagon",
+                "svcTitle": "HIVE-hexagon Alignment",
+                "progress100": 100,
+                "isPostponed": 0,
+                "reqPriority": 0
+            },
+            "created": "2017-11-09T12:33:22-05:00",
+            "modified": "2017-11-09T12:33:30-05:00",
+            "name": "FluPrimers.fa versus HIV1_CON_2002_genome_DNA.fasta",
+            "subject": {
+                "1.1": 3151135
+            },
+            "query": {
+                "1.1.1": 15719
+            },
+            "alignmentEngine": 1,
+            "alignParam": {
+                "allowShorterEnds": 0,
+                "costGapNext": -4,
+                "costGapOpen": -12,
+                "costMatch": 5,
+                "costMismatch": -4,
+                "costMismatchNext": -6,
+                "isglobal": 0,
+                "seed": 11
+            },
+            "basicAlgParam": {
+                "searchRepeatsAndTrans": 0
+            },
+            "complexity": {
+                "complexityQry": {
+                    "11.0.0": {
+                        "complexityEntropy": 0,
+                        "complexityWindow": 0,
+                        "maximumPercentLowQualityAllowed": 0
+                    }
+                },
+                "complexityRef": {
+                    "11.1.0": {
+                        "complexityRefEntropy": 0,
+                        "complexityRefWindow": 0,
+                        "acceptNNNQuaTrheshold": 0
+                    }
+                }
+            },
+            "computeDiagonalWidth": "auto",
+            "doubleHash": 0,
+            "doubleStagePerfect": 1,
+            "hashCompileStp": "auto",
+            "hashStp": "auto",
+            "isbackward": 1,
+            "isextendtails": 0,
+            "isoptimize": 1,
+            "keepAllMatches": 4,
+            "looseExtenderMinimumLengthPercent": 66,
+            "looseExtenderMismatchesPercent": 25,
+            "maxExtensionGaps": 0,
+            "maxHashBin": 50,
+            "maxHitsPerRead": 200,
+            "maxNumberQuery": "all",
+            "minMatch": {
+                "29.0": {
+                    "minMatchLen": 75,
+                    "minMatchUnit": 0
+                }
+            },
+            "mismatches": {
+                "30.0": {
+                    "maxMissQueryPercent": 15,
+                    "considerGoodSubalignments": 1
+                }
+            },
+            "random_seed": 0,
+            "readconflicts": {
+                "resolveConfictsUnique": 0
+            },
+            "reverseEngine": 0,
+            "scissors": "hiveseq",
+            "scoreFilter": "None",
+            "selfQueryPosJumpInNonPerfectAlignment": 1,
+            "split": "query",
+            "splitList": {
+                "nrepeat": 1,
+                "slice": 500000,
+                "splitField": "query",
+                "splitSize": 500000,
+                "splitType": "sequences"
+            },
+            "trimLowScoreEnds": {
+                "46.0": {
+                    "trimLowScoreEndsWindow": 0
+                }
+            },
+            "useRedundSim": 1,
+            "alignSelector": "svc-align-hexagon",
+            "force_reindex": 0,
+            "submitter": "dna-hexagon-new&cmdMode=-"
+        }
+    ]
+}

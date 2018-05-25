@@ -1,0 +1,948 @@
+{
+  "_id": "type.205",
+  "name": "svc-profiler-heptagon",
+  "title": "Sequence Profiling Engine",
+  "descr": "Engine to perform coverage analysis ,base-calling, SNP calling ",
+  "__is_prefetch": true,
+  "__is_user": true,
+  "__parents": [ "svc-profiler" ],
+  "_field": {
+    "name": {
+      "_type": "string",
+      "title": "Name",
+      "descr": "Provide an identifiable name for the process.",
+      "_order": -100,
+      "_write": true,
+      "_vital": false,
+      "_public": true,
+      "brief": "$_(v)",
+      "__definer_type": "process"
+    },
+    "_brief": {
+      "_type": "string",
+      "title": "Summary",
+      "_write": false,
+      "_vital": false,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_dir": {
+      "_type": "string",
+      "title": "Location",
+      "_write": false,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state",
+      "_weakref": true
+    },
+    "_domain": {
+      "_type": "json",
+      "title": "Create in domain",
+      "_write": "once",
+      "_vital": false,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_effperm": {
+      "_type": "json",
+      "title": "Effective permissions",
+      "_write": false,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_parent": {
+      "_type": "hiveid",
+      "title": "Parent object",
+      "_write": false,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state",
+      "_weakref": true
+    },
+    "_perm": {
+      "_type": "string",
+      "title": "Permissions",
+      "_write": false,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_type": {
+      "_type": "string",
+      "title": "Type name",
+      "_write": "once",
+      "_vital": false,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "base_tag": {
+      "_type": "string",
+      "title": "Tag",
+      "descr": "A tag, keyword, anything to mark an object",
+      "_write": true,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_hidden": true,
+      "__definer_type": "base_user_type"
+    },
+    "batch": {
+      "_layout": "struct",
+      "title": "Batch Description",
+      "_write": true,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "__definer_type": "process",
+      "_field": {
+        "batch_list": {
+          "_layout": "table",
+          "title": "Parameter list",
+          "_order": 1,
+          "_write": true,
+          "_vital": false,
+          "__definer_type": "process",
+          "_field": {
+            "batch_param": {
+              "_type": "string",
+              "title": "Parameter",
+              "_write": true,
+              "_vital": false,
+              "_plural": true,
+              "_limit": {
+                "choice": []
+              },
+              "__definer_type": "process"
+            },
+            "batch_value": {
+              "_type": "int",
+              "title": "Value",
+              "_write": true,
+              "_vital": false,
+              "__definer_type": "process"
+            }
+          }
+        },
+        "batch_saturated": {
+          "_type": "bool",
+          "title": "Saturated",
+          "descr": "Whether to force every batch for this list to contain at least one value from every parameter.",
+          "_order": 2,
+          "_write": true,
+          "_vital": false,
+          "__definer_type": "process"
+        }
+      }
+    },
+    "batch_children_proc_ids": {
+      "_type": "hiveid",
+      "title": "Batch submitted processes",
+      "descr": "Processes created by batch submission",
+      "_write": "onlyauto",
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_role": "output",
+      "_limit": {
+        "type": "svc-proc"
+      },
+      "__definer_type": "process"
+    },
+    "batch_ignore_errors": {
+      "_type": "bool",
+      "title": "Ignore errors in individual submitted processes",
+      "descr": "Continue batching even if some batched computations could not be launched",
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "process"
+    },
+    "batch_svc": {
+      "_type": "string",
+      "title": "Batch Service",
+      "descr": "Determines if this tool should be run in single mode (one submission) or batch mode (multiple submissions). NOTE: setting this option will clear other fields entered into the form.",
+      "_write": "noresub",
+      "_vital": false,
+      "_limit": {
+        "choice+": [
+          {
+            "title": "Single Mode",
+            "value": "single"
+          }
+        ]
+      },
+      "__definer_type": "process"
+    },
+    "children_proc_ids": {
+      "_type": "hiveid",
+      "title": "Children Processes",
+      "_write": "onlyauto",
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_role": "output",
+      "_limit": {
+        "type": "svc-proc"
+      },
+      "__definer_type": "process"
+    },
+    "countAAs": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Compute AA profile",
+      "descr": "Compute Aminoacid rep[lacements based on AA calls on reads",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "created": {
+      "_type": "datetime",
+      "title": "Created",
+      "_write": false,
+      "_vital": false,
+      "_role": "state",
+      "__definer_type": "base"
+    },
+    "cutEnds": {
+      "_type": "string",
+      "_default": "do not cut",
+      "title": "Truncate Terminals",
+      "descr": "Truncate so many bases from alignment heads and tails",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "directionalityInfo": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Print directionality details",
+      "descr": "Print forward and reverse ACGT In/Del counts and qualiy",
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-profiler"
+    },
+    "disbalanceFR": {
+      "_type": "string",
+      "_default": "0",
+      "title": "Forward/Reverse Disbalance",
+      "descr": "Automatic adjustment limit for basce-calls with forward/reverse expression disbalance",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "entrCutoff": {
+      "_type": "string",
+      "_default": "0",
+      "title": "Entropic Cutoff",
+      "descr": "Decision to filter SNPs based on posiotnal base occurence entropy is made based on this value",
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice+": [
+          {
+            "title": "Disabled",
+            "value": "0"
+          },
+          {
+            "title": "Review Only",
+            "value": "-1"
+          },
+          {
+            "title": "0.95",
+            "value": "0.95"
+          },
+          {
+            "title": "0.90",
+            "value": "0.90"
+          },
+          {
+            "title": "0.75",
+            "value": "0.75"
+          },
+          {
+            "title": "0.67 One Sigma",
+            "value": "0.67"
+          }
+        ]
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "filterZeros": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Treat filtered positions",
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Ignore",
+            "value": 1
+          },
+          {
+            "title": "Fill with zeros",
+            "value": 0
+          }
+        ]
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "generateIon": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Generate annotation file",
+      "descr": "Generate file that can be used as annotation. Impacts the speed and the efficiency of the process",
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-profiler"
+    },
+    "histograms": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Tail Histograms",
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Do not generate histograms",
+            "value": 0
+          },
+          {
+            "title": "Generate histograms",
+            "value": 1
+          }
+        ]
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "lenPercCutoff": {
+      "_type": "string",
+      "_default": "no cutoff",
+      "title": "Minimal Alignment Length",
+      "descr": "Minimal alignment length in percent of original query length accepted for profiling",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "maxLowQua": {
+      "_type": "string",
+      "_default": "no cutoff",
+      "title": "Maximum Percentage of Low-Quality Regions",
+      "descr": "Overall quality filter of mapped sequences in percent of original query length",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "maxMissmatchPercCutoff": {
+      "_type": "string",
+      "_default": "0",
+      "title": "Maximum Mismatch Percent",
+      "descr": "Maximum allowed missmatch percent for alignments to be considered for reference profiling",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "maxRptIns": {
+      "_type": "string",
+      "_default": "3",
+      "title": "Count of Inserts Invalidating Repeats ",
+      "descr": "Maximum stuck letter base repeat after which in-dels are ignored",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "minCover": {
+      "_type": "string",
+      "_default": "10",
+      "title": "Minimal Coverage Allowed",
+      "descr": "Regions which have coverage less than the specified amount are discarded from basecalling procedure",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "minImportantEntropy": {
+      "_type": "real",
+      "_default": 0.0,
+      "title": "Safe Entropy Zone",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "modified": {
+      "_type": "datetime",
+      "title": "Modified",
+      "_write": false,
+      "_vital": false,
+      "_role": "state",
+      "__definer_type": "base"
+    },
+    "noise": {
+      "_layout": "struct",
+      "title": "Noise",
+      "descr": "Parameters defining the behavor of the algorithm during noise treatments",
+      "_write": true,
+      "_vital": true,
+      "__flattened_decor": true,
+      "__definer_type": "svc-profiler",
+      "_field": {
+        "noiseFilterBase": {
+          "_type": "hiveid",
+          "title": "Noise Profiling Process ID",
+          "descr": "Process ID of the previous profiling computation",
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "type": "svc-profiler+"
+          },
+          "__definer_type": "svc-profiler"
+        },
+        "noiseFilterParams": {
+          "_type": "string",
+          "_default": "none",
+          "title": "Noise Filtering Parameters",
+          "descr": "Determine the way the sequencing noise is treated for following variations: A-C, A-G, A-T, C-A, C-G, C-T, G-A, G-C, G-T, T-A, T-C, T-G",
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Do not filter noise",
+                "value": "none"
+              },
+              {
+                "title": "Automatically filter 95 % noise",
+                "value": "auto"
+              },
+              {
+                "title": "Use the noise level of plasmid profiling experiment",
+                "value": "borrow"
+              }
+            ]
+          },
+          "__definer_type": "svc-profiler"
+        },
+        "noiseProfileMax": {
+          "_type": "real",
+          "_default": 0.01,
+          "title": "Noise Profile Maximum Cutoff",
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "eval": "0.001<=$val && $val<1"
+            
+          },
+          "__definer_type": "svc-profiler"
+        },
+        "noiseProfileResolution": {
+          "_type": "real",
+          "_default": 0.0001,
+          "title": "Noise Profile Resolution",
+          "descr": "Reslution to output the noise profile",
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "eval": "0.0001<=$val && $val<0.1"
+            
+          },
+          "__definer_type": "svc-profiler"
+        }
+      }
+    },
+    "parent_proc_ids": {
+      "_type": "hiveid",
+      "title": "Alignment(s)",
+      "_write": true,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "_batched": true,
+      "_limit": {
+        "type": "process+"
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "profSelector": {
+      "_type": "string",
+      "title": "Prof Tool Selector",
+      "_write": true,
+      "_vital": false,
+      "_hidden": true,
+      "__definer_type": "svc-profiler"
+    },
+    "random_seed": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Random Seed",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "process"
+    },
+    "referenceAnnot": {
+      "_type": "hiveid",
+      "title": "Annotation File with CDS Field",
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "type": "u-ionAnnot"
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "scissors": {
+      "_type": "string",
+      "_default": "hiveseq",
+      "title": "How to split the sequences",
+      "descr": "The way large jobs are split into smaller pieces",
+      "_write": true,
+      "_vital": true,
+      "_hidden": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "By the number of sequences",
+            "value": "hiveseq"
+          },
+          {
+            "title": "By the number of alignments",
+            "value": "hiveal"
+          }
+        ]
+      },
+      "__definer_type": "process"
+    },
+    "SEARCHFORREPEATS": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Profile only repeated regions",
+      "descr": "Profile only regions which have alternate alignment sites",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-profiler"
+    },
+    "snpCompare": {
+      "_type": "string",
+      "_default": "1",
+      "title": "Profile type",
+      "descr": "The base sequence relative to which the SNP calling is performed",
+      "_is_key": true,
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Relative to reference sequence",
+            "value": "1"
+          },
+          {
+            "title": "Relative to consensus sequence",
+            "value": "0"
+          }
+        ]
+      },
+      "__definer_type": "svc-profiler"
+    },
+    "split": {
+      "_type": "string",
+      "_default": "query",
+      "title": "What field contains the object spliting the jobs",
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "process"
+    },
+    "splitList": {
+      "_layout": "struct",
+      "title": "Split process into smaller chunks",
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "_hidden": true,
+      "__definer_type": "process",
+      "_field": {
+        "nrepeat": {
+          "_type": "int",
+          "_default": 1,
+          "title": "Number of Computational Threads",
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "_limit": {
+            "eval": "!isNaN(\"$val\")",
+            "descr": "Give a Number"
+		
+          },
+          "__definer_type": "process"
+        },
+        "slice": {
+          "_type": "int",
+          "_default": 500000,
+          "title": "Number of Computational Subjects per Single Thread",
+          "_write": true,
+          "_vital": true,
+          "_hidden": true,
+          "_limit": {
+            "eval": "!isNaN(\"$val\")",
+            "descr": "Give a Number"
+          },
+          "__definer_type": "process"
+        },
+        "splitField": {
+          "_type": "string",
+          "_default": "parent_proc_ids",
+          "title": "Split based on specified field(s)",
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "__definer_type": "svc-profiler"
+        },
+        "splitSize": {
+          "_type": "int",
+          "_default": 100000,
+          "title": "Number of alignments per single thread",
+          "_write": true,
+          "_vital": false,
+          "_batched": true,
+          "_limit": {
+            "eval": "!isNaN(\"$val\")",
+            "descr": "Give a Number"
+          },
+          "__definer_type": "svc-profiler"
+        },
+        "splitType": {
+          "_type": "string",
+          "_default": "alignments",
+          "title": "Splitting function",
+          "_order": 4,
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "__definer_type": "svc-profiler"
+        }
+      }
+    },
+    "subSet": {
+      "_type": "string",
+      "title": "Reference genome serial number",
+      "_write": true,
+      "_vital": false,
+      "_hidden": true,
+      "__definer_type": "svc-dna"
+    },
+    "supportedDeletions": {
+      "_type": "bool",
+      "_default": 1,
+      "title": "Include deletions in the coverage",
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-profiler"
+    },
+    "system": {
+      "_layout": "struct",
+      "title": "System",
+      "_write": true,
+      "_vital": true,
+      "__flattened_decor": true,
+      "__definer_type": "process",
+      "_field": {
+        "action": {
+          "_type": "int",
+          "title": "Action for Request",
+          "_write": true,
+          "_vital": true,
+          "_hidden": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Unknown",
+                "value": 0
+              },
+              {
+                "title": "Hold",
+                "value": 1
+              },
+              {
+                "title": "Run",
+                "value": 2
+              },
+              {
+                "title": "Terminate",
+                "value": 3
+              },
+              {
+                "title": "Suspend",
+                "value": 4
+              },
+              {
+                "title": "Resume",
+                "value": 5
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "completed": {
+          "_type": "datetime",
+          "title": "Completed",
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "folder": {
+          "_type": "string",
+          "_default": "eval:typeof(user_get_curdir_save)!==\"undefined\"?user_get_curdir_save():\"\"",
+          "title": "Destination folder",
+          "_write": true,
+          "_vital": false,
+          "_virtual": true,
+          "_weakref": true,
+          "_limit": {
+            "type": "folder+"
+          },
+          "__definer_type": "process"
+        },
+        "isPostponed": {
+          "_type": "bool",
+          "_default": 0,
+          "title": "Postpone execution",
+          "descr": "Launch job in suspended state, you will need to manually launching later",
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "process"
+        },
+        "onUserBehalf": {
+          "_type": "int",
+          "title": "On Behalf of The User",
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "search": {
+              "url": "http://?cmd=usrList&active=1&grp=0&primaryGrpOnly=1&raw=1",
+              "value": "id",
+              "title": "name",
+              "show": [ "name" ],
+              "format": "csv"
+            }
+          },
+          "__definer_type": "process"
+        },
+        "progress": {
+          "_type": "int",
+          "title": "Progress",
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "reqID": {
+          "_type": "int",
+          "title": "Request ID",
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "reqPriority": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Priority of submission",
+          "_write": true,
+          "_vital": false,
+          "_role": "state",
+          "_limit": {
+            "choice": [
+              {
+                "title": "normal - execute ASAP in collaborative environment",
+                "value": 0
+              },
+              {
+                "title": "polite submission - let other users small computations to squeeze through",
+                "value": 100
+              },
+              {
+                "title": "large submissions - do not compete with small and medium computations",
+                "value": 1000
+              },
+              {
+                "title": "extremely nice - execute only when most computers are not busy",
+                "value": 1000000
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "started": {
+          "_type": "datetime",
+          "title": "Started",
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "status": {
+          "_type": "int",
+          "title": "Status",
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "_limit": {
+            "choice": [
+              {
+                "title": "Unknown",
+                "value": 0
+              },
+              {
+                "title": "Waiting",
+                "value": 1
+              },
+              {
+                "title": "Processing",
+                "value": 2
+              },
+              {
+                "title": "Running",
+                "value": 3
+              },
+              {
+                "title": "Suspended",
+                "value": 4
+              },
+              {
+                "title": "Done",
+                "value": 5
+              },
+              {
+                "title": "Killed",
+                "value": 6
+              },
+              {
+                "title": "ProgError",
+                "value": 7
+              },
+              {
+                "title": "SysError",
+                "value": 8
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "svc": {
+          "_type": "string",
+          "title": "Service ID",
+          "_write": "onlyauto",
+          "_vital": true,
+          "__definer_type": "process"
+        },
+        "systemVersion": {
+          "_type": "string",
+          "_default": "eval:gSysVersion",
+          "title": "System version number",
+          "_write": "onlyauto",
+          "_vital": false,
+          "__definer_type": "process"
+        },
+        "svcTitle": {
+          "_type": "string",
+          "title": "Service Title",
+          "_order": 2,
+          "_write": "onlyauto",
+          "_vital": true,
+          "brief": "<b>$_(v)</b>",
+          "__definer_type": "process"
+        },
+        "progress100": {
+          "_type": "int",
+          "title": "Progress %",
+          "_order": 3,
+          "_write": "onlyauto",
+          "_vital": true,
+          "_role": "state",
+          "brief": "$_(v)%",
+          "__definer_type": "process"
+        }
+      }
+    },
+    "thrSNP": {
+      "_layout": "struct",
+      "title": "SNP Threshold",
+      "_write": true,
+      "_vital": true,
+      "__flattened_decor": true,
+      "__definer_type": "svc-profiler",
+      "_field": {
+        "minFreqIgnoreSNP": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Action on SNP Threshold",
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Ignore Position",
+                "value": 0
+              },
+              {
+                "title": "Ignore SNP",
+                "value": 1
+              }
+            ]
+          },
+          "__definer_type": "svc-profiler"
+        },
+        "minFreqPercent": {
+          "_type": "real",
+          "_default": 0,
+          "title": "Minimal Frequency of SNP Threshold",
+          "descr": "Regions which have SNP frequency less than the specified amount are discarded from basecalling procedure",
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "svc-profiler"
+        }
+      }
+    },
+    "useQuaFilter": {
+      "_type": "int",
+      "_default": 20,
+      "title": "Base Quality Filter",
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-profiler"
+    },
+    "comment": {
+      "_type": "text",
+      "title": "Comments",
+      "descr": "Comment field for arbitrary descriptive information associated with this process",
+      "_order": 30,
+      "_write": true,
+      "_vital": false,
+      "_plural": true,
+      "__flattened_plural": true,
+      "__definer_type": "process"
+    },
+    "submitter": {
+      "_type": "string",
+      "title": "Submitting Template Page",
+      "_order": 1003.1,
+      "_write": true,
+      "_vital": false,
+      "_hidden": true,
+      "__definer_type": "process"
+    }
+  }
+}

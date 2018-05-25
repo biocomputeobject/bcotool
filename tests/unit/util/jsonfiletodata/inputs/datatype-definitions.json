@@ -1,0 +1,67 @@
+/*
+
+  This file defines the expected format of datatypes, as described in the BioCompute Object specification:
+
+    http://tinyurl.com/bco-spec
+
+  These definitions are used to validate the bco-datatypes.json file, which is used in turn to validate BCO files.
+
+  For brevity and ease of understanding, the following default values are used:
+    
+    min: 0 (optional)
+    max: 0 (unlimited)
+    required: 0 (optional)
+
+*/
+
+{
+  "desc": {
+    "desc": "Description of data field",
+    "datatype": "TEXT",
+    "required": 1
+  },
+  
+  "datatype": {
+    "desc": "List of primitive datatypes. Validation of primitives is handled by the application. NB: Regular expression datatype requires an accompanying 'value' datatype",
+    "datatype": "TEXT"
+  },
+
+  "value": {
+    "desc": "Value of attribute",
+    "datatype": "ANY"
+  },
+
+  "values": {
+    "desc": "Value of attribute must be one of the list",
+    "children": [
+      {
+        "desc": "Values can be any supported datatype",
+        "datatype": "ANY" 
+      }
+    ]
+  },
+
+  "children": {
+    "desc": "List or hash of sub-attributes belonging to the attribute",
+    "datatype": "OBJECT"
+  },
+
+  "required": {
+    "desc": "Whether or not the attribute must be present (1 = yes, 0 = no)",
+    "datatype": "INTEGER",
+    "values": [
+      0,
+      1
+    ]
+  },
+
+  "min": {
+    "desc": "Attribute must be present at least this number of times",
+    "datatype": "INTEGER"
+  },
+
+  "max": {
+    "desc": "Attribute must be present no more than this number of times",
+    "datatype": "INTEGER"
+  }
+}

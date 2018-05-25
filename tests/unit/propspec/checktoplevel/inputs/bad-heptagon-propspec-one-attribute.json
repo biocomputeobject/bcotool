@@ -1,0 +1,7 @@
+{
+  "title": "Sequence Profiling Engine",
+  "description": "Engine to perform coverage analysis, base-calling, SNP calling",
+  "is_prefetch": true,
+  "is_user": true,
+  "_parents": [ "svc-profiler" ]
+}

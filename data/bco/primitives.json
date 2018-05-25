@@ -1,0 +1,17 @@
+{
+  "ANY"         : 1,    // Supported datatypes
+  "BOOLEAN"     : 1,    // true OR false
+  "DATE"        : 1,    // Intl standard date
+  "DATETIME"    : 1,    // Intl standard date/time
+  "DECIMAL"     : 1,    // 101.322, 0.9, etc.
+  "HASH"        : 1,    // { "key1": "value1" : 1, "key2": ... }
+  "INTEGER"     : 1,    // -200, 1, 999, etc.
+  "LIST"        : 1,    // [ "item1" : 1, "item2" : 1, ... ]
+  "NUMBER"      : 1,    // Real number
+  "OBJECT"      : 1,    // List or hash  
+  "PERCENTAGE"  : 1,    // >= 0 and <= 100 
+  "REGEX"       : 1,    // Regular expression
+  "STRING"      : 1,    // Text, no spaces
+  "TEXT"        : 1,    // Spaces allowed
+  "UINT"        : 1     // >= 0
+}

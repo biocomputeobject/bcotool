@@ -1,0 +1,373 @@
+{
+    "_id": "type.73",
+    "name": "nuc-read",
+    "title": "Nucleotide read",
+    "descr": "Nucleotide read",
+    "__is_prefetch": true,
+    "__is_user": true,
+    "__parents": [ "u-hiveseq" ],
+    "_field": {
+        "_brief": {
+            "_type": "string",
+            "title": "Summary",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_dir": {
+            "_type": "string",
+            "title": "Location",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state",
+            "_weakref": true
+        },
+        "_domain": {
+            "_type": "json",
+            "title": "Create in domain",
+            "_order": 0,
+            "_write": "once",
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_effperm": {
+            "_type": "json",
+            "title": "Effective permissions",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_parent": {
+            "_type": "hiveid",
+            "title": "Parent object",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state",
+            "_weakref": true
+        },
+        "_perm": {
+            "_type": "string",
+            "title": "Permissions",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_type": {
+            "_type": "string",
+            "title": "Type name",
+            "_order": 0,
+            "_write": "once",
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "base_tag": {
+            "_type": "string",
+            "title": "Tag",
+            "descr": "A tag, keyword, anything to mark an object",
+            "_order": 0,
+            "_write": true,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "__definer_type": "base_user_type"
+        },
+        "category_list": {
+            "_layout": "struct",
+            "title": "Category List",
+            "descr": "Categorization of the sequence file",
+            "_order": 0,
+            "_write": true,
+            "_vital": true,
+            "__flattened_decor": true,
+            "__definer_type": "u-hiveseq",
+            "_field": {
+                "category": {
+                    "_type": "string",
+                    "title": "Define Category",
+                    "descr": "Set of kyewords to classify this record",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true,
+                    "__flattened_multi": true,
+                    "_public": true,
+                    "_limit": {
+                        "choice+": [ "genomic", "short read", "primers", "adapters" ],
+                        "descr": "genomic|short read|primers|adapters"
+                    },
+                    "__definer_type": "u-hiveseq"
+                }
+            }
+        },
+        "compressed-size": {
+            "_type": "int",
+            "title": "Compressed Size",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": true,
+            "__definer_type": "file"
+        },
+        "created": {
+            "_type": "datetime",
+            "title": "Created",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_role": "state",
+            "__definer_type": "base"
+        },
+        "db_view_type": {
+            "_type": "string",
+            "title": "Databases",
+            "descr": "Views possible on data stored as record sets.",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "_plural": true,
+            "__flattened_multi": true,
+            "__definer_type": "viodb"
+        },
+        "ext": {
+            "_type": "string",
+            "title": "Extension",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "_hidden": true,
+            "__definer_type": "file"
+        },
+        "modified": {
+            "_type": "datetime",
+            "title": "Modified",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_role": "state",
+            "__definer_type": "base"
+        },
+        "orig_name": {
+            "_type": "string",
+            "title": "Original filename",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "__definer_type": "file"
+        },
+        "path": {
+            "_type": "string",
+            "title": "Location_OBSOLETE",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "_hidden": true,
+            "__definer_type": "file"
+        },
+        "rec_types": {
+            "_layout": "table",
+            "title": "Sub sets",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "__definer_type": "viodb",
+            "_field": {
+                "rec_count": {
+                    "_type": "int",
+                    "title": "Count",
+                    "_order": 0,
+                    "_write": "onlyauto",
+                    "_vital": false,
+                    "_plural": true,
+                    "__definer_type": "viodb"
+                },
+                "rec_type": {
+                    "_type": "string",
+                    "title": "Type",
+                    "_order": 0,
+                    "_write": "onlyauto",
+                    "_vital": false,
+                    "_plural": true,
+                    "__definer_type": "viodb"
+                }
+            }
+        },
+        "source": {
+            "_type": "string",
+            "title": "Source",
+            "_order": 0,
+            "_write": "onlyauto",
+            "_vital": false,
+            "__definer_type": "file"
+        },
+        "tax_list": {
+            "_layout": "table",
+            "title": "Taxonomy List",
+            "_order": 0,
+            "_write": true,
+            "_vital": false,
+            "__definer_type": "u-hiveseq",
+            "_field": {
+                "taxonomy": {
+                    "_type": "string",
+                    "title": "Taxonomy ID",
+                    "descr": "Taxonomy ID or species name",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true,
+                    "_limit": {
+                        "choice+": [ "human-genome", "viral-genome", "bacterial-genome", "representative-genome", "transcriptome-genome", "exome-genome" ],
+                        "descr": "human-genome|viral-genome|bacterial-genome|representative-genome|transcriptome-genome|exome-genome"
+                    },
+                    "__definer_type": "u-hiveseq"
+                }
+            }
+        },
+        "title": {
+            "_type": "string",
+            "title": "Title",
+            "_order": 0,
+            "_write": true,
+            "_vital": true,
+            "brief": "$_(v) <b>$_(t)(s)</b>",
+            "__definer_type": "viodb"
+        },
+        "name": {
+            "_type": "string",
+            "title": "Name",
+            "_order": 1,
+            "_write": true,
+            "_vital": false,
+            "_public": true,
+            "brief": "$_(v)",
+            "__definer_type": "file"
+        },
+        "rec-dim": {
+            "_type": "int",
+            "title": "HIVE compression",
+            "descr": "Number of Records after removing Redundancies",
+            "_order": 1,
+            "_write": false,
+            "_vital": false,
+            "__definer_type": "u-hiveseq"
+        },
+        "rec-count": {
+            "_type": "int",
+            "title": "Records",
+            "descr": "Number of Records in original file",
+            "_order": 2,
+            "_write": false,
+            "_vital": false,
+            "_public": true,
+            "brief": "$_(v) <b>$_(t)(s)</b>",
+            "__definer_type": "u-hiveseq"
+        },
+        "size": {
+            "_type": "int",
+            "title": "Size",
+            "_order": 2,
+            "_write": "onlyauto",
+            "_vital": false,
+            "_public": true,
+            "__definer_type": "file"
+        },
+        "bases-count": {
+            "_type": "int",
+            "title": "Number of Bases",
+            "descr": "Number of Bases in original file",
+            "_order": 3,
+            "_write": false,
+            "_vital": true,
+            "__definer_type": "u-hiveseq"
+        },
+        "hierarchy": {
+            "_type": "string",
+            "title": "Path_OBSOLETE",
+            "_order": 3,
+            "_write": true,
+            "_vital": false,
+            "_hidden": true,
+            "__definer_type": "file"
+        },
+        "len-min": {
+            "_type": "int",
+            "title": "Minimum Length Read",
+            "descr": "Minimum Length of the reads in the file",
+            "_order": 4,
+            "_write": false,
+            "_vital": true,
+            "__definer_type": "u-hiveseq"
+        },
+        "md5": {
+            "_type": "string",
+            "title": "MD5",
+            "_order": 4,
+            "_write": "onlyauto",
+            "_vital": true,
+            "__definer_type": "file"
+        },
+        "description": {
+            "_type": "text",
+            "title": "Description",
+            "_order": 5,
+            "_write": true,
+            "_vital": true,
+            "__definer_type": "u-file"
+        },
+        "len-max": {
+            "_type": "int",
+            "title": "Maximum Length Read",
+            "descr": "Maximum Length of the reads in the file",
+            "_order": 5,
+            "_write": false,
+            "_vital": true,
+            "__definer_type": "u-hiveseq"
+        },
+        "len-avg": {
+            "_type": "int",
+            "title": "Average Length Read",
+            "descr": "Average number of Length of the reads in the file",
+            "_order": 6,
+            "_write": false,
+            "_vital": true,
+            "__definer_type": "u-hiveseq"
+        },
+        "tag": {
+            "_type": "string",
+            "title": "Tag",
+            "_order": 6,
+            "_write": true,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "__definer_type": "u-file"
+        }
+    }
+}

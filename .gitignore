@@ -1,0 +1,27 @@
+#### EXCLUDED FILES
+node_modules
+conf
+*.log
+tools
+
+#### INCLUDE db SUBDIRS: conf, data, logs
+db/*
+!db/data
+db/data/*
+!db/data/.stay
+
+!db/logs
+db/logs/*
+!db/logs/.stay
+
+!db/conf
+!db/conf/cassandra.yaml
+
+!db/java
+db/java/*
+!db/java/.stay
+
+#### INCLUDED FILES
+
+
+

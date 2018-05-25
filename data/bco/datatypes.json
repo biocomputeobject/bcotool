@@ -1,0 +1,166 @@
+/*
+
+  This file defines the expected datatypes contained in BCO files, as described in the BioCompute Object specification:
+
+    http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+    
+    min: 0 (optional)
+    max: 0 (unlimited)
+
+*/
+
+{
+  "EMAIL": {
+    "desc": "Email address with full domain name, e.g.: 'myname@domain.com', 'name2@domain.io', 'name3@domain.info'",
+    "datatype": "REGEX",
+    "value": "^\\S+@[\\w\\.]+\\.\\w{2,4}"
+  },
+
+  "FHIR": {
+    "desc": "A reference to data elements that can be extracted from EHR systems without compromising patient and providers’ information. For details, see: https:\/\/www.hl7.org/fhir/resourcelist.html",
+    "children": [
+      {
+        "diagnostics": {
+          "desc": "Diagnostics report",
+          "datatype": "TEXT",
+          "value": "DiagnosticsReport"
+        },
+        "FHIR_resourceURL": {
+          "desc": "Links to a report containing the date and time of the procedure, specimen details and observations relating to the diagnostic results",
+          "datatype": "URL",
+          "required": 1
+        },
+        "identifier": {
+          "desc": "Business identifier for the report",
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "reference": {
+          "desc": "Procedural request",
+          "datatype": "TEXT",
+          "required": 1
+        }
+      },
+      {
+        "diagnostics": {
+          "desc": "Procedural request",
+          "datatype": "TEXT",
+          "value": "sequence"
+        },
+        "sequence_identifier": {
+          "desc": "Unique ID for the specific sequence",
+          "datatype": "STRING",
+          "required": 1
+        },
+        "datasetID": {
+          "desc": "Unique ID for the dataset",
+          "datatype": "STRING",
+          "required": 1
+        },
+        "type": {
+          "desc": "Sequence type",
+          "datatype": "STRING",
+          "required": 1,
+          "values": [
+            "aa",
+            "dna",
+            "rna",
+            "AA",
+            "DNA",
+            "RNA"
+          ]
+        },
+        "reference_specimen": {
+          "desc": "Reference genome of organism used for sequence alignment",
+          "datatype": "STRING"
+        }
+      }
+    ]
+  },
+
+  "HEXADECIMAL": {
+    "desc": "A base 16 number",
+    "datatype": "REGEX",
+    "value": "[0-9A-Fa-f]+"
+  },
+
+  "ORCID": {
+    "desc": "Unique URL for author information",
+    "datatype": "REGEX",
+    "value": "(http:\/\/|https:\/\/)?[^\/]+\/[A-Z\\d\\-]+"
+  },
+
+  "RANGE": {
+    "desc": "Range of values",
+    "children": {
+      "start": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      },
+      "stop": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      }
+    }
+  },
+
+  "RANGES": {
+    "desc": "List of ranges of values",
+    "children": {
+      "start": {
+        "desc": "Start value of range",
+        "datatype": "NUMBER",
+        "required": 1
+      },
+      "stop": {
+        "desc": "End value of range",
+        "datatype": "NUMBER",
+        "required": 1
+      }
+    }
+  },
+
+  "TIMESPAN": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "desc": "Starting date/time of interval",
+        "datatype": "DATETIME",
+        "required": 1
+      },
+      "stop": {
+        "desc": "Ending date/time of interval",
+        "datatype": "DATETIME",
+        "required": 1
+      }
+    }
+  },
+
+  "XREF": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "[A-Za-z\\.\\-]+:\\d+"
+  },
+
+  "URL": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "http.*:\/\/\\S+"
+  },
+
+  "UUID": {
+    "desc": "Universal unique ID",
+    "datatype": "HEXADECIMAL"
+  },
+
+  "VERSION": {
+    "desc": "Version number of ID of build",
+    "datatype": "STRING"
+  }
+}

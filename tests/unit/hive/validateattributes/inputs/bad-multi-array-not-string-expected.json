@@ -1,0 +1,6 @@
+[ 
+  { 
+    "depth": "name",
+    "error": "Field 'name' value '[\"name2\"]' does not match datatype 'string'" 
+  }
+]

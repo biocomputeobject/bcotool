@@ -1,0 +1,95 @@
+/*
+
+  BioCompute Object specification
+  http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+    
+    min: 0 (optional)
+    max: 0 (unlimited)
+    required: 0 (optional)
+
+  Please note: Comments must be on their own line, i.e., 
+
+    // comment                   - GOOD
+
+    "key": "value"  // comment   - BAD
+
+*/
+
+{
+  "type": {
+    "children": [
+      {
+        "datatype": {
+          "desc": "Regular expression datatype requires 'value' datatype",
+          "value": "REGEX",
+          "required": 1,
+          "paired": [ "value" ] 
+        },
+        "desc": {
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "value": {
+          "desc": "Value of attribute",
+          "datatype": "ANY"
+        },
+        "values": {
+          "desc": "Value of attribute must be one of the list",
+          "children": [
+            {
+              "datatype": "ANY" 
+            }
+          ]
+        },
+        "children": {
+          "desc": "List of sub-attributes belonging to the attribute",
+          "datatype": "LIST"
+        },
+        "required": {
+          "desc": "Whether or not the attribute must be present (1 = yes)",
+          "datatype": "INTEGER",
+          "values": [
+            0,
+            1
+          ]
+        },
+        "min": {
+          "desc": "Attribute must be present at least this number of times",
+          "datatype": "INTEGER"
+        },
+        "max": {
+          "desc": "Attribute must be present no more than this number of times",
+          "datatype": "INTEGER"
+        }
+      }
+    ]
+  },
+  
+  // PRIMITIVES ARE IMPLEMENTED IN CODE
+  "primitives": {
+    "children": [
+      "BOOLEAN",         
+      "CMDLINE", 
+      "DATE",            
+      "DECIMAL", 
+      "INTEGER", 
+      "LIST",  
+      "MEMORY",  
+      "NUMBER",  
+      "PERCENTAGE",       
+      "REGEX", 
+      "STRING",  
+      "TEXT",  
+      "UINT",            
+      "ANY"              
+    ]
+  }  
+}
+
+/* 
+
+END
+
+*/

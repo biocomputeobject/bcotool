@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+'use strict';
+
+var logger    = require('tracer').colorConsole({level:'log'});
+var program   = require('../lib/utils/commander');
+var fs        = require("fs");
+var util      = require("../lib/utils/util");
+
+program
+  .usage("<data_file> [definition_file_1] [definition_file_2] ... [--output] ")
+  .option('-o, --outputfile [file]', 'Location of output file')
+  .parse(process.argv);
+
+// GET REQUIRED ARGUMENTS 
+var data_file = process.argv.slice(2,3)[0];
+if ( ! data_file ) {
+  console.log("Missing required argument: data_file");
+  console.log(program.helpInformation());
+  process.exit(0);
+}
+// console.log("data_file", data_file);
+
+var output_file = program.output;
+// console.log("output_file", output_file);
+
+var definition_files = process.argv.slice(3);
+// console.log("definition_files", definition_files);
+
+var inputs = {
+  definition_files  : definition_files,
+  data_file         : data_file,
+  output_file       : output_file
+};
+
+var validator = require("../lib/commands/datatype");
+var promise = validator.validate(inputs);
+// logger.log("promise", promise);
+promise.then( function ( results ) {
+  // logger.log("results", results);
+  console.log( "Validation errors:\n" );
+  var output = JSON.stringify(results, null, 2); 
+  console.log( output );
+  console.log( );
+
+  if ( output_file ) {
+    fs.writeFileSync(output_file, output);   
+  }
+    
+  process.exit(0);
+})
+.catch ( function ( error ) {
+  logger.log("error", error);
+})

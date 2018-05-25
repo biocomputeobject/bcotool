@@ -1,0 +1,45 @@
+{
+  "_id": 3103119,
+  "_type": "HIVE_Development_Project_List",
+  "created": "2016-03-08T18:29:31-05:00",
+  "modified": "2016-06-29T16:24:42-04:00",
+  "contact_list": {
+    "team_contacts": {
+      "team_contacts_name": {
+        "1.0.0": "185",
+        "1.0.3": "207"
+      }
+    },
+    "research_contacts": {
+      "research_contacts_name": {
+        "1.1.0": "Malcolm Moos",
+        "1.1.1": "Elaine Thompson",
+        "1.1.2": "Alexa Bianchi",
+        "1.1.3": "Kristin Andrykovich"
+      }
+    }
+  },
+  "Description": {
+    "Description_full": "Products based on living cells are widely thought to be promising for a wide variety of indications in regenerative medicine and cancer immunotherapy. However, identification of Quality Attributes for these products remains a major obstacle to their translation into clinical use. Our work to date within the MSC consortium has confirmed that single cell mRNA profiling can identify previously undescribed subpopulations of MSCs, including rare cells undetectable by conventional population-average methods. These findings confirmed the ability of the new method to provide greatly increased power to discriminate between similar cell populations. Our initial work with single cell PCR was limited by inability to clearly define the most useful mRNAs to evaluate and by inadequate computational tools to analyze the data. Our previous proposal allowed us to implement single cell mRNA sequencing to address the first obstacle, and a novel computational method based on concepts from molecular dynamics to address the second. We can now confirm that this approach has been able identify sets of molecular attributes that classify closely related cell types discretely. We now propose to apply these methods to an expanded set of cell populations for which good in vivo correlates exist, and to continue developing computational methods capable of identifying cell subpopulations using high-dimensional multivariate analysis.\n",
+    "Description_Title": "Advanced computational methods to improve characterization of cell therapy products using single cell mRNA-seq"
+  },
+  "analysis_information": {
+    "domain": "FDA miniHIVE",
+    "why_hive": "We worked out the experimental mechanics for single cell library preparation and QC for MSCs and engineered Retinal Pigment Epithelial cells (RPECs). We are concurrently developing a computational workflow in the CBER High performance Interactive Virtual Environment (HIVE) that can analyze hundreds of mRNA-seq samples rapidly and efficiently, providing saturation curves for evaluation of read depth, an interface to merge large data sets, and novel methods for linear discriminant analysis (LDA) and clustering. In addition to the work in HIVE, a standalone clustering and minimum spanning tree algorithm for finding subpopulations of cells in high-dimensional space has been implemented in R.\n",
+    "hive_tools_used": {
+      "6.4": "Genome Comparator",
+      "6.9": "FuncDA"
+    }
+  },
+  "outcome": "Poster Presentations: Thompson E.E., Bianchi A., Simonyan V., Moos M. Jr. Advanced computational methods improve characterization of cell therapy products using single cell mRNA Sequencing. FDA Scientific Computing Day 2015, OBE Research Day 2015.\n",
+  "status_global": "0",
+  "time_log": {
+    "18.0": {
+      "time_log_reporter": "Hayley.Dingerdissen@fda.hhs.gov",
+      "time_log_date": "2016-06-29",
+      "time_log_end_date": "2016-06-29",
+      "time_log_hours": 1,
+      "time_log_comment": "sdf"
+    }
+  }
+}

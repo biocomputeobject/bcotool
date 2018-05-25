@@ -1,0 +1,24 @@
+{
+  "id": {
+    "desc": "Author unique identifier",
+    "datatype": "UUID"
+  },
+  "first": {
+    "desc": "First name of author",
+    "datatype": "TEXT",
+    "required": 1
+  },
+  "last": {
+    "desc": "Last name of author",
+    "datatype": "TEXT",
+    "required": 1
+  },
+  "middle": {
+    "desc": "Middle names of author",
+    "datatype": "TEXT"
+  },
+  "orcid": {
+    "desc": "Unique author identifier referring to an external source of the author's information which the author can edit at any time",
+    "datatype": "ORCID"
+  }
+}

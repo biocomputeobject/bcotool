@@ -1,0 +1,18 @@
+{
+  "description_domain": {
+    "desc": "External references, pipeline steps, and the relationship of I/O objects",
+    "children": {
+
+      // [ "SO:0000694", "PubChem:67505836", "taxID:31646",  "PMID:25123381" ] 
+      "xref": {
+        "desc": "External references",
+        "children": [
+          {
+            "desc": "An external reference",
+            "datatype": "XREF"
+          }
+        ]
+      }
+    }
+  }
+}

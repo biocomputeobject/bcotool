@@ -1,0 +1,13 @@
+{
+    "io_domain": {
+        "input_subdomain": {
+            "HCV_Genome_to_detect_variations":[
+                "http://www.ncbi.nlm.nih.gov/nuccore/22129792",
+                "http://www.ncbi.nlm.nih.gov/nuccore/5420376"
+            ],
+            "read_files": [
+                "hive://nuc-read/514683",
+                "hive://nuc-read/514682"
+            ]
+    }
+}

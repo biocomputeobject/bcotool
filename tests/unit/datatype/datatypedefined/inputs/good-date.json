@@ -1,0 +1,7 @@
+{
+  "DATE": {
+  	"desc": "International standard date notation - 'YYYY-MM-DD'",
+  	"datatype": "REGEX",
+  	"value": "^\\d{4}-\\d{2}-\\d{2}$"
+  }
+}

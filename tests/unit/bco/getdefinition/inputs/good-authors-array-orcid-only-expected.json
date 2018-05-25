@@ -1,0 +1,7 @@
+{ 
+  "orcid": 
+  { 
+    "desc": "Unique author identifier referring to an external source of the author's information which the author can edit at any time",
+     "datatype": "ORCID"
+  } 
+}

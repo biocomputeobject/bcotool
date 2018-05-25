@@ -1,0 +1,9 @@
+{ 
+    "parametric_domain": {
+        "heptagon_divergence_threshold_percent": "30", 
+        "hexagon_minimum_coverage": "0.15", 
+        "hexagon_seed": "14", 
+        "heptagon_freq_cutoff": "0.10", 
+        "hexagon_minimum_match_len": "66"
+    }
+}

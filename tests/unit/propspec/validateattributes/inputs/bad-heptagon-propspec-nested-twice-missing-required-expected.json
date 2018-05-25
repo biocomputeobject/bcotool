@@ -1,0 +1,10 @@
+[
+  {
+    "depth": "batch:batch_list",
+    "error": "Required value not found: type"
+  },
+  {
+    "depth": "batch:batch_list",
+    "error": "Required value not found: title"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "errors": [
+    {
+      "depth": "DATE",
+      "error": "required field 'desc' not present"
+    },
+    {
+      "depth": "RANGE:children:start",
+      "error": "required field 'desc' not present"
+    },
+    {
+      "depth": "RANGE:children:stop",
+      "error": "required field 'desc' not present"
+    }
+  ]
+}
+

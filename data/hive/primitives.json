@@ -1,0 +1,22 @@
+{
+  "string"    :  1,    // UTF-8 JSON string (displayed as inline)
+  "text"      :  1,    // UTF-8 JSON string (displayed as text block)
+  "integer"   :  1,    // integer
+  "real"      :  1,    // floating point
+  "array"     :  1,    // list object [ 1, 2, 3, ... ]
+  "hash"      :  1,    // key-value object { "1": "one", "2": "two", ... }
+  "object"    :  1,    // array or hash
+  "bool"      :  1,    // boolean: 0 and false are false, 1 and true are true
+  "date"      :  1,    // string representing a valid year:month:day 
+                       // in ISO 8601 format, e.g "2017:05:31"
+  "time"      :  1,    // string representing a valid time in ISO 8601 format, e.g. "17:00" or "17:00:30Z" or "17:00:30+00:00" (timezone optional)
+  "datetime"  :  1,    // string representing a valid combined date & time in ISO 8601 format, e.g. "2017:08:24T19:32:30Z" (timezone optional)
+  "url"       :  1,    // string containing a valid URL
+  "objectid"  :  1,    // object ID (see format spec above)
+  "password"  :  1,    // on input, string containing a password; on output, a placeholder, e.g. \"*****\" or similar
+  "file"      :  1,    // string containg a filename or filepath (e.g. of a file in the same zip archive, or uploaded as form  :  1,    //data in the same HTML POST request, etc.)
+  "version"   :  0,    // (not used yet) string containing a version number: /([0  :  1,    //9]+\.)*([0  :  1,    //9]+)([a  :  1,    //z])?((_alpha|_beta|_pre|_rc|_p)([0  :  1,    //9]*))?/ e.g. "1.12c"
+  "json"      :  0,    // (not used yet) arbitrary JSON object as object (not as string), e.g. {"a":1,"b":{"c":2}}
+  "xml"       :  0,    // (not used yet) string containing valid XML
+  "blob"      :  0,    // (not used yet) string containing arbitrary non-printable data
+}

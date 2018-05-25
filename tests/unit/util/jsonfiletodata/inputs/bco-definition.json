@@ -1,0 +1,128 @@
+/*
+
+  BioCompute Object specification
+  http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+    
+    min: 0 (optional)
+    max: 0 (unlimited)
+    required: 0 (optional)
+
+*/
+
+{
+  // "obj.1270"
+  "id": {
+    "desc": "Unique identifier",
+    "datatype": "UUID",
+    "required": 1,
+  },
+
+  // "HCV1a [taxID:31646] ledipasvir [PubChem:67505836] resistance SNP [SO:0000694] detection"
+  "name": {
+    "desc": "Name of analysis",
+    "datatype": "TEXT",
+    "required": 1,
+  },
+  
+  // "1.1"
+  "version": {
+    "desc": "Semantic Version or custom version of analysis",
+    "datatype": "VERSION",
+    "required": 1,
+  },
+  
+  // "abcdef0123456789"
+  "digital_signature": {
+    "desc": "Unique value generated from three domains of the BCO: Parametric, Execution and I/O",
+    "datatype": "HEXADECIMAL",
+  },
+  
+  // "in_progress"
+  "verification_status": {
+    "desc": "Version of analysis",
+    "datatype": "STRING",
+    "values": [
+      "in_progress",
+      "unreviewed",
+      "reviewed",
+      "published",
+      "rejected",
+    ]
+  },
+  
+  // "draft"
+  "publication_status":1 {
+    "desc": "Status of journal paper or article",
+    "datatype": "STRING",
+    "values": [
+      "draft",
+      "review",
+      "accepted",
+      "embargoed", 
+      "published",
+    ]
+  },
+  
+  "description_domain": {
+    "desc": "External references, pipeline steps, and the relationship of I/O objects",
+    "children": {
+
+      // [ "HCV1a",  "Ledipasvir",  "antiviral resistance" ]
+      "keywords": {
+        "desc": "Keywords related to the analysis",
+        "children": [ 
+          {
+            "datatype": "TEXT",
+            "min": 1
+          }
+        ]
+      },
+
+      // [ "SO:0000694", "PubChem:67505836", "taxID:31646",  "PMID:25123381" ] 
+      "xref": {
+        "desc": "External references - a list of the databases and/or ontology IDs that are available in the public domain. The external references are stored in the form of prefixed identifiers (CURIEs). These CURIEs map directly to the URIs maintained by www.identifiers.org.",
+        "children": [
+          {
+            "datatype": "XREF",
+            "min": 1
+          }
+        ]
+      },
+
+      //  [
+      //   {
+      //     "diagnostics": "DiagnosticsReport",
+      //     "FHIR_resourceURL": "https://www.hl7.org/fhir/resourcelist.html",
+      //     "identifier": "business identifier for the report",
+      //     "reference": "the procedural request"
+      //   },
+      //   {
+      //     "diagnostics": "sequence",
+      //     "sequence_identifier": "unique ID for the specific sequence",
+      //     "datasetID": "ID for the dataset",
+      //     "type": "sequence type such as aa, dna or rna",
+      //     "reference_specimen": "specimen used for sequencing"
+      //   }
+      // ]
+      "fhir": {
+        "desc": "",
+        "datatype": "FHIR"
+      }, 
+
+      "pipeline_steps": {
+        "desc": "External references - a list of the databases and/or ontology IDs that are available in the public domain. The external references are stored in the form of prefixed identifiers (CURIEs). These CURIEs map directly to the URIs maintained by www.identifiers.org.",
+        "children": [
+
+          // "HIVE-hexagon" 
+          {
+            "datatype": "XREF",
+            "min": 1
+          }
+        ]
+      }
+    }
+  }
+}
+

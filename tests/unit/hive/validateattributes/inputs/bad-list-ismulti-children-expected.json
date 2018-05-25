@@ -1,0 +1,6 @@
+[
+  {
+    "depth": "name:attribute4:key4",
+    "error": "Field 'key4' value '\"bad-string-should-be-hash\"' does not match datatype 'list'"
+  }
+]

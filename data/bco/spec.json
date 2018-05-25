@@ -1,0 +1,419 @@
+/*
+
+  BioCompute Object specification
+  http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+    
+    min: 0 (optional)
+    max: 0 (unlimited)
+    required: 0 (optional)
+
+*/
+
+{
+  // "0123456789abcdef"
+  "id": {
+    "desc": "Unique identifier",
+    "datatype": "UUID",
+    "required": 1
+  },
+
+  "type": {
+    "desc": "Type of analysis",
+    "datatype": "TEXT"
+  },
+
+  "structured_name": {
+    "desc": "Name of analysis in structured format",
+    "datatype": "TEXT"
+  },
+
+  "createdby": {
+    "desc": "Name of analysis in structured format",
+    "datatype": "EMAIL"
+  },
+
+  "created": {
+    "desc": "International standard date and time of creation",
+    "datatype": "DATETIME"    
+  },
+
+  "modified": {
+    "desc": "International standard date and time of modification",
+    "datatype": "DATETIME"    
+  },
+
+  // "HCV1a [taxID:31646] ledipasvir [PubChem:67505836] resistance SNP [SO:0000694] detection"
+  "name": {
+    "desc": "Name of analysis",
+    "datatype": "TEXT",
+    "required": 1
+  },
+  
+  // "1.1"
+  "version": {
+    "desc": "Semantic Version or custom version of analysis",
+    "datatype": "VERSION",
+    "required": 1
+  },
+  
+  // "abcdef0123456789"
+  "digital_signature": {
+    "desc": "Unique value generated from three domains of the BCO: Parametric, Execution and I/O",
+    "datatype": "HEXADECIMAL"
+  },
+  
+  // "in_progress"
+  "verification_status": {
+    "desc": "Version of analysis",
+    "datatype": "STRING",
+    "values": [
+      "in_progress",
+      "unreviewed",
+      "reviewed",
+      "published",
+      "rejected"
+    ]
+  },
+  
+  // "draft"
+  "publication_status": {
+    "desc": "Status of journal paper or article",
+    "datatype": "STRING",
+    "values": [
+      "draft",
+      "review",
+      "accepted",
+      "embargoed", 
+      "published"
+    ]
+  },
+  
+  "description_domain": {
+    "desc": "External references, pipeline steps, and the relationship of I/O objects",
+    "children": {
+
+      // [ "HCV1a",  "Ledipasvir",  "antiviral resistance" ]
+      "keywords": {
+        "desc": "Keywords related to the analysis",
+        "children": [ 
+          {
+            "desc": "A keyword",
+            "datatype": "TEXT"
+          }
+        ]
+      },
+
+      // [ "SO:0000694", "PubChem:67505836", "taxID:31646",  "PMID:25123381" ] 
+      "xref": {
+        "desc": "External references - a list of the databases and/or ontology IDs that are available in the public domain. The external references are stored in the form of prefixed identifiers (CURIEs). These CURIEs map directly to the URIs maintained by www.identifiers.org.",
+        "children": [
+          {
+            "desc": "An external reference",
+            "datatype": "XREF"
+          }
+        ]
+      },
+
+      "pipeline_steps": {
+        "desc": "An optional structured domain for recording the specifics of a pipeline. Each individual tool (or a well defined and reusable script) is represented as step, at the discretion of the author. Parallel processes are given the same step number. URIs are listed for the inputs and outputs for each tool.",
+        "children": [
+          {
+            "tool_name": {
+              "desc": "",
+              "datatype": "STRING"
+            },
+            "tool_desc": {
+              "desc": "",
+              "datatype": "TEXT"
+            },
+            "tool_version": {
+              "desc": "",
+              "datatype": "VERSION"
+            },
+            "tool_package": {
+              "desc": "",
+              "datatype": "STRING"
+            },
+            "step_number": {
+              "desc": "",
+              "datatype": "INTEGER"
+            },
+            "input_uri_list": [
+              {
+                "desc": "",
+                "datatype": "REGEX",
+                "value": "^(http|https|hive):\\S+"
+              }
+            ],
+            "output_uri_list": [
+              {
+                "desc": "",
+                "datatype": "REGEX",
+                "value": "^(http|https|hive):\\S+"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+ 
+  "usability_domain": {
+
+    "desc": "Description of when and how the BCO can be used. This domain is an array of free text values and is also intended to aid in searchability",
+    "children": [
+      {
+        "desc": "Usability keyword or phrase",
+        "datatype": "TEXT"
+      }
+    ]
+  },
+
+  "authors": {
+    "desc": "List of author information - name, etc. with optional ORCID, or ORCID alone",
+    "children": [
+      {
+        "id": {
+          "desc": "Author unique identifier",
+          "datatype": "UUID"
+        },
+        "first": {
+          "desc": "First name of author",
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "last": {
+          "desc": "Last name of author",
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "middle": {
+          "desc": "Middle names of author",
+          "datatype": "TEXT"
+        },
+        "orcid": {
+          "desc": "Unique author identifier referring to an external source of the author's information which the author can edit at any time",
+          "datatype": "ORCID"
+        }
+      }
+      ,
+      {
+        "orcid": {
+          "desc": "Unique author identifier referring to an external source of the author's information which the author can edit at any time",
+          "datatype": "ORCID"
+        }
+      }
+    ]
+  },
+
+  "parametric_domain": {
+    "desc": "Parameters used in the execution domain",
+    "children": {
+      "heptagon_divergence_threshold_percent": {
+        "desc": "some desc",
+        "datatype": "NUMBER"
+      },
+      "heptagon_freq_cutoff": {
+        "desc" : "Frequency cutoff",
+        "datatype": "NUMBER"
+      },
+      "hexagon_minimum_coverage": {
+        "desc" : "Frequency cutoff",
+        "datatype": "NUMBER"
+      },
+      "hexagon_minimum_match_len": {
+        "desc" : "Frequency cutoff",
+        "datatype": "INTEGER"
+      },
+      "hexagon_seed": {
+        "desc" : "Frequency cutoff",
+        "datatype": "NUMBER"
+      }
+    }
+  },
+
+  "external_references": {
+    "desc": "The list of the databases and/or ontology IDs that are cross-referenced in the BCO",
+    "children": {
+      "id": {
+        "desc": "ID for external reference",
+        "datatype": "STRING"
+      },
+      "name": {
+        "desc": "Name of external reference",
+        "datatype": "STRING"
+      },
+      "pub_med": {
+        "desc": "PubMed ID for external reference",
+        "datatype": "REGEX",
+        "value": "^PMID:\\d+$"
+      },
+      "title": {
+        "desc": "Title of external reference",
+        "datatype": "TEXT"
+      },
+      "url": {
+        "desc": "ID for external reference",
+        "datatype": "URL"
+      }
+    }
+  },
+
+  "io_domain": {
+    "desc": "The list of global input and output files created by the computational workflow, excluding intermediate files",
+    "children": {
+      "input_subdomain": {
+        "desc": "The reference and input files for the entire pipeline",
+        "children": {
+          "HCV_Genome_to_detect_variations" : {
+            "desc": "Links to HCV genome reference files",
+            "children": [
+              {
+                "desc": "Link to genome file",
+                "datatype": "URL"
+              }
+            ]
+          },
+          "read_files" : {
+            "desc": "Links to HCV genome reference files",
+            "children": [
+              {
+                "desc": "Link to genome file",
+                "datatype": "REGEX",
+                "value": "^(http|https|hive):\\S+"
+              }
+            ]
+          }
+        }
+      },
+      "output_subdomain": {
+        "desc": "The output files for the entire pipeline",
+        "children": {
+          "hit_list" : {
+            "desc": "Links to lists of alignment hits",
+            "children": {
+              "title": {
+                "desc": "Name of link list",
+                "datatype": "TEXT"
+              },
+              "uri": {
+                "desc": "Link to list",
+                "datatype": "REGEX",
+                "value": "^(hive|http|https)://\\S+"
+              },
+              "mime-type": {
+                "desc": "MIME type of linked file",
+                "datatype": "STRING"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "error_domain": {
+    "desc": "Acceptable range of variability, consisting of two subdomains: empirical and algorithmic",
+    "children": {
+      "empirical_error": {
+        "desc": "Limits of detectability, false positives, false negatives, statistical confidence of outcomes, etc.",
+        "children": {
+          "false_negative_alignment_hits" : {
+            "desc": "Accepted threshold for false negative alignment hits",
+            "datatype": "REGEX",
+            "value": "^[<>\\d\\.]+$"
+          }
+        }
+      },
+      "algorithmic_error": {
+        "desc": "Stochastic fuzziness of algorithms, dynamically parallelized multi-threaded executions, or machine learning methodologies where the state of the machine can affect the outcome",
+        "children": {
+          "false_positive_mutation_calls_discovery" : {
+            "desc": "Accepted threshold for false positive mutation calls",
+            "datatype": "REGEX",
+            "value": "^[<>\\d\\.]+$"
+          }
+        }
+      }
+    }
+  },
+
+  "execution_domain": {
+    "desc": "The fields required for execution of the BCO",
+    "children": [
+      {
+        "script_type": {
+          "desc": "The script to execute the BioCompute Object. This can be an external file URI or a file location",
+          "datatype": "STRING"
+        },
+        "script": {
+          "desc": "The script to execute the BioCompute Object",
+          "datatype": "STRING"
+        },
+        "pipeline_version": {
+          "desc": "Version number of the pipeline",
+          "datatype": "VERSION"
+        },
+        "platform": {
+          "desc": "The multi-value reference to a particular deployment of an existing platform where this BCO can be reproduced",
+          "datatype": "STRING"
+        },
+        "driver": {
+          "desc": "The executable that can be launched in order to perform a sequence of commands described in the script (see above) in order to run the pipeline",
+          "datatype": "STRING"
+        },
+        "software_prerequisites": {
+          "desc": "The minimal necessary prerequisites, library, tool versions needed to successfully run the script to produce BCO",
+          "children": [
+            {
+              "name": {
+                "desc": "Name of software tool",
+                "datatype": "STRING"
+              },
+              "version": {
+                "desc": "Version of software tool",
+                "datatype": "VERSION"
+              }
+            }
+          ]
+        },
+        "access_prerequisites": {
+          "desc": "The minimal necessary access to domain-specific external data source required to successfully run the script to produce BCO",
+          "children": [
+            {
+              "name": {
+                "desc": "Name of URL",
+                "datatype": "TEXT"
+              },
+              "url": {
+                "desc": "External data source needed to run the BCO",
+                "datatype": "REGEX",
+                "value": "^(protocol|ftp|http|https)://\\S+$"
+              }
+            }
+          ]
+        },
+        "env_parameters": {
+          "desc": "Environment variables needed to configure the execution environment on the target platform",
+          "children": [
+            {
+              "OSTYPE": {
+                "desc": "Type of operating system",
+                "datatype": "STRING"
+              }
+            },
+            {
+              "QPRIDE_BIN": {
+                "desc": "Path to QPRIDE binary executable file",
+                "datatype": "TEXT"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+

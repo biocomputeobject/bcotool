@@ -1,0 +1,6 @@
+[
+  {
+    "depth": "comment",
+    "error": "Field 'comment' is multi but value is scalar: scalar_entry_should_be_multi"
+  }
+]

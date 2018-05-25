@@ -1,0 +1,19 @@
+/*
+
+  This file defines the expected format of BCO files, as described in the BioCompute Object specification:
+
+    http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+  
+    min: 0 (optional)
+    max: 0 (unlimited)
+
+*/
+
+{
+  "DATE": {
+    "datatype": "REGEX",
+    "value": "^\\d{4}-\\d{2}-\\d{2}$"
+  }
+}

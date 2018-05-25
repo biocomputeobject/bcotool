@@ -1,0 +1,36 @@
+{
+  "FHIR": {
+    "desc": "A reference to data elements that can be extracted from EHR systems without compromising patient and providers’ information. For details, see: https:\/\/www.hl7.org/fhir/resourcelist.html",
+    "children": [
+      {
+        "diagnostics": {
+          "desc": "Diagnostics report",
+          "required": 1,
+          "datatype": "STRING",
+          "value": "DiagnosticsReport"
+        },
+        "FHIR_resourceURL": {
+          "desc": "Links to a report containing the date and time of the procedure, specimen details and observations relating to the diagnostic results",
+          "datatype": "URL",
+          "required": 1
+        },
+        "identifier": {
+          "desc": "Business identifier for the report",
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "reference": {
+          "desc": "Procedural request",
+          "datatype": "TEXT",
+          "required": 1
+        }
+      }    
+    ]
+  },
+
+  "URL": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "http.*:\/\/\\S+"
+  }
+}

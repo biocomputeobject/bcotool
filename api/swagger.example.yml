@@ -1,0 +1,199 @@
+---
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: hydro
+
+################################################################################
+#                                  Security                                    #
+################################################################################
+securityDefinitions:
+  oauth:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token
+    scopes:
+      basic: |
+       to read any and all data related to a user (e.g. following/followed-by
+        lists, photos, etc.) (granted by default)
+      comments: to create or delete comments on a user’s behalf
+      relationships: to follow and unfollow users on a user’s behalf
+      likes: to like and unlike items on a user’s behalf
+  key:
+    type: apiKey
+    in: query
+    name: access_token
+security:
+  - oauth:
+    - basic
+    - comments
+    - relationships
+    - likes
+  - key: []
+  
+################################################################################
+#                                   Parameters                                 #
+################################################################################
+parameters:
+  database:
+    name: database
+    in: query
+    description: Name of database
+    required: true
+    type: number
+  userid:
+    name: userid
+    in: path
+    description: The user identifier number
+    type: number
+    required: true
+  keywords:
+    name: keywords
+    in: query
+    description: Query keywords
+    type: string
+    required: true
+  limitParam:
+    name: limit
+    in: query
+    description: Limits the number of returned results
+    required: false
+    type: number
+    format: int32
+      
+################################################################################
+#                                           Paths                              #
+################################################################################
+
+paths:
+#  x-swagger-router-controller: Default
+  /path:
+    get:
+      parameters:
+        - $ref: "#/parameters/limitParam"
+        - $ref: "#/parameters/database"
+      tags:
+        - Default
+      responses:
+        200:
+          description: The user object
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/User'
+  /users/{userid}:
+    parameters:
+      - $ref: '#/parameters/userid'
+    get:
+      security:
+        - key: []
+        - oauth:
+          - basic
+      tags:
+        - UsersXX
+      description: Get basic information about a user.
+      responses:
+        200:
+          description: The user object
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/User'
+  /query:
+    get:
+      parameters:
+        - $ref: "#/parameters/keywords"
+      tags:
+        - UsersXXXX
+      description: Get `Response` objects based on query keywords/filters.
+      responses:
+        200:
+          description: |
+            Get the most recent media published by a user. To get the most recent
+            media published by the owner of the access token, you can use `self`
+            instead of the `userid`.
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Response'
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Response'
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      full_name:
+        type: string
+      profile_picture:
+        type: string
+      bio:
+        type: string
+      website:
+        type: string
+      counts:
+        type: object
+        properties:
+          media:
+            type: integer
+          follows:
+            type: integer
+          follwed_by:
+            type: integer
+  Query:
+    type: object
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      full_name:
+        type: string
+      profile_picture:
+        type: string
+      bio:
+        type: string
+      website:
+        type: string
+      counts:
+        type: object
+        properties:
+          media:
+            type: integer
+          follows:
+            type: integer
+          follwed_by:
+            type: integer
+  Response:
+    type: object
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      full_name:
+        type: string
+      profile_picture:
+        type: string
+      bio:
+        type: string
+      website:
+        type: string
+      counts:
+        type: object
+        properties:
+          media:
+            type: integer
+          follows:
+            type: integer
+          follwed_by:
+            type: integer

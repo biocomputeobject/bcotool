@@ -1,0 +1,123 @@
+{
+    "id": "obj.1277", 
+    "name": "Human [taxID:9606] CAG repeats [SO:0000726] detection for Huntington`s disease [DOID:12858]", 
+    "version": "1.0", 
+    "createdby": "hadley_king@gwmail.gwu.edu", 
+    "created": "Jan 26, 2017 17:44:38", 
+    "modified": "Jun 15, 2017 16:06:30", 
+    "digital_signature": "QdB7vu4rLeLtMFmPHQ9S", 
+    "verification_status": "unreviewed", 
+    "publication_status": "draft", 
+    "usability_domain": [
+        "Human [taxID:9606] CAG repeats [SO:0000726] detection for Huntington disease [DOID:12858]"
+    ], 
+    "authors": [
+        {
+            "orcid": "0000-0002-9920-565X"
+        }
+    ], 
+    "description_domain": {
+        "keywords": [
+            "Huntington Disease", 
+            "HTT", 
+            "CAG"
+        ], 
+        "xref": [
+            "SO:0000726", 
+            "tax:9606", 
+            "DOID:12858", 
+            "GOID:GO272344", 
+            "ICD:G10", 
+            "HGNC:4851"
+        ], 
+        "pipeline_steps": [
+            {
+                "tool_name": "HIVE-hexagon", 
+                "tool_desc": "This tool performs variant calling", 
+                "tool_version": "1.3", 
+                "tool_package": "HIVE", 
+                "step_number": "1", 
+                "input_uri_list": [
+                    "https://hive/data/nuc-read/514682", 
+                    "https://hive/data/nuc-read/514683", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/NG_009378.1", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/SRR4243395"
+                ], 
+                "output_uri_list": [
+                    "https://hive/data/529073/allcounts-aligned.csv"
+                ]
+            }, 
+            {
+                "tool_name": "HIVE-heptagon", 
+                "tool_desc": "This tools performs variant calling", 
+                "tool_version": "1.3", 
+                "tool_package": "HIVE", 
+                "step_number": "2", 
+                "input_uri_list": [
+                    "https://hive/data/529073/allcounts-aligned.csv"
+                ], 
+                "output_uri_list": [
+                    "https://hive/data/529074/SNPProfile.csv"
+                ]
+            }
+        ]
+    }, 
+    "execution_domain": {
+        "script": "hive://workflows/huntingtons_disease_detection.hwf", 
+        "pipeline_version": "1.0", 
+        "platform": "HIVE", 
+        "driver": "hive://hive-driver", 
+        "prerequisites": [
+            "name:HIVE-hexagon,version:1.3 ", 
+            "name:HIVE-heptagon,version:1.3"
+        ], 
+        "env_parameters": [
+            "HIVEv1.3"
+        ], 
+        "script_type": "URI"
+    }, 
+    "parametric_domain": {
+        "divergence_threshold_percent": "10", 
+        "alignment_seed": "14 letters", 
+        "alignment_min_match_len": "50", 
+        "variant_calling_min_coverage": "20", 
+        "variant_calling_frequency_cutoff": "0.2"
+    }, 
+    "io_domain": {
+        "reference_uri_list": [
+            "http://www.ncbi.nlm.nih.gov/nuccore/NG_009378.1", 
+            "http://www.ncbi.nlm.nih.gov/nuccore/SRR4243395"
+        ], 
+        "input_uri_list": [
+            "https://hive/data/nuc-read/514682", 
+            "https://hive/data/nuc-read/514683", 
+            "https://hive/data/529073/allcounts-aligned.csv"
+        ], 
+        "output_uri_list": [
+            "https://hive/data/529073/allcounts-aligned.csv", 
+            "https://hive/data/529074/SNPProfile.csv"
+        ], 
+        "output_subdomain": [
+            "Hit List:", 
+            "title:Hit list", 
+            "URI:https://hive/data/529073/allcounts-aligned.csv", 
+            "mime-type:csv", 
+            "SNP Profile", 
+            "title:SNPProfile", 
+            "uri:https://hive/data/529074/SNPProfile.csv", 
+            "mime-type:csv"
+        ], 
+        "input_subdomain": [
+            "Huntington Read Files", 
+            "https://hive/data/nuc-read/514682", 
+            "https://hive/data/nuc-read/514683", 
+            "Huntington Reference Files", 
+            "http://www.ncbi.nlm.nih.gov/nuccore/NG_009378.1", 
+            "http://www.ncbi.nlm.nih.gov/nuccore/SRR4243395"
+        ]
+    }, 
+    "error_domain": [
+        "empirical_error:false negative alignment hits:<0.0010 ", 
+        "algorithmic_error:false positive mutation calls discovery:<0.0005"
+    ]
+}

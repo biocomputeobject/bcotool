@@ -1,0 +1,11 @@
+{
+    "id": "obj.1270", 
+    "name": "HCV1a [taxonomy:31646] ledipasvir [pubchem.compound:67505836] resistance SNP [so:0000694] detection", 
+    "version": "1.1", 
+    "createdby": "hadley_king@gwmail.gwu.edu", 
+    "created": "Jan 24, 2017 09:40:17", 
+    "modified": "Mar 27, 2017 13:27:02", 
+    "digital_signature": "905d7fce3f3ac64c8ea86f058ca71658", 
+    "verification_status": "unreviewed", 
+    "publication_status": "draft"
+}

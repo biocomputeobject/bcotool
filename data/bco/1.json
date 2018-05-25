@@ -1,0 +1,112 @@
+{
+  "id": "01234567890abcdef",
+  "type": "antiviral_resistance_detection",
+  "name": "HCV1a [taxID:31646] ledipasvir [PubChem:67505836] resistance SNP [SO:0000694]",
+  "structured_name":"HCV1a [taxID:$taxID], ledipasvir [PubChem:$PubChem], SNP [SO:$SO]",
+  "version": "1.1",
+  "createdby": "hadley_king@gwmail.gwu.edu",
+  "created": "Jan 24, 2017 09:40:17",
+  "modified": "Jan 25, 2017 15:45:05",
+  "digital_signature": "905d7fce3f3ac64c8ea86f058ca71658",
+  "verification_status": "unreviewed",
+  "publication_status": "draft",
+  "usability_domain": [
+    "Identify baseline single nucleotide polymorphisms (SNPs[SO:0000694]), insertions[SO:0000667], and deletions[SO:0000045] that correlate with reduced ledipasvir[PubChem:67505836] antiviral drug efficacy in Hepatitis C virus subtype 1",
+    "Identify treatment emergent amino acid substitutions[SO:0000048] that correlate with antiviral drug treatment failure",
+    "Determine whether the treatment emergent amino acid substitutions[SO:0000048] identified correlate with treatment failure involving other drugs against the same virus"
+  ],
+  "authors": [
+    {
+      "id": "obj.1263",
+      "first": "Eric",
+      "last": "Donaldson",
+      "middle": "",
+      "orcid": ""
+    },
+    {
+      "orcid": "https://orcid.org/000-000-000-0000"
+    }
+  ],
+  "keywords": [
+    "antiviral resistance",
+    "SNP"
+  ],
+  "external_references": [
+    {
+      "id": "obj.1250",
+      "name": "HIVE",
+      "pub_med": "PMID:26989153",
+      "title": "High-performance integrated virtual environment",
+      "url": "https:\/\/hive.biochemistry.gwu.edu\/"
+    },
+    {
+      "id": "obj.1253",
+      "name": "DO",
+      "pub_med": "PMID:25348409",
+      "title": "Disease-Ontology",
+      "url": "http:\/\/disease-ontology.org\/"
+    },
+    {
+      "id": "obj.1259",
+      "name": "SO",
+      "pub_med": "PMID:15892872",
+      "title": "Sequence Ontology",
+      "url": "http:\/\/www.sequenceontology.org\/"
+    },
+    {
+      "id": "obj.1260",
+      "name": "taxID",
+      "pub_med": "PMID:26590407",
+      "title": "Taxonomy",
+      "url": "http:\/\/www.ncbi.nlm.nih.gov\/taxonomy"
+    },
+    {
+      "id": "obj.1261",
+      "name": "PubChem",
+      "pub_med": "PMID:26400175",
+      "title": "PubChem Compound",
+      "url": "https:\/\/www.ncbi.nlm.nih.gov\/pccompound"
+    }
+  ],
+  "execution_domain": [
+    {
+      "id": "obj.1237",
+      "env_parameters": "example",
+      "location": "\/workflows\/antiviral_resistance_detection.hwf",
+      "name": "antiviral_resistance_detection_hive",
+      "platform": "hive",
+      "prerequisites": "example",
+      "script": "\/workflows\/antiviral_resistance_detection.py",
+      "script_driver": "\/cwl-tool",
+      "title": "HIVE Antiviral Resistance Detection",
+      "version": "1.3"
+    }
+  ],
+  "parametric_domain": {
+    "heptagon_divergence_threshold_percent": "30",
+    "heptagon_freq_cutoff": "0.10",
+    "hexagon_minimum_coverage": "0.15",
+    "hexagon_minimum_match_len": "66",
+    "hexagon_seed": "14"
+  },
+  "io_domain": {
+    "input_uri_list": [
+      "http:\/\/xyz",
+      "http:\/\/abc"
+    ],
+    "output_uri_list": [
+      "https:\/\/www.ncbi.nlm.nih.gov\/nuccore\/NM_0002111.8"
+    ],
+    "reference_uri_list": [
+      "https:\/\/hive.biochemistry.gwu.edu\/dna.cgi?obj"
+    ]
+  },
+  "error_domain": {
+    "empirical_error": {
+      "false_negative_alignment_hits": "<0.0010"
+    },
+    "algorithmic_error": {
+      "false_positive_mutation_calls_discovery": "<0.0005"
+    }
+  }
+}

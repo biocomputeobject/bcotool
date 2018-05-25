@@ -1,0 +1,56 @@
+{
+    "description_domain": {
+        "keywords": [
+            "Antiviral resistance", 
+            "SNP",
+            "Ledipasvir",
+            "HCV1a",
+            "Amino acid substitution"
+        ], 
+        "xref": [
+            "so:0000694", 
+            "so:0000667", 
+            "so:0000045", 
+            "pubchem.compound:67505836", 
+            "so:0000048", 
+            "taxonomy:31646", 
+            "pubmed:25123381", 
+            "Pubmed:26508693"
+        ], 
+        "pipeline_steps": [
+            {
+                "tool_name": "HIVE-hexagon", 
+                "tool_desc": "Alignment of reads to a set of references", 
+                "tool_version": "1.3", 
+                "tool_package": "", 
+                "step_number": "1", 
+                "input_uri_list": [
+                    "http://www.ncbi.nlm.nih.gov/nuccore/22129792", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/5420376", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/13122261", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/386646758", 
+                    "http://www.ncbi.nlm.nih.gov/nuccore/295311559", 
+                    "hive://nuc-read/514683", 
+                    "hive://nuc-read/514682"
+                ], 
+                "output_uri_list": [
+                    "hive://data/514769/allCount-aligned.csv"
+                ]
+            }, 
+            {
+                "tool_name": "HIVE-heptagon", 
+                "tool_desc": "variant calling", 
+                "tool_version": "1.3", 
+                "tool_package": "", 
+                "step_number": "2", 
+                "input_uri_list": [
+                    "hive://data/514769/dnaAccessionBased.csv"
+                ], 
+                "output_uri_list": [
+                    "hive://data/514801/SNPProfile.csv", 
+                    "hive://data/14769/allCount-aligned.csv"
+                ]
+            }
+        ]
+    }
+}

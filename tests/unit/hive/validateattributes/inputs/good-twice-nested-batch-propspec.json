@@ -1,0 +1,65 @@
+{
+  "_id": "type.205",
+  "name": "svc-profiler-heptagon",
+  "_field": {
+    "batch": {
+      "_type": "list",
+      "title": "Batch Description",
+      "order": 0,
+      "_write": true,
+      "_vital": false,
+      "_plural": true,
+      "is_flattened_multi": true,
+      "_definer_type": "process",
+      "_field": {
+        "batch_list": {
+          "_type": "array",
+          "title": "Parameter list",
+          "order": 1,
+          "_write": true,
+          "_vital": false,
+          "_definer_type": "process",
+          "_field": {
+            "batch_param": {
+              "_type": "string",
+              "title": "Parameter",
+              "order": 0,
+              "_write": true,
+              "_vital": false,
+              "_plural": true,
+              "constraint": "choice",
+              "_definer_type": "process"
+            },
+            "batch_value": {
+              "_type": "integer",
+              "title": "Value",
+              "order": 0,
+              "_write": true,
+              "_vital": false,
+              "_definer_type": "process"
+            }
+          }
+        },
+        "batch_saturated": {
+          "_type": "bool",
+          "title": "Saturated",
+          "description": "Whether to force every batch for this list to contain at least one value from every parameter.",
+          "order": 2,
+          "_write": true,
+          "_vital": false,
+          "_definer_type": "process"
+        }
+      }
+    },
+
+    "_type": {
+      "_type": "string",
+      "title": "Type name",
+      "_write": "once",
+      "_vital": false,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    }
+  }
+}

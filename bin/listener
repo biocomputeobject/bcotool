@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+'use strict';
+
+var logger = require('tracer').colorConsole({level:'log'});
+var program = require('../lib/commander');
+var fs = require("fs");
+var validator = require('../lib/validator');
+
+var jsonFileToData = function (inputfile) {
+  var json = fs.readFileSync(inputfile).toString();
+  
+  return JSON.parse(json);
+};
+
+program
+  .usage("[--configfile]")
+  .option('-n, --configfile <value>', '(Name of image (required)')
+  .parse(process.argv);
+
+var seneca = require('seneca')({ 
+  timeout:9999999,
+  strict:{result:false}
+  // log:'silent'
+});
+
+seneca.add({role: 'image', cmd: 'datatype'}, function (msg, reply) {
+  logger.log("main    DOING image/add");
+  // logger.log("msg", msg);
+  // logger.log("reply", reply);
+
+  validator.datatype(msg.data)
+  .then(function(results) {
+    logger.warn("results", JSON.stringify(results));
+
+    return reply(null, results);
+  })
+  .catch ( function ( error ) {
+    return reply(error, results);
+  });
+})
+
+seneca.add({role: 'image', cmd: 'bco'}, function (msg, reply) {
+  logger.log("main    DOING commands/bco");
+
+  validator.bco(msg.data)
+  .then(function(results) {
+    logger.log("results", JSON.stringify(results));
+
+    return reply(null, results);
+  });
+})
+
+// GET SENECA CONFIG
+var configfile = "../conf/defaults.json";
+if ( program.configfile ) {
+  configfile = program.configfile;
+  logger.log("Using configuration file: ", configfile);
+}
+var config = jsonFileToData(configfile);
+// logger.log("config", config);
+
+seneca.listen(config);
+
+

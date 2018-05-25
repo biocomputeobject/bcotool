@@ -1,0 +1,7 @@
+{
+  "ORDINAL": {
+    "desc": "International standard date notation - 'YYYY-MM-DD'",
+    "datatype": "NUMBER",
+    "count": "abc"
+  }
+}

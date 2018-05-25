@@ -1,0 +1,13 @@
+{
+  "FHIR_resourceURL": {
+    "desc": "Links to a report containing the date and time of the procedure, specimen details and observations relating to the diagnostic results",
+    "datatype": "URL",
+    "required": 1
+  },
+
+  "URL": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "http.*:\/\/\\S+"
+  }
+}

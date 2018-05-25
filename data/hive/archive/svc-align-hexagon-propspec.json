@@ -1,0 +1,1764 @@
+{
+  "_id": "type.17",
+  "name": "svc-align-hexagon",
+  "title": "HIVE-Hexagon",
+  "descr": "HIVE hexagon alignment engine optimized for HIVE cloud performance on Next Generation data",
+  "__is_prefetch": true,
+  "__is_user": true,
+  "__parents": [ "svc-align-dnaseq", "svc-align-paired-end" ],
+  "__children": [ "svc-align-hexagon-batch", "svc-cvm-1" ],
+  "_field": {
+    "name": {
+      "_type": "string",
+      "title": "Name",
+      "descr": "Provide an identifiable name for the process.",
+      "_order": -100,
+      "_write": true,
+      "_vital": true,
+      "_public": true,
+      "brief": "$_(v)",
+      "__definer_type": "process"
+    },
+    "_brief": {
+      "_type": "string",
+      "title": "Summary",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_dir": {
+      "_type": "string",
+      "title": "Location",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state",
+      "_weakref": true
+    },
+    "_domain": {
+      "_type": "json",
+      "title": "Create in domain",
+      "_order": 0,
+      "_write": "once",
+      "_vital": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_effperm": {
+      "_type": "json",
+      "title": "Effective permissions",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_parent": {
+      "_type": "hiveid",
+      "title": "Parent object",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state",
+      "_weakref": true
+    },
+    "_perm": {
+      "_type": "string",
+      "title": "Permissions",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "_type": {
+      "_type": "string",
+      "title": "Type name",
+      "_order": 0,
+      "_write": "once",
+      "_vital": true,
+      "_hidden": true,
+      "_virtual": true,
+      "_role": "state"
+    },
+    "alignmentEngine": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Optimal Alignment Search",
+      "descr": "Decide if you want to perform complete best optimal alignment with Smith Waterman or just quick lookup of a highly scoring potential hit",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Only Identities",
+            "value": 0
+          },
+          {
+            "title": "Smith-Waterman",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "alignParam": {
+      "_layout": "struct",
+      "title": "Alignment Parameters",
+      "descr": "group",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "_field": {
+        "allowShorterEnds": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Shorter Terminus Alignment",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          }
+        },
+        "costGapNext": {
+          "_type": "int",
+          "_default": -4,
+          "title": "Gap Continuation Cost",
+          "descr": "Gap next cost",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          }
+        },
+        "costGapOpen": {
+          "_type": "int",
+          "_default": -12,
+          "title": "Gap Opening Cost",
+          "descr": "Gap open cost",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          }
+        },
+        "costMatch": {
+          "_type": "int",
+          "_default": 5,
+          "title": "Match Benefit",
+          "descr": "Match cost",
+          "_order": 0,
+          "_write": true,
+          "_vital": false
+        },
+        "costMismatch": {
+          "_type": "int",
+          "_default": -4,
+          "title": "Mismatch Penalty",
+          "descr": "Mismatch cost",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          }
+        },
+        "costMismatchNext": {
+          "_type": "int",
+          "_default": -6,
+          "title": "Mismatch Continuation Penalty",
+          "descr": "Multiple Mismatch Cost",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          }
+        },
+        "isglobal": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Alignment Scope",
+          "descr": "Choosing local will tend to find alignments with higher scores aligned locally. Choosing global will produce alignments where the query sequence are aligned to the subject across the whole length.",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Local",
+                "value": 0
+              },
+              {
+                "title": "Global",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "seed": {
+          "_type": "int",
+          "_default": 11,
+          "title": "Seed K-mer ",
+          "descr": "Minimum length of k-mer required to be aligned to consider the area of the read query starting from this k-mer",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "choice": [
+              {
+                "title": "8 letters",
+                "value": 8
+              },
+              {
+                "title": "9 letters",
+                "value": 9
+              },
+              {
+                "title": "10 letters",
+                "value": 10
+              },
+              {
+                "title": "11 letters",
+                "value": 11
+              },
+              {
+                "title": "12 letters",
+                "value": 12
+              },
+              {
+                "title": "14 letters",
+                "value": 14
+              },
+              {
+                "title": "16 letters",
+                "value": -8
+              },
+              {
+                "title": "18 letters",
+                "value": -9
+              },
+              {
+                "title": "20 letters",
+                "value": -10
+              },
+              {
+                "title": "22 letters",
+                "value": -11
+              },
+              {
+                "title": "24 letters",
+                "value": -12
+              },
+              {
+                "title": "28 letters",
+                "value": -14
+              }
+            ]
+          }
+        }
+      }
+    },
+    "base_tag": {
+      "_type": "string",
+      "title": "Tag",
+      "descr": "A tag, keyword, anything to mark an object",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "__definer_type": "base_user_type"
+    },
+    "basicAlgParam": {
+      "_layout": "struct",
+      "title": "Alignment Filters",
+      "descr": "group",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "_field": {
+        "searchRepeatsAndTrans": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Repeat and Transposition Discovery",
+          "descr": "Performs more detailed multi-pass lookups for repeats and transpositions (slower to run)",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "choice": [
+              {
+                "title": "do not search for repeats and transpositions",
+                "value": 0
+              },
+              {
+                "title": "search for repeats only",
+                "value": 1
+              },
+              {
+                "title": "search for repeats and transpositions",
+                "value": 2
+              }
+            ]
+          }
+        }
+      }
+    },
+    "batch": {
+      "_layout": "struct",
+      "title": "Batch Description",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "__definer_type": "process",
+      "_field": {
+        "batch_list": {
+          "_layout": "table",
+          "title": "Parameter list",
+          "_order": 1,
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "process",
+          "_field": {
+            "batch_param": {
+              "_type": "string",
+              "title": "Parameter",
+              "_order": 0,
+              "_write": true,
+              "_vital": true,
+              "_plural": true,
+              "_limit": {
+                "choice": []
+              },
+              "__definer_type": "process"
+            },
+            "batch_value": {
+              "_type": "int",
+              "title": "Value",
+              "_order": 0,
+              "_write": true,
+              "_vital": true,
+              "__definer_type": "process"
+            }
+          }
+        },
+        "batch_saturated": {
+          "_type": "bool",
+          "title": "Saturated",
+          "descr": "Whether to force every batch for this list to contain at least one value from every parameter.",
+          "_order": 2,
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "process"
+        }
+      }
+    },
+    "batch_children_proc_ids": {
+      "_type": "hiveid",
+      "title": "Batch submitted processes",
+      "descr": "Processes created by batch submission",
+      "_order": 0,
+      "_write": "onlyauto",
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_role": "output",
+      "_limit": {
+        "type": "svc-proc"
+      },
+      "__definer_type": "process"
+    },
+    "batch_ignore_errors": {
+      "_type": "bool",
+      "title": "Ignore errors in individual submitted processes",
+      "descr": "Continue batching even if some batched computations could not be launched",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "process"
+    },
+    "batch_svc": {
+      "_type": "string",
+      "title": "Batch Service",
+      "descr": "Determines if this tool should be run in single mode (one submission) or batch mode (multiple submissions). NOTE: setting this option will clear other fields entered into the form.",
+      "_order": 0,
+      "_write": "noresub",
+      "_vital": true,
+      "_limit": {
+        "choice+": [
+          {
+            "title": "Single Mode",
+            "value": "single"
+          }
+        ]
+      },
+      "__definer_type": "process"
+    },
+    "children_proc_ids": {
+      "_type": "hiveid",
+      "title": "Children Processes",
+      "_order": 0,
+      "_write": "onlyauto",
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_role": "output",
+      "_limit": {
+        "type": "svc-proc"
+      },
+      "__definer_type": "process"
+    },
+    "complexity": {
+      "_layout": "struct",
+      "title": "Low complexity filter",
+      "descr": "Low complexity region masking parameters",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "_field": {
+        "complexityQry": {
+          "_layout": "table",
+          "title": "Short read filtration",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "__flattened_decor": true,
+          "_field": {
+            "complexityEntropy": {
+              "_type": "real",
+              "_default": 0,
+              "title": "Minimal Shannons Entropy",
+              "descr": "Minimal Shannons entrop value allowed within complexity window",
+              "_order": 0,
+              "_write": true,
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice+": [
+                  {
+                    "title": "0 - permissive",
+                    "value": 0
+                  },
+                  {
+                    "title": "1 - lenient",
+                    "value": 1.
+                  },
+                  {
+                    "title": "1.2 - reluctant",
+                    "value": 1.2
+                  },
+                  {
+                    "title": "1.6 - strict",
+                    "value": 1.6
+                  }
+                ]
+              }
+            },
+            "complexityWindow": {
+              "_type": "int",
+              "_default": 0,
+              "title": "Window Size",
+              "descr": "Low complexity region masking window size. All query sequences whch have low entropic content within the window of this size will be masked in alignment procedure",
+              "_order": 0,
+              "_write": true,
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice": [
+                  {
+                    "title": "do not filter low complexity reads",
+                    "value": 0
+                  },
+                  15,
+                  20,
+                  30
+                ]
+              }
+            },
+            "maximumPercentLowQualityAllowed": {
+              "_type": "int",
+              "_default": 0,
+              "title": "Maximum Percent Low Quality Allowed",
+              "_order": 4,
+              "_write": "once",
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice+": [
+                  {
+                    "title": "do not filter",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "complexityRef": {
+          "_layout": "table",
+          "title": "Reference masking",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "__flattened_decor": true,
+          "_field": {
+            "complexityRefEntropy": {
+              "_type": "real",
+              "_default": 0,
+              "title": "Minimal Shannons Entropy",
+              "descr": "Minimal Shannons entrop value allowed within complexity window",
+              "_order": 0,
+              "_write": true,
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice+": [
+                  {
+                    "title": "0 - permissive",
+                    "value": 0
+                  },
+                  {
+                    "title": "1 - lenient",
+                    "value": 1.
+                  },
+                  {
+                    "title": "1.2 - reluctant",
+                    "value": 1.2
+                  },
+                  {
+                    "title": "1.6 - strict",
+                    "value": 1.6
+                  }
+                ]
+              }
+            },
+            "complexityRefWindow": {
+              "_type": "int",
+              "_default": 0,
+              "title": "Window Size",
+              "descr": "Low complexity region masking window size. All query sequences whch have low entropic content within the window of this size will be masked in alignment procedure",
+              "_order": 0,
+              "_write": true,
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice": [
+                  {
+                    "title": "do not mask low complexity regions",
+                    "value": 0
+                  },
+                  20,
+                  30,
+                  40,
+                  60
+                ]
+              }
+            },
+            "acceptNNNQuaTrheshold": {
+              "_type": "int",
+              "_default": 0,
+              "title": "Filter NN and low quality",
+              "descr": "The quality filter",
+              "_order": 3,
+              "_write": true,
+              "_vital": false,
+              "__flattened_multi": true,
+              "_limit": {
+                "choice+": [
+                  {
+                    "title": "do not filter",
+                    "value": 0
+                  },
+                  {
+                    "title": "filter Ns only",
+                    "value": 1
+                  },
+                  {
+                    "title": "do not seed on low quality positions",
+                    "value": 20
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "computeDiagonalWidth": {
+      "_type": "string",
+      "_default": "auto",
+      "title": "Width of Intelligent Diagonal",
+      "descr": "Specify the width around the Smith-Waterman matrix diagonal to increase computation speed. Windows too narrow will result in significantly faster computation but may miss actual gapped alignments. ",
+      "_order": 0,
+      "_write": true,
+      "_vital": false
+    },
+    "created": {
+      "_type": "datetime",
+      "title": "Created",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_role": "state",
+      "__definer_type": "base"
+    },
+    "doubleHash": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Use Double Length Hash Optimization",
+      "_order": 0,
+      "_write": true,
+      "_vital": true
+    },
+    "doubleStagePerfect": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Use Exact Match Preference Optimization",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Do not use exact match optimiztion",
+            "value": 0
+          },
+          {
+            "title": "Use exact match optimization",
+            "value": 1
+          },
+          {
+            "title": "Use exact match optimization while considering repeats",
+            "value": 2
+          }
+        ]
+      }
+    },
+    "hashCompileStp": {
+      "_type": "string",
+      "_default": "auto",
+      "title": "Intelligent K-mer Jump in Reference",
+      "descr": "Seeding in large genomes significantly improves the alignment speed, but can decrease the sensitivity. Choose \"1\" to optimize sensitivity.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false
+    },
+    "hashStp": {
+      "_type": "string",
+      "_default": "auto",
+      "title": "Intelligent K-mer Jump in Read",
+      "descr": "Seeding improves overall alignment speed at a potential tradeoff of lost sensitivity. Choose \"1\" to optimize sensitivity.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false
+    },
+    "isbackward": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Alignment Directionality",
+      "descr": "Defines wether alignments are searched in a unidirectional (forward or reverse) or bi-directional (forward and reverse) orientation",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Forward",
+            "value": 0
+          },
+          {
+            "title": "Reverse complement",
+            "value": 2
+          },
+          {
+            "title": "Bi-directional",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "isextendtails": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Alignment Tail Extension",
+      "descr": "If extended mode is selected, the alignment length will be maximized as long as the extension is accompanied by a good score. In compact mode, only the highest scoring local alignment is reported.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Conservative Compact",
+            "value": 0
+          },
+          {
+            "title": "Agressive Extended",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "isoptimize": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Intellegent Diagonal ",
+      "descr": "Smith-Waterman optimizations",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Complete matrix",
+            "value": 0
+          },
+          {
+            "title": "Diagonal of a given size",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "keepAllMatches": {
+      "_type": "int",
+      "_default": 4,
+      "title": "Matches to Keep",
+      "descr": "Decide which matches to maintain in the final hit list",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "choice": [
+          {
+            "title": "First Match",
+            "value": 0
+          },
+          {
+            "title": "Best first match",
+            "value": 1
+          },
+          {
+            "title": "All Matches within acceptable thresholds",
+            "value": 2
+          },
+          {
+            "title": "All equally best alternative matches",
+            "value": 3
+          },
+          {
+            "title": "Random vote between equally best alternative matches",
+            "value": 4
+          },
+          {
+            "title": "Uniquely aligned reads only",
+            "value": 5
+          }
+        ]
+      },
+      "__definer_type": "svc-align-pairwise"
+    },
+    "looseExtenderMinimumLengthPercent": {
+      "_type": "int",
+      "_default": 66,
+      "title": "K-mer Extension Minimal Length Percent",
+      "descr": "Defines the minimum length of extension, as a percentage of seed length, required to proceed with Smith-Waterman.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "eval": "!isNaN(\"${_val}\")",
+        "descr": "Give a Number"
+      }
+    },
+    "looseExtenderMismatchesPercent": {
+      "_type": "int",
+      "_default": 25,
+      "title": "K-mer Extension Mismatch Allowance Percent",
+      "descr": "Defines the maximum mismatch, as a percentage of seed length, allowed in order to progress to Smith-Waterman.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "eval": "!(isNaN(\"${_val}\"))",
+        "descr": "Give a Number"
+      }
+    },
+    "maxExtensionGaps": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Allowed number of gaps during extension",
+      "descr": "The number of cumulative insertions and deletions allowed during seed extension.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "eval": "!isNaN(\"${_val}\")",
+        "descr": "Give a Number"
+      }
+    },
+    "maxHashBin": {
+      "_type": "int",
+      "_default": 50,
+      "title": "Over-represented K-Mer suppression",
+      "descr": "Some K-mers are repeated much more frequently than would be expected by random occurrence. The aligner will only try to seed up to the specified number of any given K-mer hits.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_limit": {
+        "eval": "!(isNaN(\"${_val}\"))",
+        "descr": "Give a Number"
+      }
+    },
+    "maxHitsPerRead": {
+      "_type": "int",
+      "_default": 200,
+      "title": "Maximum Number of Hits per Read to Consider",
+      "_order": 0,
+      "_write": "once",
+      "_vital": false,
+      "_limit": {
+        "eval": "!(isNaN(\"${_val}\")) && parseInt(\"${_val}\")>=0",
+        "descr": "Give a positive number"
+      }
+    },
+    "maxNumberQuery": {
+      "_type": "string",
+      "_default": "all",
+      "title": "Alignment Test-Run Slice",
+      "descr": "This parameter controls the maximum number of sequences per thread to be aligned in a test run",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-align-pairwise"
+    },
+    "maxSeedSearchQueryPos": {
+      "_type": "int",
+      "title": "Restrict query seed search",
+      "_order": 0,
+      "_write": "once",
+      "_vital": true,
+      "_limit": {
+        "eval": "!(isNaN(\"${_val}\")) && parseInt(\"${_val}\")>=0"
+      }
+    },
+    "minMatch": {
+      "_layout": "table",
+      "title": "Minimum Match",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "__definer_type": "svc-align-pairwise",
+      "_field": {
+        "minMatchLen": {
+          "_type": "real",
+          "_default": 75,
+          "title": "Length",
+          "descr": "Alignments shorter than this value are not reported",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "__flattened_multi": true,
+          "_batched": true,
+          "_limit": {
+            "eval": "!(isNaN(\"${_val}\")) && parseInt(\"${_val}\")>=0",
+            "descr": "Give a positive number"
+          },
+          "__definer_type": "svc-align-pairwise"
+        },
+        "minMatchUnit": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Unit",
+          "descr": "Specify if the minimum match length is the number of bases or a percentage of the read length",
+          "_order": 1,
+          "_write": true,
+          "_vital": false,
+          "__flattened_multi": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "base(s)",
+                "value": 0
+              },
+              {
+                "title": "(%)percentage",
+                "value": 1
+              }
+            ]
+          },
+          "__definer_type": "svc-align-pairwise"
+        }
+      }
+    },
+    "mismatches": {
+      "_layout": "table",
+      "title": "Mismatches",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "__definer_type": "svc-align-pairwise",
+      "_field": {
+        "maxMissQueryPercent": {
+          "_type": "int",
+          "_default": 15,
+          "title": "Percent Allowed",
+          "descr": "Alignments with a greater percentage mismatch than this threashold are discarded",
+          "_order": 1,
+          "_write": true,
+          "_vital": false,
+          "__flattened_multi": true,
+          "_batched": true,
+          "_limit": {
+            "eval": "!(isNaN(\"${_val}\")) && parseInt(\"${_val}\")>=0",
+            "descr": "Give a positive number"
+          },
+          "__definer_type": "svc-align-pairwise"
+        },
+        "considerGoodSubalignments": {
+          "_type": "int",
+          "_default": 1,
+          "title": "Computed on",
+          "_order": 2,
+          "_write": true,
+          "_vital": false,
+          "__flattened_multi": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Alignment length",
+                "value": 0
+              },
+              {
+                "title": "Minimum match length",
+                "value": 1
+              },
+              {
+                "title": "Read length",
+                "value": 2
+              }
+            ]
+          },
+          "__definer_type": "svc-align-pairwise"
+        }
+      }
+    },
+    "modified": {
+      "_type": "datetime",
+      "title": "Modified",
+      "_order": 0,
+      "_write": false,
+      "_vital": true,
+      "_role": "state",
+      "__definer_type": "base"
+    },
+    "pairedEnds": {
+      "_layout": "struct",
+      "title": "Paired end filters",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "__definer_type": "svc-align-paired-end",
+      "_field": {
+        "fragmentLength": {
+          "_layout": "table",
+          "title": "Length of the fragment",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__flattened_decor": true,
+          "__definer_type": "svc-align-paired-end",
+          "_field": {
+            "fragmentLengthMin": {
+              "_type": "int",
+              "title": "Min",
+              "_order": 1,
+              "_write": true,
+              "_vital": true,
+              "__flattened_multi": true,
+              "__definer_type": "svc-align-paired-end"
+            },
+            "fragmentLengthMax": {
+              "_type": "int",
+              "title": "Max",
+              "_order": 2,
+              "_write": true,
+              "_vital": true,
+              "__flattened_multi": true,
+              "__definer_type": "svc-align-paired-end"
+            }
+          }
+        },
+        "keepPairedOnly": {
+          "_type": "bool",
+          "title": "Filter unpaired alignments",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "svc-align-paired-end"
+        },
+        "keepPairOnOppositeStrand": {
+          "_type": "bool",
+          "title": "Filter pairs with wrong strandedness",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "svc-align-paired-end"
+        },
+        "keepPairOnSameSubject": {
+          "_type": "bool",
+          "title": "Filter pairs on different subjects",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__definer_type": "svc-align-paired-end"
+        }
+      }
+    },
+    "parent_proc_ids": {
+      "_type": "hiveid",
+      "title": "Parent Processes",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_hidden": true,
+      "_limit": {
+        "type": "process+"
+      },
+      "__definer_type": "process"
+    },
+    "random_seed": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Random Seed",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "process"
+    },
+    "readconflicts": {
+      "_layout": "struct",
+      "title": "Resolve conflicts",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "__definer_type": "svc-align-pairwise",
+      "_field": {
+        "resolveConfictsUnique": {
+          "_type": "bool",
+          "_default": 0,
+          "title": "Use uniquely align reads only",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "__definer_type": "svc-align-pairwise"
+        },
+        "resolveConflicts": {
+          "_type": "int",
+          "title": "Conflict resolution method",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "No resolution",
+                "value": 0
+              },
+              {
+                "title": "Markovnikov rule",
+                "value": 1
+              },
+              {
+                "title": "Balanced",
+                "value": 2
+              }
+            ]
+          },
+          "__definer_type": "svc-align-pairwise"
+        },
+        "resolveConflictsScore": {
+          "_type": "int",
+          "title": "Score for confilct resolution",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Number of reads",
+                "value": 1
+              },
+              {
+                "title": "Coverage symmetry",
+                "value": 2
+              }
+            ]
+          },
+          "__definer_type": "svc-align-pairwise"
+        }
+      }
+    },
+    "resultFileTemplate": {
+      "_type": "string",
+      "title": "resultFileTemplate",
+      "_order": 0,
+      "_write": false,
+      "_vital": false,
+      "__definer_type": "svc-align-pairwise"
+    },
+    "reverseEngine": {
+      "_type": "int",
+      "_default": 0,
+      "title": "Genome Size",
+      "descr": "Decide if you want to perform complete best optimal alignment with Smith Watermann or just quick lookup of a highly scoring potential hit",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_hidden": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Small genomes",
+            "value": 0
+          },
+          {
+            "title": "Large genomes",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "scissors": {
+      "_type": "string",
+      "_default": "hiveseq",
+      "title": "How to split the sequences",
+      "descr": "The way large jobs are split into smaller pieces",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "_hidden": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "By the number of sequences",
+            "value": "hiveseq"
+          },
+          {
+            "title": "By the number of alignments",
+            "value": "hiveal"
+          }
+        ]
+      },
+      "__definer_type": "process"
+    },
+    "scoreFilter": {
+      "_type": "string",
+      "_default": "None",
+      "title": "Score Filter",
+      "descr": "Alignments with smaller scores are discarded and not reported. If 'none' is specified: all alignments are reported which satisfy the other criteria.",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "svc-align-pairwise"
+    },
+    "selfQueryPosJumpInNonPerfectAlignment": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Self overlapping seed matches",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Consider Overlapping Seed Matches",
+            "value": 0
+          },
+          {
+            "title": "Ignore Overlaping Seed Matches",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "split": {
+      "_type": "string",
+      "_default": "query",
+      "title": "What field contains the object spliting the jobs",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__definer_type": "process"
+    },
+    "splitList": {
+      "_layout": "struct",
+      "title": "Split process into smaller chunks",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "__flattened_decor": true,
+      "_hidden": true,
+      "__definer_type": "process",
+      "_field": {
+        "nrepeat": {
+          "_type": "int",
+          "_default": 1,
+          "title": "Number of Computational Threads",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_hidden": true,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          },
+          "__definer_type": "process"
+        },
+        "slice": {
+          "_type": "int",
+          "_default": 500000,
+          "title": "Number of Computational Subjects per Single Thread",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          },
+          "__definer_type": "process"
+        },
+        "splitField": {
+          "_type": "string",
+          "_default": "query",
+          "title": "What field contains the object spliting the jobs",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "__definer_type": "svc-align-pairwise"
+        },
+        "splitSize": {
+          "_type": "int",
+          "_default": 500000,
+          "title": "Number of Computational Subjects per Single Thread",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_limit": {
+            "eval": "!isNaN(\"${_val}\")",
+            "descr": "Give a Number"
+          },
+          "__definer_type": "svc-align-pairwise"
+        },
+        "splitType": {
+          "_type": "string",
+          "_default": "sequences",
+          "title": "How to split the sequences",
+          "descr": "The way large jobs are split into smaller pieces",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "__definer_type": "svc-align-pairwise"
+        }
+      }
+    },
+    "subject": {
+      "_type": "hiveid",
+      "title": "Reference Genome",
+      "descr": "Reference genome (subject)",
+      "_order": 0,
+      "_write": "once",
+      "_vital": false,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_batched": true,
+      "_limit": {
+        "type": "^genome$,folder"
+      },
+      "__definer_type": "svc-align"
+    },
+    "subSet": {
+      "_type": "string",
+      "title": "Reference genome serial number",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_hidden": true,
+      "__definer_type": "svc-dna"
+    },
+    "system": {
+      "_layout": "struct",
+      "title": "System",
+      "_order": 0,
+      "_write": true,
+      "_vital": false,
+      "__flattened_decor": true,
+      "__definer_type": "process",
+      "_field": {
+        "action": {
+          "_type": "int",
+          "title": "Action for Request",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "_hidden": true,
+          "_limit": {
+            "choice": [
+              {
+                "title": "Unknown",
+                "value": 0
+              },
+              {
+                "title": "Hold",
+                "value": 1
+              },
+              {
+                "title": "Run",
+                "value": 2
+              },
+              {
+                "title": "Terminate",
+                "value": 3
+              },
+              {
+                "title": "Suspend",
+                "value": 4
+              },
+              {
+                "title": "Resume",
+                "value": 5
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "completed": {
+          "_type": "datetime",
+          "title": "Completed",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "folder": {
+          "_type": "string",
+          "_default": "eval:typeof(user_get_curdir_save)!==\"undefined\"?user_get_curdir_save():\"\"",
+          "title": "Destination folder",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_virtual": true,
+          "_weakref": true,
+          "_limit": {
+            "type": "folder+"
+          },
+          "__definer_type": "process"
+        },
+        "isPostponed": {
+          "_type": "bool",
+          "_default": 0,
+          "title": "Postpone execution",
+          "descr": "Launch job in suspended state, you will need to manually launching later",
+          "_order": 0,
+          "_write": true,
+          "_vital": false,
+          "__definer_type": "process"
+        },
+        "onUserBehalf": {
+          "_type": "int",
+          "title": "On Behalf of The User",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_limit": {
+            "search": {
+              "url": "http://?cmd=usrList&active=1&grp=0&primaryGrpOnly=1&raw=1",
+              "value": "id",
+              "title": "name",
+              "show": [ "name" ],
+              "format": "csv"
+            }
+          },
+          "__definer_type": "process"
+        },
+        "progress": {
+          "_type": "int",
+          "title": "Progress",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "reqID": {
+          "_type": "int",
+          "title": "Request ID",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "reqPriority": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Priority of submission",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "_role": "state",
+          "_limit": {
+            "choice": [
+              {
+                "title": "normal - execute ASAP in collaborative environment",
+                "value": 0
+              },
+              {
+                "title": "polite submission - let other users small computations to squeeze through",
+                "value": 100
+              },
+              {
+                "title": "large submissions - do not compete with small and medium computations",
+                "value": 1000
+              },
+              {
+                "title": "extremely nice - execute only when most computers are not busy",
+                "value": 1000000
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "started": {
+          "_type": "datetime",
+          "title": "Started",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "__definer_type": "process"
+        },
+        "status": {
+          "_type": "int",
+          "title": "Status",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "_limit": {
+            "choice": [
+              {
+                "title": "Unknown",
+                "value": 0
+              },
+              {
+                "title": "Waiting",
+                "value": 1
+              },
+              {
+                "title": "Processing",
+                "value": 2
+              },
+              {
+                "title": "Running",
+                "value": 3
+              },
+              {
+                "title": "Suspended",
+                "value": 4
+              },
+              {
+                "title": "Done",
+                "value": 5
+              },
+              {
+                "title": "Killed",
+                "value": 6
+              },
+              {
+                "title": "ProgError",
+                "value": 7
+              },
+              {
+                "title": "SysError",
+                "value": 8
+              }
+            ]
+          },
+          "__definer_type": "process"
+        },
+        "svc": {
+          "_type": "string",
+          "title": "Service ID",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "__definer_type": "process"
+        },
+        "systemVersion": {
+          "_type": "string",
+          "_default": "eval:gSysVersion",
+          "title": "System version number",
+          "_order": 0,
+          "_write": "onlyauto",
+          "_vital": false,
+          "__definer_type": "process"
+        },
+        "svcTitle": {
+          "_type": "string",
+          "title": "Service Title",
+          "_order": 2,
+          "_write": "onlyauto",
+          "_vital": false,
+          "brief": "<b>$_(v)</b>",
+          "__definer_type": "process"
+        },
+        "progress100": {
+          "_type": "int",
+          "title": "Progress %",
+          "_order": 3,
+          "_write": "onlyauto",
+          "_vital": false,
+          "_role": "state",
+          "brief": "$_(v)%",
+          "__definer_type": "process"
+        }
+      }
+    },
+    "trimLowScoreEnds": {
+      "_layout": "table",
+      "title": "Trim loosly aligned ends",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "__flattened_decor": true,
+      "_field": {
+        "trimLowScoreEndsMaxMismatches": {
+          "_type": "real",
+          "title": "Maximum mismatch (%)",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__flattened_multi": true,
+          "_limit": {
+            "eval": "${_val} >= 0 && ${_val} < 100"
+          }
+        },
+        "trimLowScoreEndsWindow": {
+          "_type": "int",
+          "_default": 0,
+          "title": "Window size",
+          "_order": 0,
+          "_write": true,
+          "_vital": true,
+          "__flattened_multi": true,
+          "_limit": {
+            "choice+": [
+              {
+                "title": "seed size window",
+                "value": -1
+              },
+              {
+                "title": "10 bases window",
+                "value": 10
+              },
+              {
+                "title": "20 bases window",
+                "value": 20
+              },
+              {
+                "title": "30 bases window",
+                "value": 30
+              }
+            ]
+          }
+        }
+      }
+    },
+    "useRedundSim": {
+      "_type": "int",
+      "_default": 1,
+      "title": "Use Read Self Similarity",
+      "_order": 0,
+      "_write": true,
+      "_vital": true,
+      "_limit": {
+        "choice": [
+          {
+            "title": "Do not use read self similarity optimization",
+            "value": 0
+          },
+          {
+            "title": "Use self similarity optimization",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "alignSelector": {
+      "_type": "string",
+      "_default": "svc-align-hexagon",
+      "title": "Alignment Algorithm",
+      "descr": "Alignment engine selector",
+      "_order": 1,
+      "_write": "noresub",
+      "_vital": false,
+      "_limit": {
+        "search": {
+          "url": "http://?cmd=objList&type=algorithm-alignment-dnaseq%2B&raw=1&mode=csv",
+          "value": "name",
+          "title": "\"icon\"",
+          "show": [ {
+              "name": "title",
+              "order": 2,
+              "hidden": 0,
+              "title": "Name"
+            }, {
+              "name": "description",
+              "hidden": 0,
+              "title": "Description"
+            }, {
+              "name": "version",
+              "hidden": 0,
+              "title": "Version"
+            } ],
+          "format": "csv"
+        }
+      },
+      "__definer_type": "svc-align-dnaseq"
+    },
+    "referenceAnnot": {
+      "_type": "string",
+      "title": "Reference Annotation Filter",
+      "_order": 1,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_limit": {
+        "type": "u-ionAnnot"
+      }
+    },
+    "referenceAnnotTypes": {
+      "_type": "string",
+      "title": "Reference Annotation Types",
+      "_order": 2,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_limit": {
+        "choice+": [
+          {
+            "title": "Mature Peptide",
+            "value": "mat_peptide"
+          },
+          {
+            "title": "Coding Regions",
+            "value": "CDS"
+          }
+        ]
+      }
+    },
+    "force_reindex": {
+      "_type": "bool",
+      "_default": 0,
+      "title": "Force Reindexing of Subject",
+      "_order": 3,
+      "_write": true,
+      "_vital": true,
+      "__definer_type": "svc-align-pairwise"
+    },
+    "query": {
+      "_type": "hiveid",
+      "title": "Sequence Read",
+      "descr": "Query sequences (reads)",
+      "_order": 3,
+      "_write": "once",
+      "_vital": false,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_batched": true,
+      "_limit": {
+        "type": "nuc-read,folder,svc-dna-insilico"
+      },
+      "__definer_type": "svc-align-single-end"
+    },
+    "query_paired": {
+      "_type": "hiveid",
+      "title": "Sequence Read (Pair)",
+      "_order": 3.05,
+      "_write": "once",
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "_batched": true,
+      "_limit": {
+        "type": "nuc-read,folder,svc-dna-insilico"
+      },
+      "__definer_type": "svc-align-paired-end"
+    },
+    "comment": {
+      "_type": "text",
+      "title": "Comments",
+      "descr": "Comment field for arbitrary descriptive information associated with this process",
+      "_order": 30,
+      "_write": true,
+      "_vital": true,
+      "_plural": true,
+      "__flattened_multi": true,
+      "__definer_type": "process"
+    },
+    "submitter": {
+      "_type": "string",
+      "title": "Submitting Template Page",
+      "_order": 1003.1,
+      "_write": true,
+      "_vital": true,
+      "_hidden": true,
+      "__definer_type": "process"
+    }
+  }
+}

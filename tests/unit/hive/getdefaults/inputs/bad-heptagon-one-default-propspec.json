@@ -1,0 +1,19 @@
+{
+  "countAAs": {
+    "_type": "bool",
+    "_default": 0,
+    "title": "Compute AA profile",
+    "descr": "Compute Aminoacid rep[lacements  based on AA calls on reads",
+    "_write": true,
+    "_vital": true,
+    "__definer_type": "svc-profiler"
+  },
+  "created": {
+    "_type": "datetime",
+    "title": "Created",
+    "_write": false,
+    "_vital": false,
+    "_role": "state",
+    "__definer_type": "base"
+  }
+}

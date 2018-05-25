@@ -1,0 +1,10 @@
+{
+    "error_domain": {
+		"empirical_error": {
+			"false negative alignment hits": "<0.0010"
+		},
+		"algorithmic_error": {
+			"false positive mutation calls discovery": "<0.0005"
+		}
+	}
+}

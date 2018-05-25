@@ -1,0 +1,14 @@
+{
+  "_id": 3112768,
+  "_type": "svc-profiler-heptagon",
+  "name": { 
+    "attribute1": "key1", 
+    "attribute2": { "key2": "value2" },
+    "attribute3": {
+      "0": { "key3": "value3" }
+    },
+    "attribute4": {
+      "key4": { "0": "value4" } 
+    }
+  }
+}

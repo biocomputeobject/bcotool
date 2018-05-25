@@ -1,0 +1,6 @@
+[
+  {
+    "depth": "name:2",
+    "error": "Field 'col4' value '[\"bad-array-should-be-string\"]' does not match datatype 'string'"
+  }
+]

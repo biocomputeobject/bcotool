@@ -1,0 +1,11 @@
+{
+  "id": "01234567890abcdef",
+  "type": "antiviral_resistance_detection",
+  "name": "HCV1a [taxID:31646] ledipasvir [PubChem:67505836] resistance SNP [SO:0000694]",
+  "structured_name":"HCV1a [taxID:$taxID], ledipasvir [PubChem:$PubChem], SNP [SO:$SO]",
+  "version": "1.1",
+  "createdby": "hadley_king@gwmail.gwu.edu",
+  "created": "Jan 24, 2017 09:40:17",
+  "modified": "Jan 25, 2017 15:45:05",
+  "digital_signature": "905d7fce3f3ac64c8ea86f058ca71658"  
+}

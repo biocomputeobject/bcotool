@@ -1,0 +1,18 @@
+{
+  "description_domain": {
+    "desc": "External references, pipeline steps, and the relationship of I/O objects",
+    "children": {
+
+      // [ "HCV1a",  "Ledipasvir",  "antiviral resistance" ]
+      "keywords": {
+        "desc": "Keywords related to the analysis",
+        "children": [ 
+          {
+            "desc": "A keyword",
+            "datatype": "TEXT"
+          }
+        ]
+      }
+    }
+  }
+}

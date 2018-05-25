@@ -1,0 +1,600 @@
+{
+    "_id": "type.267",
+    "name": "HIVE_Development_Project_List",
+    "title": "HIVE User Project Summaries",
+    "descr": "HIVE User Project Summaries",
+    "__is_user": true,
+    "__parents": [ "base_descriptive_type" ],
+    "_field": {
+        "_brief": {
+            "_type": "string",
+            "title": "Summary",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_dir": {
+            "_type": "string",
+            "title": "Location",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state",
+            "_weakref": true
+        },
+        "Description": {
+            "_layout": "struct",
+            "title": "Descriptive Information",
+            "_order": 0,
+            "_write": true,
+            "_vital": false,
+            "__flattened_decor": true,
+            "__definer_type": "base_descriptive_type",
+            "_field": {
+                "Description_Title": {
+                    "_type": "string",
+                    "title": "Title/Name",
+                    "descr": "Title for this record ",
+                    "_order": 0.01,
+                    "_write": true,
+                    "_vital": false,
+                    "_public": true,
+                    "brief": "$_(v)",
+                    "__definer_type": "base_descriptive_type"
+                },
+                "Description_full": {
+                    "_type": "text",
+                    "title": "Full description",
+                    "descr": "Full description of this record",
+                    "_order": 0.02,
+                    "_write": true,
+                    "_vital": true,
+                    "__definer_type": "base_descriptive_type"
+                },
+                "Description_Summary": {
+                    "_type": "text",
+                    "title": "Short Summary",
+                    "descr": "Short summary of this record",
+                    "_order": 0.03,
+                    "_write": true,
+                    "_vital": true,
+                    "__definer_type": "base_descriptive_type"
+                }
+            }
+        },
+        "_domain": {
+            "_type": "json",
+            "title": "Create in domain",
+            "_order": 0,
+            "_write": "once",
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_effperm": {
+            "_type": "json",
+            "title": "Effective permissions",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_parent": {
+            "_type": "hiveid",
+            "title": "Parent object",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state",
+            "_weakref": true
+        },
+        "_perm": {
+            "_type": "string",
+            "title": "Permissions",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "_type": {
+            "_type": "string",
+            "title": "Type name",
+            "_order": 0,
+            "_write": "once",
+            "_vital": true,
+            "_hidden": true,
+            "_virtual": true,
+            "_role": "state"
+        },
+        "base_tag": {
+            "_type": "string",
+            "title": "Tag",
+            "descr": "A tag, keyword, anything to mark an object",
+            "_order": 0,
+            "_write": true,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_hidden": true,
+            "__definer_type": "base_user_type"
+        },
+        "contact_list": {
+            "_layout": "struct",
+            "title": "Contact Information",
+            "_order": 0,
+            "_write": true,
+            "_vital": false,
+            "__flattened_decor": true,
+            "_field": {
+                "research_contacts": {
+                    "_layout": "struct",
+                    "title": "Researcher Contacts",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": true,
+                    "__flattened_decor": true,
+                    "_field": {
+                        "research_contacts_name": {
+                            "_type": "string",
+                            "title": "Name",
+                            "_order": 0,
+                            "_write": true,
+                            "_vital": false,
+                            "_plural": true,
+                            "__flattened_multi": true,
+                            "_limit": {
+                                "search": {
+                                    "url": "http://?cmd=usrList&active=1&grp=0&primaryGrpOnly=1&raw=1",
+                                    "value": "id",
+                                    "title": "name",
+                                    "show": [ "name" ],
+                                    "format": "csv"
+                                }
+                            }
+                        }
+                    }
+                },
+                "team_contacts": {
+                    "_layout": "struct",
+                    "title": "HIVE Team Contacts",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": false,
+                    "__flattened_decor": true,
+                    "_field": {
+                        "team_contacts_name": {
+                            "_type": "string",
+                            "title": "Name",
+                            "_order": 0,
+                            "_write": true,
+                            "_vital": false,
+                            "_plural": true,
+                            "__flattened_multi": true,
+                            "_limit": {
+                                "search": {
+                                    "url": "http://?cmd=usrList&active=1&grp=0&primaryGrpOnly=1&raw=1",
+                                    "value": "id",
+                                    "title": "name",
+                                    "show": [ "name" ],
+                                    "format": "csv"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "created": {
+            "_type": "datetime",
+            "title": "Created",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_role": "state",
+            "__definer_type": "base"
+        },
+        "modified": {
+            "_type": "datetime",
+            "title": "Modified",
+            "_order": 0,
+            "_write": false,
+            "_vital": true,
+            "_role": "state",
+            "__definer_type": "base"
+        },
+        "analysis_information": {
+            "_layout": "struct",
+            "title": "Project Summary",
+            "_order": 1,
+            "_write": true,
+            "_vital": false,
+            "__flattened_decor": true,
+            "_field": {
+                "why_hive": {
+                    "_type": "text",
+                    "title": "Why HIVE?",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": false
+                },
+                "hive_tools_used": {
+                    "_type": "string",
+                    "title": "HIVE Tools Used",
+                    "_order": 1,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true,
+                    "__flattened_multi": true,
+                    "_limit": {
+                        "search": {
+                            "url": "http://?cmd=objList&type=webpage&raw=1&prop=name&mode=csv",
+                            "value": "name",
+                            "title": "\"name\"",
+                            "show": [ {
+                                    "name": "^name",
+                                    "hidden": 0,
+                                    "title": "Name"
+                                } ],
+                            "format": "csv"
+                        }
+                    }
+                },
+                "job_size": {
+                    "_type": "text",
+                    "title": "Size of Job",
+                    "_order": 2,
+                    "_write": true,
+                    "_vital": true
+                },
+                "domain": {
+                    "_type": "string",
+                    "title": "Domain",
+                    "_order": 3,
+                    "_write": true,
+                    "_vital": false,
+                    "_limit": {
+                        "choice+": [ "FDA miniHIVE", "FDA maxiHIVE", "GWU R&D HIVE", "GWU Colonial One HIVE" ]
+                    }
+                },
+                "billable_group_information": {
+                    "_layout": "table",
+                    "title": "Center or Group",
+                    "_order": 4,
+                    "_write": true,
+                    "_vital": true,
+                    "_field": {
+                        "billable_group": {
+                            "_type": "string",
+                            "title": "Center",
+                            "_order": 1,
+                            "_write": true,
+                            "_vital": true,
+                            "_plural": true,
+                            "_limit": {
+                                "search": {
+                                    "url": "http://?cmd=usrList&active=1&usr=0&ugrp=1&primaryGrpOnly=1&billable=1&raw=1",
+                                    "value": "id",
+                                    "title": "name",
+                                    "show": [ "name" ],
+                                    "format": "csv"
+                                }
+                            }
+                        },
+                        "billable_group_proportion": {
+                            "_type": "real",
+                            "_default": 1,
+                            "title": "Proportion",
+                            "_order": 2,
+                            "_write": true,
+                            "_vital": true,
+                            "_plural": true
+                        }
+                    }
+                }
+            }
+        },
+        "steps": {
+            "_layout": "struct",
+            "title": "Proposed Action Items",
+            "_order": 3,
+            "_write": true,
+            "_vital": false,
+            "__flattened_decor": true,
+            "_field": {
+                "step": {
+                    "_layout": "table",
+                    "title": "Step",
+                    "_order": 1,
+                    "_write": true,
+                    "_vital": false,
+                    "_plural": true,
+                    "__flattened_multi": true,
+                    "_field": {
+                        "who": {
+                            "_type": "string",
+                            "title": "Who",
+                            "_order": 1,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true
+                        },
+                        "action": {
+                            "_type": "string",
+                            "title": "Action",
+                            "_order": 2,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true
+                        },
+                        "deadline": {
+                            "_type": "date",
+                            "title": "Deadline",
+                            "_order": 3,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true
+                        },
+                        "status": {
+                            "_type": "string",
+                            "title": "Status",
+                            "_order": 4,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true,
+                            "_limit": {
+                                "choice": [ "Pending", "Proposed", "Done" ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dev_milestones": {
+            "_layout": "struct",
+            "title": "Development Milestones",
+            "_order": 4,
+            "_write": true,
+            "_vital": false,
+            "__flattened_decor": true,
+            "_field": {
+                "dev_milestones_initial": {
+                    "_type": "date",
+                    "title": "Initial Meeting - Define project",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_user_approval": {
+                    "_type": "date",
+                    "title": "Project Summary Approved by User",
+                    "_order": 1,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_second": {
+                    "_type": "date",
+                    "title": "Second Meeting - Discuss proposed pipeline",
+                    "_order": 2,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_third": {
+                    "_type": "date",
+                    "title": "Third Meeting - Discuss primary results",
+                    "_order": 3,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_implemented": {
+                    "_type": "date",
+                    "title": "Pipeline implemented in production",
+                    "_order": 4,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_final": {
+                    "_type": "date",
+                    "title": "Capstone meeting to summarize results",
+                    "_order": 5,
+                    "_write": true,
+                    "_vital": true
+                },
+                "dev_milestones_add": {
+                    "_layout": "table",
+                    "title": "Additional Milestones",
+                    "_order": 6,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true,
+                    "__flattened_multi": true,
+                    "_field": {
+                        "dev_milestones_add_desc": {
+                            "_type": "string",
+                            "title": "Title",
+                            "_order": 0,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true
+                        },
+                        "dev_milestones_add_date": {
+                            "_type": "date",
+                            "title": "Date",
+                            "_order": 1,
+                            "_write": true,
+                            "_vital": true,
+                            "__flattened_multi": true
+                        }
+                    }
+                }
+            }
+        },
+        "outcome": {
+            "_type": "text",
+            "title": "Outcome",
+            "_order": 5,
+            "_write": true,
+            "_vital": true
+        },
+        "pub_discussion": {
+            "_layout": "struct",
+            "title": "Related publication development milestones",
+            "_order": 6,
+            "_write": true,
+            "_vital": true,
+            "_plural": true,
+            "__flattened_multi": true,
+            "_field": {
+                "pub_discussion_initial": {
+                    "_type": "text",
+                    "title": "Initial discussion - summarize aims and define responsibilities",
+                    "_order": 0,
+                    "_write": true,
+                    "_vital": true
+                },
+                "pub_discussion_edits": {
+                    "_type": "date",
+                    "title": "Major edits",
+                    "_order": 1,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true,
+                    "__flattened_multi": true
+                },
+                "pub_discussion_final": {
+                    "_type": "date",
+                    "title": "Final approval by all authors",
+                    "_order": 2,
+                    "_write": true,
+                    "_vital": true
+                },
+                "pub_discussion_admin": {
+                    "_type": "date",
+                    "title": "Administrative approval granted",
+                    "_order": 3,
+                    "_write": true,
+                    "_vital": true
+                },
+                "pub_discussion_submission": {
+                    "_type": "date",
+                    "title": "Submission to publication portal",
+                    "_order": 4,
+                    "_write": true,
+                    "_vital": true
+                }
+            }
+        },
+        "work_comments": {
+            "_type": "text",
+            "title": "Working Comments",
+            "_order": 7,
+            "_write": true,
+            "_vital": true
+        },
+        "status_global": {
+            "_type": "string",
+            "_default": "1",
+            "title": "Project Status",
+            "_order": 8,
+            "_write": true,
+            "_vital": false,
+            "_limit": {
+                "choice": [
+                    {
+                        "title": "Public",
+                        "value": "0"
+                    },
+                    {
+                        "title": "Private",
+                        "value": "1"
+                    },
+                    {
+                        "title": "Published",
+                        "value": "2"
+                    }
+                ]
+            }
+        },
+        "time_log": {
+            "_layout": "table",
+            "title": "Time Log of Related Work",
+            "_order": 9,
+            "_write": true,
+            "_vital": true,
+            "_field": {
+                "time_log_reporter": {
+                    "_type": "string",
+                    "_default": "eval:gUserGetInfo(\"email\")",
+                    "title": "Reporter",
+                    "_order": 1,
+                    "_write": true,
+                    "_vital": false,
+                    "_plural": true,
+                    "_limit": {
+                        "search+": {
+                            "url": "http://?cmd=usrList&active=1&grp=0&primaryGrpOnly=1&raw=1",
+                            "value": "path",
+                            "title": "name",
+                            "show": [ "name" ],
+                            "format": "csv"
+                        }
+                    }
+                },
+                "time_log_date": {
+                    "_type": "date",
+                    "_default": null,
+                    "title": "Start date",
+                    "_order": 2,
+                    "_write": true,
+                    "_vital": false,
+                    "_plural": true
+                },
+                "time_log_end_date": {
+                    "_type": "date",
+                    "_default": null,
+                    "title": "End date",
+                    "_order": 3,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true
+                },
+                "time_log_hours": {
+                    "_type": "real",
+                    "title": "Number Hours Worked",
+                    "descr": "Hours spent: 1.5",
+                    "_order": 4,
+                    "_write": true,
+                    "_vital": false,
+                    "_plural": true
+                },
+                "time_log_comment": {
+                    "_type": "text",
+                    "title": "Comment",
+                    "_order": 5,
+                    "_write": true,
+                    "_vital": true,
+                    "_plural": true
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,164 @@
+/*
+
+  This file contains the following data files:
+
+    bco-core.json
+    bco-datatypes.json
+    bco-spec.json
+*/
+
+{
+  "desc": {
+    "desc": "Description of data field",
+    "datatype": "TEXT",
+    "required": 1
+  },
+  
+  //  NB: REGEX datatype requires an accompanying 'value' field
+  "datatype": {
+    "desc": "List of primitive datatypes. Validation of primitives is handled by the application.",
+    "datatype": "TEXT"
+  },
+
+  "value": {
+    "desc": "Value of attribute",
+    "datatype": "ANY"
+  },
+
+  "values": {
+    "desc": "Value of attribute must be one of the list",
+    "children": [
+      {
+        "desc": "Values can be any supported datatype",
+        "datatype": "ANY" 
+      }
+    ]
+  },
+
+  "children": {
+    "desc": "List or hash of sub-attributes belonging to the attribute",
+    "datatype": "OBJECT"
+  },
+
+  "required": {
+    "desc": "Whether or not the attribute must be present (1 = yes, 0 = no)",
+    "datatype": "INTEGER",
+    "values": [
+      0,
+      1
+    ]
+  },
+
+  "min": {
+    "desc": "Attribute must be present at least this number of times",
+    "datatype": "INTEGER"
+  },
+
+  "max": {
+    "desc": "Attribute must be present no more than this number of times",
+    "datatype": "INTEGER"
+  },
+
+  "count": {
+    "desc": "A numeric quantity of an item",
+    "datatype": "NUMBER"    
+  },
+
+  "DATE": {
+    "desc": "International standard date notation - 'YYYY-MM-DD'",
+    "datatype": "REGEX",
+    "value": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+
+  "DATETIME": {
+    "desc": "International standard date and time notation - 'YYYY-MM-DD hh:mm:ss'",
+    "datatype": "REGEX",
+    "value": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+
+  "EMAIL": {
+    "desc": "Email address with full domain name, e.g.: 'myname@domain.com', 'name2@domain.io', 'name3@domain.info'",
+    "datatype": "REGEX",
+    "value": "^[\\w\\.]+\\.\\w{2,4}"
+  },
+
+  "HEXADECIMAL": {
+    "desc": "A base 16 number",
+    "datatype": "REGEX",
+    "value": "[0-9A-Fa-f]"
+  },
+
+  "RANGE": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      },
+      "stop": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      }
+    }
+  },
+
+  "RANGES": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1
+      },
+      "stop": {
+        "desc": "A description",
+        "datatype": "NUMBER",
+        "required": 1
+      }
+    }
+  },
+
+  "TIMESPAN": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "desc": "A description",
+        "datatype": "DATETIME",
+        "required": 1
+      },
+      "stop": {
+        "desc": "A description",
+        "datatype": "DATETIME",
+        "required": 1
+      }
+    }
+  },
+
+  "XREF": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "[A-Za-z\\.\\-]+:\\d+"
+  },
+
+  "URL": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "http.*:\/\/\\S+"
+  },
+
+  "UUID": {
+    "desc": "Universal unique ID",
+    "datatype": "HEXADECIMAL"
+  },
+
+  "VERSION": {
+    "desc": "Version number of ID of build",
+    "datatype": "STRING"
+  }
+
+}
+

@@ -1,0 +1,152 @@
+/*
+
+  This file defines the expected format of BCO files, as described in the BioCompute Object specification:
+
+    http://tinyurl.com/bco-spec
+
+  For brevity and ease of understanding, the following default values are used:
+  
+    min: 0 (optional)
+    max: 0 (unlimited)
+
+*/
+
+{
+  "DATE": {
+    "desc": "International standard date notation - 'YYYY-MM-DD'",
+    "datatype": "REGEX",
+    "value": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+
+  "DATETIME": {
+    "desc": "International standard date and time notation - 'YYYY-MM-DD hh:mm:ss'",
+    "datatype": "REGEX",
+    "value": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+
+  "EMAIL": {
+    "desc": "Email address with full domain name, e.g.: 'myname@domain.com', 'name2@domain.io', 'name3@domain.info'",
+    "datatype": "REGEX",
+    "value": "^[\\w\\.]+\\.\\w{2,4}"
+  },
+
+  "FHIR": {
+    "desc": "A reference to data elements that can be extracted from EHR systems without compromising patient and providers’ information. For details, see: https:\/\/www.hl7.org/fhir/resourcelist.html",
+    "children": [
+      {
+        "diagnostics": {
+          "desc": "Diagnostics report",
+          "required": 1,
+          "datatype": "STRING",
+          "value": "DiagnosticsReport",
+        },
+        "FHIR_resourceURL": {
+          "desc": "Links to a report containing the date and time of the procedure, specimen details and observations relating to the diagnostic results",
+          "datatype": "URL",
+          "required": 1
+        },
+        "identifier": {
+          "desc": "Business identifier for the report",
+          "datatype": "TEXT",
+          "required": 1
+        },
+        "reference": {
+          "desc": "Procedural request",
+          "datatype": "TEXT",
+          "required": 1
+        }
+      },
+      {
+        "desc": "Diagnostics sequence",
+        "diagnostics": {
+          "required": 1,
+          "value": "sequence",
+        },
+        "sequence_identifier": {
+          "desc": "Unique ID for the specific sequence",
+          "required": 1,
+          "datatype": "STRING",
+        },
+        "datasetID": {
+          "desc": "Unique ID for the dataset",
+          "datatype": "STRING",
+          "required": 1
+        },
+        "type": {
+          "desc": "Sequence type",
+          "required": 1,
+          "values": [
+            "aa",
+            "dna",
+            "rna",
+            "AA",
+            "DNA",
+            "RNA"
+          ]
+        },
+        "reference_specimen": {
+          "desc": "Reference genome of organism used for sequence alignment",
+          "datatype": "STRING"
+        }
+      }
+    ]
+  },
+
+  "RANGE": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      },
+      "stop": {
+        "datatype": "NUMBER",
+        "required": 1,
+        "max": 1
+      }
+    }
+  },
+
+  "RANGES": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "datatype": "NUMBER",
+        "required": 1,
+      },
+      "stop": {
+        "datatype": "NUMBER",
+        "required": 1,
+      }
+    }
+  },
+
+  "TIMESPAN": {
+    "desc": "External references format - 'name:number'",
+    "children": {
+      "start": {
+        "datatype": "DATETIME",
+        "required": 1
+      },
+      "stop": {
+        "datatype": "DATETIME",
+        "required": 1
+      }
+    }
+  },
+
+  "XREF": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "[A-Za-z\\.\\-]+:\\d+"
+  },
+
+  "URL": {
+    "desc": "External references format - 'name:number'",
+    "datatype": "REGEX",
+    "value": "http.*:\/\/\\S+"
+  }
+
+
+}

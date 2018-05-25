@@ -1,0 +1,15 @@
+{
+  "SEQUENCE_TYPE": {
+    "desc": "Description of sequence type field",
+    "required": 1,
+    "datatype": "TEXT",
+    "values": [
+      "aa",
+      "dna",
+      "rna",
+      "AA",
+      "DNA",
+      "RNA"
+    ]
+  }
+}
