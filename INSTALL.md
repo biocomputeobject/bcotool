@@ -2,27 +2,89 @@
   
 The package is written mainly in node.js (javascript) and uses the Github and npm package management systems for download and dependency installation. The following instructions show how to download and install the package and dependencies and then verify the installation by running the test suites.
 
-### 1. Download package
-    
+## Install dependencies
+
+### Windows
+
+#### 1. Install Git
+
+https://git-scm.com/download/win
+
+This should create a GitBash icon on your desktop or taskbar. Click on GitBash to launch a Linux terminal.
+
+#### 2. Install node
+
+You'll use node.js to run the bcotool code. We'll install the latest version of node.js for Windows 64-bit (currently it's node-v10.2.1-win-x64.zip), downloaded from here:
+
+https://nodejs.org/en/download/current/
+
+Next, open a GitBash terminal and create a directory for the node.js code:
 ```bash
-git clone https://hive.biochemistry.gwu.edu/git/hive/bco-validate.git
+mkdir -p ~/Desktop/tools/node
 ```
-  
-### 2. Install dependencies
 
-#### Install npm and node
+Move the downloaded file to the new directory:
+```bash
+mv ~/Downloads/node-v10.2.1-win-x64.zip ~/Desktop/tools/node
+```
 
-##### On OSX
+Unzip and rename to just the version number '10.2.1'
+```bash
+cd ~/Desktop/tools/node
+unzip node-v10.2.1-win-x64.zip 
+mv node-v10.2.1-win-x64 10.2.1
+```
 
-Install brew
+#### 3. Add node to your PATH
+
+Open GitBash terminal and edit your profile file with the vi editor:
+```bash
+vi ~/.bash_profile
+```
+
+Hit 'i' to enable you to insert text and then add this line:
+
+export PATH=~/Desktop/tools/node/10.2.1:$PATH
+
+
+To save the file and exit the vi editor, Hit the <ESC> key then type ':wq' (without the quotes), and hit RETURN to finish. This will allow your GitBash terminal to "know" where the node executables are:
+
+~/Desktop/tools/node/10.2.1/node 
+~/Desktop/tools/node/10.2.1/npm
+
+### OSX
+
+#### 1. Install homebrew
+
+Install homebrew if it's not already installed:
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-Install node (and npm)
+
+Check the homebrew version:
 ```bash
-brew install node 
+brew -v
 ```
-#### On Ubuntu
+
+#### 2. Install Git
+
+```bash
+brew install git
+```
+#### 3. Install node
+
+```bash
+brew install nodejs
+```
+
+### Ubuntu
+
+#### 1. Install Git
+
+```bash
+sudo apt -y install git
+```
+### 2. Install node
 
 Remove existing /usr/bin/node link to /usr/sbin/ax25-node to avoid clash 
 ```bash
@@ -34,30 +96,47 @@ Install nodejs (and npm)
 sudo apt-get update
 sudo apt-get install node
 ```
+
 Link from nodejs to node
 ```bash
 ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-#### On Centos
+### Centos
 
-Install node (and npm)
+#### 1. Install Git
+
 ```bash
-sudo yum install nodejs npm --enablerepo=epel
+sudo yum -y install git
+```
+### 2. Install node
+
+```bash
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum -y install nodejs
 ```
 
-#### Install dependencies
 
-Enter the base directory and use npm to install the dependencies
+## Install bcotool
 
+### 1. Download from GitHub
+    
+Create the 'repos' directory and clone bcotool into it:
 ```bash
-cd bco-validate
+mkdir -p ~/repos
+cd ~/repos/node
+git clone https://github.com/biocomputeobject/bcotool
+```
+  
+### 2. Install module dependencies
+
+Enter the base directory and use npm to install the node module dependencies with 'npm'
+```bash
+cd ~/repos/bcotool
 npm install
+``
 
-
-````
-
-The "npm install" command installs the production dependencies listed in the package.json file:
+NB: The "npm install" command installs the production dependencies listed in the package.json file:
 
   "dependencies": {
     "JSON": ">=1.0.0",
@@ -73,23 +152,23 @@ The "npm install" command installs the production dependencies listed in the pac
 To install only the production dependencies, use:
 
 ```bash
-cd bco-validate
+cd bcotool
 npm install --production
 ```
 
 .. or set the NODE_ENV environment variable to "production":
 
 ```bash
-cd bco-validate
+cd bcotool
 export NODE_ENV=production
 npm install
 ```
 
   
-### 3. Run tests
+## Test bcotool
 
 ```bash
-cd bco-validate
+cd bcotool
 node node_modules/intern/client.js config=tests/intern
 ```
 
@@ -121,4 +200,7 @@ You should get output like this:
     ----------------|----------|----------|----------|----------|----------------|
     All files       |    76.92 |    45.83 |    61.29 |    76.92 |                |
     ----------------|----------|----------|----------|----------|----------------|
+
+
+For information on how run bcotool, review the README.md file in the base folder of the repository.
 
