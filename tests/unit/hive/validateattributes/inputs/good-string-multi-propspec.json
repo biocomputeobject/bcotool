@@ -1,9 +1,0 @@
-{
-  "_id": 3112768,
-  "_field": {
-    "name": {
-      "_type": "string",
-      "_plural": true
-    }
-  }
-}

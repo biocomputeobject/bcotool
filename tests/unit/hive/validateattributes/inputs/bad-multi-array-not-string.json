@@ -1,8 +1,0 @@
-{
-  "_id": 3112768,
-  "_type": "svc-profiler-heptagon",
-  "name": { 
-    "1": "name1", 
-    "2": [ "name2" ]
-  }
-}

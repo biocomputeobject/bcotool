@@ -1,6 +1,0 @@
-[
-  {
-    "depth": "name",
-    "error": "Field 'name' is plural but value is scalar: name1"
-  }
-]

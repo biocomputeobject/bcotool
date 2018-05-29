@@ -1,6 +1,0 @@
-[
-  {
-    "depth": "batch:batch_list:batch_param",
-    "error": "Field 'batch_param' is multi but value is scalar: SCALAR_SHOULD_BE_PLURAL"
-  }
-]

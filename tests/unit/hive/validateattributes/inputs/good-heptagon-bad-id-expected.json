@@ -1,6 +1,0 @@
-[
-  {
-    "depth": "",
-    "error": "Field '_id' value '\"BAD_ID\"' does not match datatype 'hiveid'"
-  }
-]
