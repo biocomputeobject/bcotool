@@ -1,0 +1,189 @@
+{
+    "string_example" : "So long and thanks for all the fish!",
+    "integer_example" : 42,
+    "float_example" : 42.0,
+    "boolean_example": true,
+    "date_example": "1979-10-12",
+    "time_example": "T10:37:11-0400",
+    "dateTime_example": "2018-03-12T10:37:11-0400",
+    "blob_example": "a45b7767sb676as9fe8975f6dd8abcdbfe877dd",
+    "json_example": {
+        "question": "answer to lifes most important question",
+        "age": 42
+    },
+    "address_example": "https://www.ncbi.nlm.nih.gov/pubmed/",
+    "objectid_example": "https://www.ncbi.nlm.nih.gov/clinvar/variation/190237/",
+    "version_example": "4.3.1",
+    "email_example": "vahan.simonyan@fda.hhs.gov",
+    "keyval_example": {
+        "key": "dosage",
+    	"value" : "0.5 ml/kg" 
+    },
+    "keymap_example": {
+        "key": "drugs_taken",
+    	"value" : [
+            "inoprofen",
+            "acetaminophen",
+            "aspirin"
+        ]
+    },
+    "uri_example": {
+        "address": "https://hive.biochemistry.gwu.edu/workflows/antiviral_resistance_detection_hive.sh",
+        "access_time": "2018-03-12T10:37:11-0400"
+    },
+    "file_example": {
+        "uri":{	
+	        "address": "ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/data/HG00096/alignment/HG00096.alt_bwamem_GRCh38DH.20150718.GBR.low_coverage.bam.bas",
+	        "access_time": "2018-03-12T10:37:11-0400"
+		},
+		"mime": "application/octet-stream"
+    },
+    "xref_examples": [
+        {
+            "source": "NCBI",
+            "db": "nucleotide",
+            "id": "BA000005.3", 
+            "access_time": "2018-13-02T10:15-05:00"
+        },
+        { 
+                "db": "pubchem.compound",
+                "id": "2519"
+        }
+    ],
+    "xref_examples": [
+        {
+            "type": "orcid", 
+            "orcid": "orcid.org/0000-0002-4868-4785"
+        },
+        {
+            "type": "entity", 
+            "entity" : { 
+                "name": "Vahan Simonyan",
+                "affiliation": "Food and Drug Administration", 
+                "email": "vahan.simonyan@fda.hhs.gov"
+            }
+        }
+    ],
+    "pipeline_steps_example" : {
+        "tool": [
+            {
+                "step_number": "1", 
+                "name": "HIVE-hexagon", 
+                "description": "Alignment of reads to a set of references", 
+                "version": "1.3", 
+                "prerequisite": [
+                    {
+                        "name": "Hepatitis C virus genotype 1", 
+                        "URI": {
+                            "address": "http://www.ncbi.nlm.nih.gov/nuccore/22129792",
+                            "access_time": "2017-01-24T09:40:17-0500"
+                        }
+                    }, 
+                    {
+                        "name": "Hepatitis C virus type 1b complete genome", 
+                        "URI": {
+                            "address": "http://www.ncbi.nlm.nih.gov/nuccore/5420376",
+                            "access_time": "2017-01-24T09:40:17-0500"
+                        }
+                    }, 
+                    {
+                        "name": "Hepatitis C virus (isolate JFH-1) genomic RNA", 
+                        "URI": {
+                            "address": "http://www.ncbi.nlm.nih.gov/nuccore/13122261",
+                            "access_time": "2017-01-24T09:40:17-0500"
+                        }
+                    }, 
+                    {
+                        "name": "Hepatitis C virus clone J8CF, complete genome", 
+                        "URI": {
+                            "address": "http://www.ncbi.nlm.nih.gov/nuccore/386646758",
+                            "access_time": "2017-01-24T09:40:17-0500"
+                        }
+                    }, 
+                    {
+                        "name": "Hepatitis C virus S52 polyprotein gene", 
+                        "URI": {
+                            "address": "http://www.ncbi.nlm.nih.gov/nuccore/295311559",
+                            "access_time": "2017-01-24T09:40:17-0500"
+                        }
+                    }
+                ], 
+                "input_uri_list": [
+                    {
+                        "address": "https://hive.biochemistry.gwu.edunuc-read/514683",
+                        "access_time": "2017-01-24T09:40:17-0500"
+                    }, 
+                    {
+                        "address": "https://hive.biochemistry.gwu.edunuc-read/514682",
+                        "access_time": "2017-01-24T09:40:17-0500"
+                    }
+                ], 
+                "output_uri_list": [
+                    {
+                        "address": "https://hive.biochemistry.gwu.edudata/514769/allCount-aligned.csv",
+                        "access_time": "2017-01-24T09:40:17-0500"
+                    }
+                ]
+            },
+			{
+					???????? STEP 2 
+			}
+        ]
+    },
+	
+    "parametric_domain_type_definition_examples": {
+        "maxMissQueryPercent" : {
+            "_type" : "integer"
+        },
+        "keepAllMatches" : {
+            "_type" : "integer",
+            "_default": 1,
+            "_constraint": {
+                "_choice": [
+                    {
+                        "value": 0,
+                        "title": "First Match"
+                    },
+                    {
+                        "value": 1,
+                        "title": "Best first match"
+                    }
+                ]
+            }
+        },
+        "seed": {
+            "_comment" : "see example in bco_type_examples.json object parametric_domain_examples"
+        }
+	},
+	"execution_domain_example": {
+		????????? Hadley
+			
+	}
+    "parametric_domain_examples": {
+        "maxMissQueryPercent" : 75,
+        "keepAllMatches" : 1,
+        "seed": 8
+    },
+    "input_subdomain_example" : {
+        "query" : { 
+            "_type": "uri",
+            "name": "short reads",
+            "_multi_value": true
+        },
+        "subject" :{
+            "_type": "uri",
+            "_multi_value": true,
+            "name": "reference sequences"
+        }
+    },
+    "output_subdomain_example": {
+        "hitlist": {
+            "uri":"http://hive.....cmd=alHitList",
+            "mime":"csv"
+        },
+        "alignment": {
+            "uri":"efwwfwfwfwfewewf",
+            "mime": "text/SAM"
+        }
+    }
+}

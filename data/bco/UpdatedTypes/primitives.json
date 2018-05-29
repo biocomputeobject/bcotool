@@ -1,0 +1,128 @@
+{
+    "primitives" : {
+        "_comment": "primitive type hash with short descriptions",
+        "_type" : {
+            "string": "alphanumeric string",
+            "integer": "integer number",
+            "float": "floating point number", 
+            "boolean": "can only be assigned true, false, or null",
+            "date": "specified ISO 8601", 
+            "time": "ISO 8601", 
+            "dateTime": "ISO 8601",
+            "blob": "binary data stored as a single object",
+            "json" : "any json formatted subobject, the structure to json is not imposed by base biocompute type, but should follow guidelines of using the predefined primitives"
+        }
+    },
+    "address": {
+        "_type": "string",
+        "_comment": "schema://domain/resource_locator"
+    },
+    "objectid": {
+        "_type": "string",
+        "_comment": "[schema://domain/1231231]"
+    },
+    "version": {
+        "_type": "string",
+        "_comment": "suggestion major[.minor[.build_nunber]]"
+    }, 
+    "email":{ 
+        "type": "string",
+        "_comment": "[string/@/string]"
+    },
+    "keyval" : {
+        "key" : {
+            "_type" : "string"
+        },
+        "value" : {
+            "_type" : "string"
+        }
+    },
+    "keymap" : {
+        "key" : {
+            "_type" : "string"
+        },
+        "value" : {
+            "_type" : "string",
+            "_multi_value" : true
+        }
+    },
+    "uri": {
+        "address": {
+            "_type": "string" 
+        },
+        "access_time": {
+            "_type" : "dateTime",
+            "_optional" : true
+        }
+    },
+    "contribution": {
+        "_comment": "taken from https://doi.org/10.1186/2041-1480-4-37",
+        "type" : {
+            "_constraint" :{
+                "_choice" : ["authoredBy", "contributedBy", "createdAt", "createdBy", "createdWith", "curatedBy", "derivedFrom", "importedBy", "importedFrom", "providedBy", "retrievedBy", "retrievedFrom", "sourceAccessedBy"]
+            }
+        }
+    },
+    "orcid": {
+        "_comment": "",
+        "orc_id": {
+            "_type": "objectid"
+        },
+        "contribution": {
+            "_type": "contribution"
+        }
+    },
+    "entity": {
+        "_comment": "",
+        "name": {
+            "_type": "string",
+            "_optional" : true
+        },
+        "affiliation": {
+            "_type": "string",
+            "_optional" : true
+        },
+        "email" : {
+            "_type" : "email",
+            "_optional" : true
+        },
+        "contribution": {
+            "_type": "contrabution"
+        }
+    },
+    "file": {
+        "uri" : {
+            "_type" : "uri"
+        },
+        "mime": { 
+            "_type" : "string",
+            "_optional" : true
+        }
+    },
+    "xref" : {
+        "db" : {
+            "_type" : "string",
+            "_comment" : "can be a prefix in identifiers.org or a db named in a source" 
+        },
+        "ids" : {
+            "_type" : "string",
+            "_multi_value" : true
+        },
+        "source" : {
+            "_comment": "This can be the common name for the db",
+            "_type" : "string",
+            "_optional" :true
+        },
+        "access_time":{
+            "_type": "dateTime",
+            "_optional" : true
+        }
+    },
+    "contributor": {
+        "type" : {
+            "_constraint" :{
+                "_choice" : ["orcid", "entity"]
+            }
+        }
+    }
+}
