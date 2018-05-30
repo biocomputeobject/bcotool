@@ -37,8 +37,8 @@ with (bdd) {
     var dfd = this.async(delay, null);
     var testname = "validate";
     var definition_files = [ 
-      "data/bco/core.json",
-      "data/bco/datatypes.json" 
+      "data/core.json",
+      "data/datatypes.json" 
     ];
     var tests = [
       {

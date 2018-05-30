@@ -38,7 +38,7 @@ with (bdd) {
     var delay = 500;
     var dfd = this.async(delay, null);
     var testname = "recursivevalidate";
-    var definitionfile = "data/bco/core.json";
+    var definitionfile = "data/core.json";
     var tests = [
       {
         datafile : "tests/unit/datatype/" + testname + "/inputs/good-xref-nested-children.json",

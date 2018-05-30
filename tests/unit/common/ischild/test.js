@@ -34,7 +34,7 @@ with (bdd) {
     it("should get the definition for a data object", function () {
 
     var testname = "getdefinition";
-    var definition_file = "data/bco/spec.json";
+    var definition_file = "data/spec.json";
 
     var tests = [
       {

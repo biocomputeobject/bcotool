@@ -31,8 +31,8 @@ with (bdd) {
   function () {
 
     var testname = "validatevalues";
-    var definitionfile = "data/bco/core.json";
-    var primitivesfile = "data/bco/primitives.json";
+    var definitionfile = "data/core.json";
+    var primitivesfile = "data/primitives.json";
     var tests = [
       {
         datafile : "tests/unit/datatype/" + testname + "/inputs/good-date.json",

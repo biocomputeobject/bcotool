@@ -31,7 +31,7 @@ with (bdd) {
     "should verify if field is supported", 
     function () {
     
-      var definitionfile = "data/bco/core.json";
+      var definitionfile = "data/core.json";
       var tests = [
         {
           datafile : "tests/unit/common/supportedfield/inputs/bad-not-supported.json",

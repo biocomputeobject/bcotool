@@ -46,8 +46,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-external-references.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/good-external-references-expected.json"
@@ -62,7 +62,7 @@ with (bdd) {
       }
       ,
       {
-        definition_files : [ "data/bco/spec.json" ],
+        definition_files : [ "data/spec.json" ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-io-domain.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/good-io-domain-expected.json"
       }
@@ -77,8 +77,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/bad-unknown-domain.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/bad-unknown-domain-expected.json"
@@ -86,8 +86,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/bad-authors-not-found.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/bad-authors-not-found-expected.json"
@@ -95,8 +95,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-authors-found.json",
         expectedfile :     "tests/unit/bco/" + testname + "/inputs/good-authors-found-expected.json"
@@ -104,8 +104,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-authors-orcid-empty.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/good-authors-orcid-empty-expected.json"
@@ -113,8 +113,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-authors-orcid.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/good-authors-orcid-expected.json"
@@ -122,8 +122,8 @@ with (bdd) {
       ,
       {
         definition_files : [ 
-          "data/bco/datatypes.json",
-          "data/bco/spec.json"
+          "data/datatypes.json",
+          "data/spec.json"
         ],
         data_file :     "tests/unit/bco/" + testname + "/inputs/good-error-domain.json",
         expectedfile :  "tests/unit/bco/" + testname + "/inputs/good-error-domain-expected.json"

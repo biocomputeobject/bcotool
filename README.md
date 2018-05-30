@@ -9,7 +9,7 @@ See INSTALL.md file for instructions.
 ### Validate a datatype file:
 
 ```bash
-bin/datatype data/bco/datatype.json
+bin/datatype data/datatype.json
 ```
 
 You should see this output if the file validates correctly (it should):
@@ -24,7 +24,7 @@ Validation errors:
 ### Validate a BCO file:
 
 ```bash
-bin/bco data/bco/bco-1.json
+bin/bco data-1.json
 ``` 
 
 You should see this output:
@@ -38,7 +38,7 @@ Validation errors:
 
 ### Overview
 
-The data/bco repository contains the following files: 
+The data repository contains the following files: 
 
 bco-core.json          Field definitions for datatype files
 bco-primitives.json    Primitive data types (implemented in code)

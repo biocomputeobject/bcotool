@@ -40,7 +40,7 @@ with (bdd) {
     var tests = [
       // {
       //   inputfile :     "tests/unit/datatype/" + testname + "/inputs/good-uuid-bco-1.json",
-      //   datatypesfile : "data/bco/spec.json",
+      //   datatypesfile : "data/spec.json",
       //   expectedfile :  "tests/unit/datatype/" + testname + "/inputs/good-uuid-expected.json",
       // }
       // ,

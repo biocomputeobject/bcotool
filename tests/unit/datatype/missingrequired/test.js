@@ -31,7 +31,7 @@ with (bdd) {
     function () {
     
       var testname = "missingrequired";
-      var definitionfile = "data/bco/core.json";
+      var definitionfile = "data/core.json";
       var tests = [
         {
           datafile : "tests/unit/datatype/" + testname + "/inputs/good-date.json",
